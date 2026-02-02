@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sezonowe kwiaty - co wybrać zimą? - Kwiaciarnia Lilia</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .article-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .article-header {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .article-header h1 {
+            font-size: 2.2rem;
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+        .article-meta {
+            display: flex;
+            gap: 20px;
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+        }
+        .article-content {
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        .article-content p {
+            margin-bottom: 20px;
+            color: var(--color-text-secondary);
+        }
+        .article-content h2 {
+            font-size: 1.5rem;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--color-accent);
+        }
+        .article-content h3 {
+            font-size: 1.2rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: var(--color-accent);
+        }
+        .article-content ul, .article-content ol {
+            margin-bottom: 20px;
+            padding-left: 25px;
+        }
+        .article-content li {
+            margin-bottom: 10px;
+            color: var(--color-text-secondary);
+        }
+        .article-content strong {
+            color: var(--color-text-primary);
+        }
+        .flower-card {
+            background: var(--color-bg-dark);
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--color-accent);
+        }
+        .flower-card h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .flower-card h3 .emoji {
+            font-size: 1.5rem;
+        }
+        .flower-card p {
+            margin-bottom: 0;
+        }
+        .color-palette {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .color-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--color-bg-dark);
+            padding: 10px 15px;
+            border-radius: 20px;
+        }
+        .color-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+        .tips-box {
+            background: linear-gradient(135deg, #1a2520 0%, #2a3530 100%);
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+            border: 1px solid rgba(100, 150, 100, 0.3);
+        }
+        .tips-box h3 {
+            margin-top: 0;
+            color: #8fbc8f;
+        }
+        .tips-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .tips-box li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .tips-box li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #8fbc8f;
+        }
+        .tips-box li:last-child {
+            border-bottom: none;
+        }
+        .occasions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .occasion-item {
+            background: var(--color-bg-dark);
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+        }
+        .occasion-item .icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .seasonal-elements {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .seasonal-tag {
+            background: rgba(201, 160, 80, 0.15);
+            border: 1px solid var(--color-accent);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        .cta-box {
+            background: linear-gradient(135deg, #2a2520 0%, #3a3530 100%);
+            padding: 40px;
+            text-align: center;
+            margin: 50px 0;
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+        }
+        .cta-box h3 {
+            color: var(--color-text-primary);
+            margin-bottom: 15px;
+        }
+        .cta-box p {
+            margin-bottom: 25px;
+        }
+        .article-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid var(--color-border);
+        }
+    </style>
+</head>
+<body>
+    <!-- Banner sezonowy -->
+    <div class="seasonal-banner" id="seasonalBanner"></div>
+
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/branding/logo.png" alt="Kwiaciarnia Lilia">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Strona główna</a></li>
+                    <li><a href="sklep.html">Sklep</a></li>
+                    <li><a href="wyslij-kwiaty.html">Wyślij kwiaty</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="abonament.html">Abonament</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                    <li><a href="poradnik.html">Poradnik</a></li>
+                    <li><a href="kwiatomat.html">Kwiatomat</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                    <li><a href="admin.html" style="color: #8B4513; font-weight: bold;">Admin</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <div class="article-container">
+                <article class="article-content">
+                    <header class="article-header">
+                        <a href="poradnik.html" style="color: var(--color-text-secondary); font-size: 0.9rem;">&larr; Powrót do poradnika</a>
+                        <h1>Sezonowe kwiaty - co wybrać zimą?</h1>
+                        <div class="article-meta">
+                            <span>Kwiaciarnia Lilia</span>
+                            <span>•</span>
+                            <span>Poradnik florystyczny</span>
+                        </div>
+                    </header>
+
+                    <p><strong>Zima często kojarzy się z ograniczonym wyborem kwiatów, ale w praktyce to jeden z ciekawszych sezonów dla florystyki.</strong> Odpowiednio dobrane gatunki, przemyślana kolorystyka i dodatki sezonowe pozwalają tworzyć eleganckie, trwałe i bardzo efektowne bukiety. W tym artykule podpowiadamy, jakie kwiaty zimą sprawdzają się najlepiej i na co zwrócić uwagę przy ich wyborze.</p>
+
+                    <h2>Czy zimą można kupić świeże kwiaty?</h2>
+
+                    <p><strong>Tak - i to w dużym wyborze.</strong> Współczesna florystyka opiera się nie tylko na lokalnej sezonowości, ale także na sprawdzonych dostawach szklarniowych i imporcie. Dzięki temu zimą dostępne są zarówno klasyczne kwiaty cięte, jak i gatunki, które szczególnie dobrze znoszą niskie temperatury.</p>
+
+                    <p>Kluczem jest właściwy dobór kwiatów oraz profesjonalne przygotowanie bukietu, aby bezpiecznie przetrwał transport i ekspozycję.</p>
+
+                    <h2>Najlepsze kwiaty zimą - sprawdzone gatunki</h2>
+
+                    <div class="flower-card">
+                        <h3><span class="emoji">🌸</span> Goździki</h3>
+                        <p>Jedne z najbardziej odpornych kwiatów zimowych. Dobrze znoszą chłód, długo zachowują świeżość i występują w wielu kolorach - od bieli i kremów po głębokie czerwienie i róże.</p>
+                    </div>
+
+                    <div class="flower-card">
+                        <h3><span class="emoji">🌼</span> Chryzantemy</h3>
+                        <p>Choć kojarzone głównie z jesienią, zimą nadal są dostępne i bardzo cenione. Symbolizują trwałość i elegancję, a przy tym świetnie radzą sobie w niższych temperaturach.</p>
+                    </div>
+
+                    <div class="flower-card">
+                        <h3><span class="emoji">🌹</span> Róże (odpowiednio zabezpieczone)</h3>
+                        <p>Zimą wybiera się je świadomie - z krótkim transportem i solidnym opakowaniem. Najlepiej sprawdzają się róże o grubych płatkach i klasycznych odmianach.</p>
+                    </div>
+
+                    <div class="flower-card">
+                        <h3><span class="emoji">🌷</span> Alstremerie</h3>
+                        <p>Trwałe, estetyczne i niezwykle uniwersalne. Doskonałe do bukietów okolicznościowych i eleganckich kompozycji zimowych.</p>
+                    </div>
+
+                    <div class="flower-card">
+                        <h3><span class="emoji">🌺</span> Eustomy</h3>
+                        <p>Delikatne w wyglądzie, ale zaskakująco wytrzymałe. Nadają bukietom lekkości i subtelności - idealne na zimowe uroczystości rodzinne.</p>
+                    </div>
+
+                    <h2>Zimowe kompozycje - nie tylko kwiaty</h2>
+
+                    <p>Zima to idealny moment, by rozszerzyć bukiet o elementy sezonowe, które dodają mu charakteru i głębi:</p>
+
+                    <div class="seasonal-elements">
+                        <span class="seasonal-tag">🌲 igliwie (świerk, jodła, sosna)</span>
+                        <span class="seasonal-tag">🌰 szyszki</span>
+                        <span class="seasonal-tag">☁️ bawełna</span>
+                        <span class="seasonal-tag">🌾 suszone trawy</span>
+                        <span class="seasonal-tag">🌿 eukaliptus</span>
+                        <span class="seasonal-tag">🍃 liście dekoracyjne</span>
+                        <span class="seasonal-tag">✨ akcenty srebra i złota</span>
+                    </div>
+
+                    <p>Takie połączenia są nie tylko modne, ale również bardziej odporne na warunki atmosferyczne.</p>
+
+                    <h2>Kolory zimowych bukietów - co jest modne?</h2>
+
+                    <p>Zimą królują barwy spokojne i eleganckie:</p>
+
+                    <div class="color-palette">
+                        <div class="color-item">
+                            <span class="color-dot" style="background: #fff; border: 1px solid #ccc;"></span>
+                            <span>biel</span>
+                        </div>
+                        <div class="color-item">
+                            <span class="color-dot" style="background: #f5f5dc;"></span>
+                            <span>krem, écru</span>
+                        </div>
+                        <div class="color-item">
+                            <span class="color-dot" style="background: #722f37;"></span>
+                            <span>bordo</span>
+                        </div>
+                        <div class="color-item">
+                            <span class="color-dot" style="background: #8b0000;"></span>
+                            <span>ciemna czerwień</span>
+                        </div>
+                        <div class="color-item">
+                            <span class="color-dot" style="background: #2f4f4f;"></span>
+                            <span>butelkowa zieleń</span>
+                        </div>
+                        <div class="color-item">
+                            <span class="color-dot" style="background: #d4a5a5;"></span>
+                            <span>pudrowy róż</span>
+                        </div>
+                        <div class="color-item">
+                            <span class="color-dot" style="background: #808080;"></span>
+                            <span>szarości</span>
+                        </div>
+                    </div>
+
+                    <p>To kolory, które doskonale wpisują się w zimowy klimat i pasują zarówno do bukietów okolicznościowych, jak i kompozycji żałobnych.</p>
+
+                    <h2>Na jakie okazje wybieramy kwiaty zimą?</h2>
+
+                    <p>Zimowe bukiety najczęściej zamawiane są na:</p>
+
+                    <div class="occasions-grid">
+                        <div class="occasion-item">
+                            <div class="icon">🎂</div>
+                            <div>Urodziny i imieniny</div>
+                        </div>
+                        <div class="occasion-item">
+                            <div class="icon">💍</div>
+                            <div>Rocznice i jubileusze</div>
+                        </div>
+                        <div class="occasion-item">
+                            <div class="icon">🎄</div>
+                            <div>Boże Narodzenie</div>
+                        </div>
+                        <div class="occasion-item">
+                            <div class="icon">🎆</div>
+                            <div>Nowy Rok</div>
+                        </div>
+                        <div class="occasion-item">
+                            <div class="icon">🕯️</div>
+                            <div>Ceremonie pogrzebowe</div>
+                        </div>
+                        <div class="occasion-item">
+                            <div class="icon">🏠</div>
+                            <div>Dekoracje domów i firm</div>
+                        </div>
+                    </div>
+
+                    <p>Dobrze dobrane kwiaty zimą potrafią zrobić równie duże wrażenie, jak letnie kompozycje.</p>
+
+                    <h2>Jak dbać o kwiaty zimą po zakupie?</h2>
+
+                    <div class="tips-box">
+                        <h3>Praktyczne zasady pielęgnacji</h3>
+                        <ul>
+                            <li>Unikaj długiego przebywania bukietu na mrozie</li>
+                            <li>Po wniesieniu do domu nie stawiaj go od razu przy kaloryferze</li>
+                            <li>Zmień wodę po kilku godzinach i przytnij łodygi</li>
+                            <li>Usuń opakowanie ochronne dopiero w cieple</li>
+                            <li>Trzymaj z dala od owoców (wydzielają etylen)</li>
+                        </ul>
+                    </div>
+
+                    <p>Dzięki temu bukiet zachowa świeżość przez wiele dni.</p>
+
+                    <h2>Zimowe bukiety w Myszkowie - postaw na doświadczenie</h2>
+
+                    <p>W <strong>Kwiaciarni Lilia</strong> przygotowujemy zimowe bukiety i kompozycje z myślą o realnych warunkach pogodowych. Doradzamy w wyborze kwiatów, dbamy o ich odpowiednie zabezpieczenie i estetykę wykonania - niezależnie od okazji.</p>
+
+                    <p>Jeśli zastanawiasz się, jakie kwiaty wybrać zimą w Myszkowie, zapraszamy do kontaktu lub odwiedzenia naszej kwiaciarni. <strong>Zima to nie ograniczenie - to inna, bardzo elegancka odsłona florystyki.</strong></p>
+
+                    <div class="cta-box">
+                        <h3>Zamów zimowy bukiet z dostawą</h3>
+                        <p>Przygotujemy dla Ciebie elegancką kompozycję dopasowaną do sezonu. Dostawa w Myszkowie GRATIS!</p>
+                        <a href="sklep.html?category=occasional" class="button">Zobacz bukiety okolicznościowe</a>
+                        <a href="wyslij-kwiaty.html" class="button secondary" style="margin-left: 10px;">Wyślij z dostawą</a>
+                    </div>
+
+                    <div class="article-nav">
+                        <a href="poradnik.html">&larr; Powrót do poradnika</a>
+                        <a href="poradnik-kwiaty-pogrzebowe.html">Kwiaty pogrzebowe &rarr;</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div style="display: flex; align-items: center; gap: 30px; flex-wrap: wrap;">
+                <img src="assets/images/branding/logo.png" alt="Kwiaciarnia Lilia" style="height: 80px; width: auto;">
+                <div style="flex: 1; text-align: left;">
+                    <p style="margin-bottom: 5px;">Kwiaciarnia Lilia - Myszków • ul. Krasickiego 95F • Tel. +48 572 429 000</p>
+                    <p style="margin: 0;">
+                        <a href="polityka-prywatnosci.html" style="color: var(--color-text-secondary);">Polityka prywatności</a> •
+                        <a href="regulamin.html" style="color: var(--color-text-secondary);">Regulamin</a> •
+                        NIP 5732704306 • © 2025 Lilia
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symbolika kolorów kwiatów - co oznaczają? - Kwiaciarnia Lilia</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .article-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .article-header {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .article-header h1 {
+            font-size: 2.2rem;
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+        .article-meta {
+            display: flex;
+            gap: 20px;
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+        }
+        .article-content {
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        .article-content p {
+            margin-bottom: 20px;
+            color: var(--color-text-secondary);
+        }
+        .article-content h2 {
+            font-size: 1.5rem;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--color-accent);
+        }
+        .article-content ul, .article-content ol {
+            margin-bottom: 20px;
+            padding-left: 25px;
+        }
+        .article-content li {
+            margin-bottom: 10px;
+            color: var(--color-text-secondary);
+        }
+        .article-content strong {
+            color: var(--color-text-primary);
+        }
+        .color-section {
+            margin: 40px 0;
+            padding: 30px;
+            border-radius: 12px;
+            position: relative;
+        }
+        .color-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .color-section h3 .emoji {
+            font-size: 1.8rem;
+        }
+        .color-section p {
+            margin-bottom: 15px;
+        }
+        .color-section .occasions {
+            background: rgba(0,0,0,0.2);
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        .color-section .occasions h4 {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            color: rgba(255,255,255,0.7);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .color-section .occasions ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .color-section .occasions li {
+            margin-bottom: 5px;
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* Kolory sekcji */
+        .color-red {
+            background: linear-gradient(135deg, #4a1a1a 0%, #3a1515 100%);
+            border-left: 5px solid #c41e3a;
+        }
+        .color-white {
+            background: linear-gradient(135deg, #3a3a3a 0%, #2a2a2a 100%);
+            border-left: 5px solid #f5f5f5;
+        }
+        .color-yellow {
+            background: linear-gradient(135deg, #4a4520 0%, #3a3515 100%);
+            border-left: 5px solid #ffd700;
+        }
+        .color-pink {
+            background: linear-gradient(135deg, #4a2a3a 0%, #3a2030 100%);
+            border-left: 5px solid #ffb6c1;
+        }
+        .color-purple {
+            background: linear-gradient(135deg, #3a2a4a 0%, #2a2040 100%);
+            border-left: 5px solid #9370db;
+        }
+        .color-green {
+            background: linear-gradient(135deg, #2a4a2a 0%, #203a20 100%);
+            border-left: 5px solid #228b22;
+        }
+
+        .intro-list {
+            background: var(--color-bg-dark);
+            padding: 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .intro-list ul {
+            margin: 0;
+            list-style: none;
+            padding: 0;
+        }
+        .intro-list li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .intro-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+        }
+        .intro-list li:last-child {
+            border-bottom: none;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        @media (max-width: 600px) {
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .tip-card {
+            background: var(--color-bg-dark);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .tip-card h4 {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            color: var(--color-accent);
+        }
+        .tip-card p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #2a2520 0%, #3a3530 100%);
+            padding: 40px;
+            text-align: center;
+            margin: 50px 0;
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+        }
+        .cta-box h3 {
+            color: var(--color-text-primary);
+            margin-bottom: 15px;
+        }
+        .cta-box p {
+            margin-bottom: 25px;
+        }
+        .article-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid var(--color-border);
+        }
+    </style>
+</head>
+<body>
+    <!-- Banner sezonowy -->
+    <div class="seasonal-banner" id="seasonalBanner"></div>
+
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/branding/logo.png" alt="Kwiaciarnia Lilia">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Strona główna</a></li>
+                    <li><a href="sklep.html">Sklep</a></li>
+                    <li><a href="wyslij-kwiaty.html">Wyślij kwiaty</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="abonament.html">Abonament</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                    <li><a href="poradnik.html">Poradnik</a></li>
+                    <li><a href="kwiatomat.html">Kwiatomat</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                    <li><a href="admin.html" style="color: #8B4513; font-weight: bold;">Admin</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <div class="article-container">
+                <article class="article-content">
+                    <header class="article-header">
+                        <a href="poradnik.html" style="color: var(--color-text-secondary); font-size: 0.9rem;">&larr; Powrót do poradnika</a>
+                        <h1>Symbolika kolorów kwiatów - co oznaczają?</h1>
+                        <div class="article-meta">
+                            <span>Kwiaciarnia Lilia</span>
+                            <span>•</span>
+                            <span>Przewodnik florystyczny</span>
+                        </div>
+                    </header>
+
+                    <p><strong>Kolor kwiatów to coś znacznie więcej niż estetyka.</strong> Od wieków barwy niosą ze sobą określone znaczenia, emocje i komunikaty. Wybierając bukiet, często intuicyjnie sięgamy po konkretny kolor - bo „coś pasuje". W rzeczywistości ta intuicja ma solidne kulturowe i symboliczne podstawy.</p>
+
+                    <p>W tym artykule wyjaśniamy, co oznaczają kolory kwiatów i jak dobrać je odpowiednio do okazji.</p>
+
+                    <h2>Dlaczego kolor kwiatów ma znaczenie?</h2>
+
+                    <p>Kwiaty są formą niewerbalnej komunikacji. Ich kolor potrafi:</p>
+
+                    <div class="intro-list">
+                        <ul>
+                            <li>wyrazić uczucia, których trudno ubrać w słowa</li>
+                            <li>podkreślić charakter wydarzenia</li>
+                            <li>okazać szacunek, radość lub współczucie</li>
+                        </ul>
+                    </div>
+
+                    <p>Dlatego tak ważne jest, aby kolorystyka bukietu była dopasowana do okazji i relacji z osobą obdarowywaną.</p>
+
+                    <h2>Znaczenie najpopularniejszych kolorów kwiatów</h2>
+
+                    <div class="color-section color-red">
+                        <h3><span class="emoji">🌹</span> Czerwony - miłość, pasja, głębokie uczucia</h3>
+                        <p>Czerwone kwiaty, szczególnie róże, są symbolem miłości, namiętności i silnych emocji. To kolor jednoznaczny i intensywny.</p>
+                        <div class="occasions">
+                            <h4>Najczęstsze okazje</h4>
+                            <ul>
+                                <li>rocznice</li>
+                                <li>Walentynki</li>
+                                <li>wyznania miłosne</li>
+                            </ul>
+                        </div>
+                        <p style="margin-top: 15px; font-style: italic; opacity: 0.8;">W florystyce pogrzebowej czerwień bywa wyrazem głębokiego przywiązania i bólu po stracie.</p>
+                    </div>
+
+                    <div class="color-section color-white">
+                        <h3><span class="emoji">🤍</span> Biały - czystość, niewinność, spokój</h3>
+                        <p>Biel symbolizuje harmonię, szczerość i duchową czystość. To kolor bardzo uniwersalny, ale jednocześnie niezwykle elegancki.</p>
+                        <div class="occasions">
+                            <h4>Najczęstsze okazje</h4>
+                            <ul>
+                                <li>śluby i komunie</li>
+                                <li>ceremonie pogrzebowe</li>
+                                <li>uroczystości religijne</li>
+                            </ul>
+                        </div>
+                        <p style="margin-top: 15px; font-style: italic; opacity: 0.8;">Białe kwiaty często wybierane są jako wyraz szacunku i ciszy emocjonalnej.</p>
+                    </div>
+
+                    <div class="color-section color-yellow">
+                        <h3><span class="emoji">🌼</span> Żółty - radość, przyjaźń, optymizm</h3>
+                        <p>Żółte kwiaty kojarzą się ze słońcem, energią i dobrym nastrojem. Wbrew dawnym przesądom nie oznaczają już zazdrości - dziś dominują ich pozytywne skojarzenia.</p>
+                        <div class="occasions">
+                            <h4>Najczęstsze okazje</h4>
+                            <ul>
+                                <li>urodziny</li>
+                                <li>gratulacje</li>
+                                <li>bukiety „bez okazji"</li>
+                            </ul>
+                        </div>
+                        <p style="margin-top: 15px; font-style: italic; opacity: 0.8;">Idealne do rozjaśnienia dnia i poprawy humoru.</p>
+                    </div>
+
+                    <div class="color-section color-pink">
+                        <h3><span class="emoji">🌸</span> Różowy - wdzięczność, delikatność, ciepło</h3>
+                        <p>Róż to kolor subtelnych emocji - wdzięczności, sympatii i troski. Mniej intensywny niż czerwień, bardziej osobisty niż biel.</p>
+                        <div class="occasions">
+                            <h4>Najczęstsze okazje</h4>
+                            <ul>
+                                <li>Dzień Matki</li>
+                                <li>podziękowania</li>
+                                <li>narodziny dziecka</li>
+                            </ul>
+                        </div>
+                        <p style="margin-top: 15px; font-style: italic; opacity: 0.8;">Bardzo często wybierany w bukietach rodzinnych.</p>
+                    </div>
+
+                    <div class="color-section color-purple">
+                        <h3><span class="emoji">💜</span> Fioletowy - refleksja, duchowość, powaga</h3>
+                        <p>Fiolet to barwa zadumy i kontemplacji. W florystyce często kojarzona z elegancją i spokojem.</p>
+                        <div class="occasions">
+                            <h4>Najczęstsze okazje</h4>
+                            <ul>
+                                <li>ceremonie pogrzebowe</li>
+                                <li>uroczystości o charakterze religijnym</li>
+                                <li>kompozycje formalne</li>
+                            </ul>
+                        </div>
+                        <p style="margin-top: 15px; font-style: italic; opacity: 0.8;">Dobrze sprawdza się jako uzupełnienie bieli i zieleni.</p>
+                    </div>
+
+                    <div class="color-section color-green">
+                        <h3><span class="emoji">🌿</span> Zielony - nadzieja, równowaga, życie</h3>
+                        <p>Choć rzadko występuje samodzielnie jako dominujący kolor kwiatów, zieleń odgrywa kluczową rolę w kompozycjach. Symbolizuje odnowę i harmonię.</p>
+                        <div class="occasions">
+                            <h4>Zastosowanie</h4>
+                            <ul>
+                                <li>każdy typ bukietu</li>
+                                <li>dekoracje domów i firm</li>
+                                <li>kompozycje żałobne i okolicznościowe</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h2>Jak dobrać kolor kwiatów do okazji?</h2>
+
+                    <p>Kilka praktycznych wskazówek:</p>
+
+                    <div class="tips-grid">
+                        <div class="tip-card">
+                            <h4>🎉 Radosne wydarzenia</h4>
+                            <p>żółcie, róże, jasne pastele</p>
+                        </div>
+                        <div class="tip-card">
+                            <h4>🎩 Uroczystości oficjalne</h4>
+                            <p>biel, krem, stonowane kolory</p>
+                        </div>
+                        <div class="tip-card">
+                            <h4>🕯️ Pogrzeb</h4>
+                            <p>biel, fiolet, bordo, ciemna czerwień</p>
+                        </div>
+                        <div class="tip-card">
+                            <h4>💕 Wyrażenie uczuć</h4>
+                            <p>czerwień lub róż</p>
+                        </div>
+                    </div>
+
+                    <p>Jeśli nie masz pewności - zawsze warto skonsultować się z florystą.</p>
+
+                    <h2>Symbolika kolorów a florystyka w Myszkowie</h2>
+
+                    <p>W lokalnych tradycjach duże znaczenie ma stonowana, klasyczna kolorystyka - szczególnie przy ceremoniach pogrzebowych. Jednocześnie coraz częściej klienci decydują się na bardziej indywidualne zestawienia kolorów, które lepiej oddają charakter osoby lub okazji.</p>
+
+                    <p>W <strong>Kwiaciarni Lilia</strong> pomagamy dobrać kolory kwiatów tak, aby bukiet był nie tylko piękny, ale też znaczeniowo trafny. Każda kompozycja tworzona jest z myślą o emocjach, jakie ma przekazać.</p>
+
+                    <p><strong>Dobrze dobrany kolor kwiatów potrafi powiedzieć więcej niż długi list.</strong> Jeśli zastanawiasz się, jaki bukiet wybrać w Myszkowie - zapraszamy do Kwiaciarni Lilia. Doradzimy, przygotujemy i zadbamy o każdy detal.</p>
+
+                    <div class="cta-box">
+                        <h3>Potrzebujesz pomocy w doborze kolorów?</h3>
+                        <p>Skontaktuj się z nami - pomożemy stworzyć bukiet idealnie dopasowany do okazji i Twoich emocji.</p>
+                        <a href="quiz.html" class="button">Wypełnij quiz doboru bukietu</a>
+                        <a href="sklep.html?category=occasional" class="button secondary" style="margin-left: 10px;">Zobacz bukiety</a>
+                    </div>
+
+                    <div class="article-nav">
+                        <a href="poradnik.html">&larr; Powrót do poradnika</a>
+                        <a href="poradnik-kwiaty-zimowe.html">Kwiaty zimowe &rarr;</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div style="display: flex; align-items: center; gap: 30px; flex-wrap: wrap;">
+                <img src="assets/images/branding/logo.png" alt="Kwiaciarnia Lilia" style="height: 80px; width: auto;">
+                <div style="flex: 1; text-align: left;">
+                    <p style="margin-bottom: 5px;">Kwiaciarnia Lilia - Myszków • ul. Krasickiego 95F • Tel. +48 572 429 000</p>
+                    <p style="margin: 0;">
+                        <a href="polityka-prywatnosci.html" style="color: var(--color-text-secondary);">Polityka prywatności</a> •
+                        <a href="regulamin.html" style="color: var(--color-text-secondary);">Regulamin</a> •
+                        NIP 5732704306 • © 2025 Lilia
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/scripts.js"></script>
+</body>
+</html>

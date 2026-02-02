@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sklep - Kwiaciarnia Lilia</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .occasion-btn {
+            padding: 12px 20px;
+            background: #2a2520;
+            border: 2px solid #555;
+            color: #fff;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .occasion-btn:hover {
+            border-color: #4a7c59;
+            color: #6b9b7a;
+            background: #2a3530;
+        }
+        .occasion-btn.active {
+            background: #4a7c59;
+            color: #fff;
+            border-color: #4a7c59;
+            font-weight: bold;
+        }
+
+        /* Mobile styles */
+        @media (max-width: 768px) {
+            .shop-layout {
+                grid-template-columns: 1fr !important;
+            }
+            .filter-panel {
+                order: 2;
+                margin-top: 30px;
+            }
+            #occasionButtons > div {
+                justify-content: flex-start !important;
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+            .occasion-btn {
+                padding: 10px 16px;
+                font-size: 0.85rem;
+                white-space: nowrap;
+            }
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 15px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .occasion-btn {
+                padding: 8px 14px;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Modal mobile styles */
+        @media (max-width: 768px) {
+            #productModal > div {
+                margin: 20px 10px !important;
+                padding: 20px !important;
+                max-width: calc(100% - 20px) !important;
+            }
+            #productModal .grid-2 {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+            }
+            #productModal #modalProductImageContainer {
+                max-height: 300px;
+            }
+            #productModal h2 {
+                font-size: 1.3rem;
+            }
+            #productModal .form-group label {
+                font-size: 0.9rem;
+            }
+            #productModal button[onclick="closeProduct()"] {
+                right: 10px !important;
+                top: 10px !important;
+                font-size: 28px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #productModal > div {
+                margin: 10px 5px !important;
+                padding: 15px !important;
+            }
+            #productModal #sizeOptionsContainer {
+                flex-direction: column !important;
+            }
+            #productModal #sizeOptionsContainer label {
+                min-width: 100% !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Banner sezonowy -->
+    <div class="seasonal-banner" id="seasonalBanner"></div>
+
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/branding/logo.png" alt="Kwiaciarnia Lilia">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Strona główna</a></li>
+                    <li><a href="sklep.html">Sklep</a></li>
+                    <li><a href="wyslij-kwiaty.html">Wyślij kwiaty</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="abonament.html">Abonament</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                    <li><a href="poradnik.html">Poradnik</a></li>
+                    <li><a href="kwiatomat.html">Kwiatomat</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                    <li><a href="admin.html" style="color: #8B4513; font-weight: bold;">Admin</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" style="background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('assets/images/sklep-bg.webp'); background-size: cover; background-position: center; min-height: 300px;">
+        <div class="container">
+            <h1>Sklep online</h1>
+            <p>Zamów kwiaty z dostawą lub odbierz w kwiaciarni</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+
+            <!-- Zakładki kategorie -->
+            <div class="tabs" style="justify-content: center; margin-bottom: 20px;">
+                <button class="tab active" onclick="switchCategory('occasional', this)">Okolicznościowe</button>
+                <button class="tab" onclick="switchCategory('funeral', this)">Pogrzebowe</button>
+            </div>
+
+            <!-- Przyciski okazji - tylko dla okolicznościowych -->
+            <div id="occasionButtons" style="display: none; margin-bottom: 30px;">
+                <p style="text-align: center; color: var(--color-text-secondary); margin-bottom: 15px; font-size: 0.9rem;">Na jaką okazję szukasz kwiatów?</p>
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+                    <button class="occasion-btn" onclick="filterByTag('all')">Wszystkie</button>
+                    <button class="occasion-btn" onclick="filterByTag('urodziny')">🎂 Urodziny</button>
+                    <button class="occasion-btn" onclick="filterByTag('romantyczna')">💝 Miłość</button>
+                    <button class="occasion-btn" onclick="filterByTag('rocznica')">💒 Rocznica</button>
+                    <button class="occasion-btn" onclick="filterByTag('podziekowanie')">🙏 Podziękowanie</button>
+                    <button class="occasion-btn" onclick="filterByTag('gratulacje')">🎓 Gratulacje</button>
+                    <button class="occasion-btn" onclick="filterByTag('przeprosiny')">💐 Przeprosiny</button>
+                    <button class="occasion-btn" onclick="filterByTag('bezOkazji')">🌸 Bez okazji</button>
+                </div>
+                <p style="text-align: center; margin-top: 15px;">
+                    <a href="quiz.html" style="color: var(--color-accent); font-size: 0.9rem;">Nie wiesz co wybrać? Wypełnij quiz →</a>
+                </p>
+            </div>
+
+            <div class="grid-2 shop-layout" style="grid-template-columns: 250px 1fr; gap: 30px; align-items: start;">
+                <!-- Panel filtrów -->
+                <aside class="filter-panel">
+                    <h3>Filtry</h3>
+
+                    <!-- Filtry pogrzebowe -->
+                    <div id="filtersFuneral">
+                        <div class="filter-group">
+                            <h4>Typ</h4>
+                            <label><input type="checkbox" class="filter-type" value="wieniec"> Wieńce</label>
+                            <label><input type="checkbox" class="filter-type" value="wiazanka-bukiet"> Bukiety do ręki</label>
+                            <label><input type="checkbox" class="filter-type" value="wiazanka-floret"> Wiązanki na florecie</label>
+                        </div>
+
+                        <div class="filter-group">
+                            <h4>Przedział cenowy</h4>
+                            <label><input type="radio" name="price" class="filter-price" value="0-100"> do 100 zł</label>
+                            <label><input type="radio" name="price" class="filter-price" value="100-300"> 100 - 300 zł</label>
+                            <label><input type="radio" name="price" class="filter-price" value="300-500"> 300 - 500 zł</label>
+                            <label><input type="radio" name="price" class="filter-price" value="500-700"> 500 - 700 zł</label>
+                            <label><input type="radio" name="price" class="filter-price" value="700-999"> powyżej 700 zł</label>
+                        </div>
+                    </div>
+
+                    <!-- Filtry okolicznościowe -->
+                    <div id="filtersOccasional" style="display: none;">
+                        <div class="filter-group">
+                            <h4>Typ</h4>
+                            <label><input type="checkbox" class="filter-type" value="box-zywy"> Flower Boxy</label>
+                            <label><input type="checkbox" class="filter-type" value="bukiet-zywy"> Bukiety żywe</label>
+                            <label><input type="checkbox" class="filter-type" value="bukiet-jadalny"> Bukiety jadalne</label>
+                            <label><input type="checkbox" class="filter-type" value="wieczna-roza"> Wieczne róże</label>
+                        </div>
+
+                        <div class="filter-group">
+                            <h4>Przedział cenowy</h4>
+                            <label><input type="radio" name="priceOcc" class="filter-price-occ" value="0-100"> do 100 zł</label>
+                            <label><input type="radio" name="priceOcc" class="filter-price-occ" value="100-150"> 100 - 150 zł</label>
+                            <label><input type="radio" name="priceOcc" class="filter-price-occ" value="150-200"> 150 - 200 zł</label>
+                            <label><input type="radio" name="priceOcc" class="filter-price-occ" value="200-999"> powyżej 200 zł</label>
+                        </div>
+
+                        <div class="filter-group">
+                            <h4>Odbiór 24/7</h4>
+                            <label><input type="checkbox" class="filter-kwiatomat" value="true"> Dostępne do kwiatomatu</label>
+                        </div>
+                    </div>
+
+                    <button class="button" style="width: 100%; background: #4a7c59; color: #fff; border-color: #4a7c59; font-weight: bold;" onclick="applyFilters()">Zastosuj filtry</button>
+                    <button class="button secondary" style="width: 100%; margin-top: 10px; background: #333; border-color: #555; color: #fff;" onclick="resetFilters()">Resetuj</button>
+
+                    <!-- Kalendarz okazji -->
+                    <div class="occasions-widget" style="margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--color-border);">
+                        <h3 style="margin-bottom: 15px; font-size: 1rem;">📅 Nadchodzące okazje</h3>
+                        <div id="occasionsContainer">
+                            <!-- Generowane przez JS -->
+                        </div>
+                    </div>
+
+                    <!-- Szybki kontakt -->
+                    <div style="margin-top: 25px; padding: 15px; background: var(--color-bg-dark); text-align: center;">
+                        <p style="font-size: 0.85rem; color: var(--color-text-secondary); margin-bottom: 8px;">Potrzebujesz pomocy?</p>
+                        <a href="tel:+48572429000" style="font-size: 1.1rem; font-weight: bold; color: var(--color-accent);">📞 572 429 000</a>
+                    </div>
+                </aside>
+
+                <!-- Siatka produktów -->
+                <main>
+                    <div id="productGrid" class="product-grid">
+                        <!-- Produkty będą wstawiane dynamicznie przez JavaScript -->
+                    </div>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal zamówienia -->
+    <div id="productModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; overflow-y: auto;">
+        <div style="background: var(--color-bg-primary); max-width: 900px; margin: 50px auto; padding: 40px; position: relative; border: 1px solid var(--color-border);">
+            <button onclick="closeProduct()" style="position: absolute; right: 20px; top: 20px; font-size: 32px; background: none; border: none; cursor: pointer; color: var(--color-text-primary);">×</button>
+
+            <div class="grid-2" style="gap: 40px;">
+                <!-- Zdjęcie produktu -->
+                <div>
+                    <div id="modalProductImageContainer" style="width: 100%; aspect-ratio: 3/4; background: rgba(255,255,255,0.05); border: 1px solid var(--color-border-subtle); display: flex; align-items: center; justify-content: center;">
+                        <img id="modalProductImage" src="" alt="" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+
+                <!-- Formularz zamówienia -->
+                <div>
+                    <h2 id="modalProductName" style="margin-bottom: 20px;">Nazwa produktu</h2>
+                    <div class="price" id="modalProductPrice" style="margin-bottom: 20px;">00 zł</div>
+                    <p id="modalProductDescription" style="color: var(--color-text-secondary); margin-bottom: 30px;">Opis produktu</p>
+
+                    <form id="orderForm" onsubmit="handleOrder(event)" style="margin-top: 30px;">
+                        <!-- Wybór rozmiaru (dynamicznie generowany) -->
+                        <div id="sizeSelection" class="form-group" style="display: none;">
+                            <label>Wybierz rozmiar *</label>
+                            <div id="sizeOptionsContainer" style="display: flex; gap: 15px; margin-top: 10px; flex-wrap: wrap;">
+                                <!-- Opcje rozmiarów będą wstawiane dynamicznie -->
+                            </div>
+                        </div>
+
+                        <!-- Ilość -->
+                        <div class="form-group">
+                            <label>Ilość sztuk *</label>
+                            <input type="number" id="quantity" min="1" value="1" required style="width: 100px;">
+                        </div>
+
+                        <!-- SEKCJA POGRZEBOWA -->
+                        <div id="funeralOptions" style="display: none;">
+                            <!-- Napis na szarfie -->
+                            <div class="form-group">
+                                <label>Napis na szarfie</label>
+
+                                <label style="font-size: 0.85rem; color: var(--color-text-secondary); margin-top: 10px; display: block;">Prawa strona (dedykacja)</label>
+                                <select id="ribbonRightSelect" onchange="if(this.value) document.getElementById('ribbonRight').value = this.value" style="margin-bottom: 5px;">
+                                    <option value="">-- wybierz lub wpisz własny --</option>
+                                    <option value="Ostatnie Pożegnanie">Ostatnie Pożegnanie</option>
+                                    <option value="Kochanej Mamie">Kochanej Mamie</option>
+                                    <option value="Kochanemu Tacie">Kochanemu Tacie</option>
+                                    <option value="Kochanej Babci">Kochanej Babci</option>
+                                    <option value="Kochanemu Dziadkowi">Kochanemu Dziadkowi</option>
+                                    <option value="Drogiemu Bratu">Drogiemu Bratu</option>
+                                    <option value="Drogiej Siostrze">Drogiej Siostrze</option>
+                                    <option value="Drogiemu Przyjacielowi">Drogiemu Przyjacielowi</option>
+                                    <option value="Drogiej Przyjaciółce">Drogiej Przyjaciółce</option>
+                                    <option value="Ukochanemu Mężowi">Ukochanemu Mężowi</option>
+                                    <option value="Ukochanej Żonie">Ukochanej Żonie</option>
+                                    <option value="Pamiętamy">Pamiętamy</option>
+                                    <option value="Spoczywaj w Pokoju">Spoczywaj w Pokoju</option>
+                                </select>
+                                <input type="text" id="ribbonRight" placeholder="lub wpisz własny tekst..." style="margin-bottom: 15px;">
+
+                                <label style="font-size: 0.85rem; color: var(--color-text-secondary); display: block;">Lewa strona (od kogo)</label>
+                                <select id="ribbonLeftSelect" onchange="if(this.value) document.getElementById('ribbonLeft').value = this.value" style="margin-bottom: 5px;">
+                                    <option value="">-- wybierz lub wpisz własny --</option>
+                                    <option value="Rodzina">Rodzina</option>
+                                    <option value="Żona i Dzieci">Żona i Dzieci</option>
+                                    <option value="Mąż i Dzieci">Mąż i Dzieci</option>
+                                    <option value="Syn z Rodziną">Syn z Rodziną</option>
+                                    <option value="Córka z Rodziną">Córka z Rodziną</option>
+                                    <option value="Wnuki">Wnuki</option>
+                                    <option value="Sąsiedzi">Sąsiedzi</option>
+                                    <option value="Przyjaciele">Przyjaciele</option>
+                                    <option value="Koleżanki i Koledzy z pracy">Koleżanki i Koledzy z pracy</option>
+                                </select>
+                                <input type="text" id="ribbonLeft" placeholder="lub wpisz własny tekst...">
+                            </div>
+
+                            <!-- Opcje realizacji pogrzebowej -->
+                            <div class="form-group">
+                                <label>Sposób realizacji *</label>
+                                <label style="display: flex; align-items: center; gap: 10px; margin-top: 10px; padding: 12px; border: 1px solid rgba(139, 69, 19, 0.5); cursor: pointer; background: rgba(139, 69, 19, 0.1);">
+                                    <input type="radio" name="deliveryFuneral" value="funeral" required style="width: auto;">
+                                    <span>
+                                        <strong>⚱️ Dołącz do pogrzebu</strong><br>
+                                        <small style="opacity: 0.7;">Dla pogrzebów obsługiwanych przez naszą kwiaciarnię</small>
+                                    </span>
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 10px; margin-top: 10px; padding: 12px; border: 1px solid var(--color-border); cursor: pointer; background: rgba(255,255,255,0.02);">
+                                    <input type="radio" name="deliveryFuneral" value="pickup-shop" required style="width: auto;">
+                                    <span>
+                                        <strong>Odbiór w kwiaciarni</strong><br>
+                                        <small style="opacity: 0.7;">ul. Krasickiego 95F, Myszków • Pn-Pt 8-16, Sob 8-13</small>
+                                    </span>
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 10px; margin-top: 10px; padding: 12px; border: 1px solid rgba(74, 124, 89, 0.5); cursor: pointer; background: rgba(74, 124, 89, 0.1);">
+                                    <input type="radio" name="deliveryFuneral" value="ceremony" required style="width: auto;">
+                                    <span>
+                                        <strong>🚚 Dostawa na ceremonię</strong><br>
+                                        <small style="opacity: 0.7;">Myszków • <strong>GRATIS</strong></small>
+                                    </span>
+                                </label>
+                            </div>
+
+                            <!-- Dołącz do pogrzebu - tylko imię zmarłego -->
+                            <div id="funeralAttachField" style="display: none; border-top: 1px solid var(--color-border); padding-top: 20px; margin-top: 15px;">
+                                <div class="form-group">
+                                    <label>Śp. (imię i nazwisko zmarłego) *</label>
+                                    <input type="text" id="deceasedName" placeholder="np. Jan Kowalski">
+                                    <small style="color: var(--color-text-secondary); display: block; margin-top: 5px;">
+                                        Kompozycja zostanie dołączona do pogrzebu obsługiwanego przez naszą kwiaciarnię
+                                    </small>
+                                </div>
+
+                                <div class="form-group" style="padding: 12px; background: rgba(139, 69, 19, 0.1); border-radius: 6px; border: 1px solid rgba(139, 69, 19, 0.3);">
+                                    <p style="margin: 0; font-size: 0.85rem; color: #ccc;">
+                                        ⚱️ Skontaktujemy się telefonicznie w celu potwierdzenia szczegółów.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Termin odbioru w kwiaciarni -->
+                            <div id="funeralPickupField" class="form-group" style="display: none;">
+                                <label>Kiedy chcesz odebrać? *</label>
+                                <div style="display: flex; gap: 10px; margin-top: 8px;">
+                                    <input type="date" id="funeralPickupDate" style="flex: 1;">
+                                    <select id="funeralPickupTimeSlot" style="flex: 1;">
+                                        <option value="">Godziny *</option>
+                                    </select>
+                                </div>
+                                <div id="funeralPickupDateInfo" style="font-size: 0.8rem; margin-top: 8px; padding: 8px; border-radius: 4px;"></div>
+                            </div>
+
+                            <!-- Dostawa na ceremonię (tylko Myszków) -->
+                            <div id="funeralCeremonyField" style="display: none; border-top: 1px solid var(--color-border); padding-top: 20px; margin-top: 15px;">
+                                <h4 style="margin-bottom: 15px; color: var(--color-accent);">🚚 Dostawa na ceremonię w Myszkowie</h4>
+
+                                <div class="form-group">
+                                    <label>Miejsce ceremonii *</label>
+                                    <select id="funeralPlace" style="margin-top: 8px;">
+                                        <option value="kosciol">Kościół</option>
+                                        <option value="kaplica">Kaplica cmentarna</option>
+                                        <option value="dom-pogrzebowy">Dom pogrzebowy</option>
+                                        <option value="cmentarz">Cmentarz</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Nazwa miejsca / adres w Myszkowie *</label>
+                                    <input type="text" id="funeralCeremonyAddress" placeholder="np. Kościół św. Wojciecha, ul. Kościuszki">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Data i godzina ceremonii *</label>
+                                    <div style="display: flex; gap: 10px; margin-top: 8px;">
+                                        <input type="date" id="funeralCeremonyDate" style="flex: 1;">
+                                        <input type="time" id="funeralCeremonyTime" style="flex: 1;" value="10:00">
+                                    </div>
+                                    <small style="color: var(--color-text-secondary); display: block; margin-top: 5px;">
+                                        Dostarczymy kompozycję na wskazaną godzinę
+                                    </small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Telefon kontaktowy * <small style="opacity: 0.7;">(do potwierdzenia)</small></label>
+                                    <input type="tel" id="funeralCeremonyPhone" placeholder="+48 123 456 789">
+                                </div>
+
+                                <div class="form-group" style="padding: 12px; background: rgba(74, 124, 89, 0.1); border-radius: 6px; border: 1px solid rgba(74, 124, 89, 0.3);">
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <span>Dostawa na ceremonię (Myszków):</span>
+                                        <span style="color: #6b9b7a; font-weight: bold;">GRATIS</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SEKCJA OKOLICZNOŚCIOWA -->
+                        <div id="occasionalOptions" style="display: none;">
+                            <!-- Opcje odbioru/dostawy -->
+                            <div class="form-group">
+                                <label>Sposób realizacji *</label>
+                                <label style="display: flex; align-items: center; gap: 10px; margin-top: 10px; padding: 12px; border: 1px solid var(--color-border); cursor: pointer; background: rgba(255,255,255,0.02);">
+                                    <input type="radio" name="deliveryOccasional" value="pickup-shop" required style="width: auto;">
+                                    <span>
+                                        <strong>Odbiór w kwiaciarni</strong><br>
+                                        <small style="opacity: 0.7;">ul. Krasickiego 95F, Myszków • Pn-Pt 8-16, Sob 8-13</small>
+                                    </span>
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 10px; margin-top: 10px; padding: 12px; border: 1px solid var(--color-border); cursor: pointer; background: rgba(255,255,255,0.02);">
+                                    <input type="radio" name="deliveryOccasional" value="kwiatomat" required style="width: auto;">
+                                    <span>
+                                        <strong>Odbiór z Kwiatomatu</strong><br>
+                                        <small style="opacity: 0.7;">CH BIG, ul. Jesionowa 4A, Myszków • Dostępny <strong>24/7</strong></small>
+                                    </span>
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 10px; margin-top: 10px; padding: 12px; border: 1px solid rgba(74, 124, 89, 0.5); cursor: pointer; background: rgba(74, 124, 89, 0.1);">
+                                    <input type="radio" name="deliveryOccasional" value="delivery" required style="width: auto;">
+                                    <span>
+                                        <strong>🚚 Dostawa pod wskazany adres</strong><br>
+                                        <small style="opacity: 0.7;">Myszków • <strong>GRATIS</strong></small>
+                                    </span>
+                                </label>
+                            </div>
+
+                            <!-- Data i godzina odbioru w kwiaciarni -->
+                            <div id="occasionalDateTimeField" class="form-group" style="display: none;">
+                                <label>Kiedy chcesz odebrać? *</label>
+                                <div style="display: flex; gap: 10px; margin-top: 8px;">
+                                    <input type="date" id="occasionalDate" required style="flex: 1;">
+                                    <select id="occasionalTimeSlot" required style="flex: 1;">
+                                        <option value="">Godziny *</option>
+                                    </select>
+                                </div>
+                                <div id="occasionalDateInfo" style="font-size: 0.8rem; margin-top: 8px; padding: 8px; border-radius: 4px;"></div>
+                            </div>
+
+                            <!-- POLA DOSTAWY -->
+                            <div id="deliveryFields" style="display: none; border-top: 1px solid var(--color-border); padding-top: 20px; margin-top: 15px;">
+                                <h4 style="margin-bottom: 15px; color: var(--color-accent);">🚚 Szczegóły dostawy</h4>
+
+                                <!-- Kiedy dostarczyć -->
+                                <div class="form-group">
+                                    <label>Kiedy dostarczyć? *</label>
+                                    <div style="display: flex; gap: 10px; margin-top: 8px;">
+                                        <input type="date" id="deliveryDate" style="flex: 1;">
+                                        <select id="deliveryTimeSlot" style="flex: 1;">
+                                            <option value="">Przedział godzinowy *</option>
+                                        </select>
+                                    </div>
+                                    <div id="deliveryDateInfo" style="font-size: 0.8rem; margin-top: 8px; padding: 8px; border-radius: 4px; background: rgba(74, 124, 89, 0.1); color: #6b9b7a;">
+                                        📍 Zamów do 12:00 = dostawa tego samego dnia
+                                    </div>
+
+                                    <!-- Opcja precyzyjnej godziny -->
+                                    <div style="margin-top: 12px;">
+                                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                            <input type="checkbox" id="preciseTimeOption" onchange="togglePreciseTime()" style="width: auto;">
+                                            <span>Precyzyjna godzina dostawy <span style="color: var(--color-accent);">+9,90 zł</span></span>
+                                        </label>
+                                        <div id="preciseTimeWrapper" style="display: none; margin-top: 10px;">
+                                            <select id="preciseTime" style="width: 100%; max-width: 200px;">
+                                                <option value="">Wybierz dokładną godzinę</option>
+                                            </select>
+                                            <small style="display: block; margin-top: 5px; opacity: 0.7;">Kurier dostarczy kwiaty dokładnie o wybranej godzinie (±15 min)</small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Miejsce dostawy -->
+                                <div class="form-group">
+                                    <label>Miejsce dostawy</label>
+                                    <select id="deliveryPlace" style="margin-top: 8px;">
+                                        <option value="dom">Dom / Mieszkanie</option>
+                                        <option value="firma">Firma / Biuro</option>
+                                        <option value="szpital">Szpital</option>
+                                        <option value="hotel">Hotel</option>
+                                        <option value="inne">Inne</option>
+                                    </select>
+                                </div>
+
+                                <!-- Adres -->
+                                <div class="form-group">
+                                    <label>Adres dostawy * <small style="opacity: 0.7;">(ulica i nr domu)</small></label>
+                                    <input type="text" id="deliveryAddress" placeholder="np. ul. Kwiatowa 15/3">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Kod i miejscowość *</label>
+                                    <div style="display: flex; gap: 10px;">
+                                        <input type="text" id="deliveryPostalCode" placeholder="42-300" pattern="[0-9]{2}-[0-9]{3}" style="width: 100px;">
+                                        <input type="text" id="deliveryCity" value="Myszków" style="flex: 1;">
+                                    </div>
+                                </div>
+
+                                <!-- Opcje dostawy -->
+                                <div class="form-group">
+                                    <label>Opcje dostawy</label>
+                                    <select id="deliveryOption" style="margin-top: 8px;">
+                                        <option value="osobiscie">Przekazać osobiście odbiorcy</option>
+                                        <option value="zostawic">Zostawić pod drzwiami</option>
+                                        <option value="recepcja">Zostawić w recepcji / portierni</option>
+                                    </select>
+                                </div>
+
+                                <!-- Dane odbiorcy -->
+                                <h5 style="margin: 20px 0 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1);">Dane obdarowywanej osoby</h5>
+
+                                <div class="form-group">
+                                    <label>Imię i nazwisko *</label>
+                                    <input type="text" id="recipientName" placeholder="Jan Kowalski">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Telefon kontaktowy * <small style="opacity: 0.7;">(do potwierdzenia dostawy)</small></label>
+                                    <input type="tel" id="recipientPhone" placeholder="+48 123 456 789">
+                                </div>
+
+                                <!-- Personalizacja -->
+                                <h5 style="margin: 20px 0 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1);">Personalizacja</h5>
+
+                                <div class="form-group">
+                                    <label>Bilecik / życzenia <small style="opacity: 0.7;">(tekst na karteczce - bezpłatnie)</small></label>
+                                    <textarea id="greetingText" rows="3" placeholder="Wpisz treść życzeń..."></textarea>
+                                </div>
+
+                                <div class="form-group" style="padding: 12px; background: rgba(255,255,255,0.03); border-radius: 6px;">
+                                    <label style="margin-bottom: 10px; display: block;">Dodatki płatne</label>
+                                    <label style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; cursor: pointer;">
+                                        <input type="checkbox" id="addonCard" onchange="updateDeliveryTotal()" style="width: auto;">
+                                        Kartka okolicznościowa <span style="opacity: 0.7;">+15 zł</span>
+                                    </label>
+                                    <label style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; cursor: pointer;">
+                                        <input type="checkbox" id="addonSms" onchange="updateDeliveryTotal()" style="width: auto;">
+                                        Potwierdzenie dostawy SMS <span style="opacity: 0.7;">+5 zł</span>
+                                    </label>
+                                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                        <input type="checkbox" id="addonReminder" style="width: auto;">
+                                        Przypomnij o tej okazji za rok <span style="opacity: 0.7; color: #6b9b7a;">gratis</span>
+                                    </label>
+                                </div>
+
+                                <!-- Podsumowanie dostawy -->
+                                <div id="deliverySummary" style="margin-top: 20px; padding: 15px; background: rgba(74, 124, 89, 0.1); border-radius: 6px; border: 1px solid rgba(74, 124, 89, 0.3);">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                        <span>Dostawa (Myszków):</span>
+                                        <span style="color: #6b9b7a; font-weight: bold;">GRATIS</span>
+                                    </div>
+                                    <div id="preciseTimeCostRow" style="display: none; justify-content: space-between; margin-bottom: 8px;">
+                                        <span>Precyzyjna godzina:</span>
+                                        <span>+9,90 zł</span>
+                                    </div>
+                                    <div id="addonsCostRow" style="display: none; justify-content: space-between; margin-bottom: 8px;">
+                                        <span>Dodatki:</span>
+                                        <span id="addonsCostValue">0 zł</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dane kontaktowe -->
+                        <div class="form-group">
+                            <label>Imię i nazwisko *</label>
+                            <input type="text" id="customerName" required placeholder="Jan Kowalski">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Numer telefonu *</label>
+                            <input type="tel" id="customerPhone" required placeholder="+48 123 456 789">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Adres email</label>
+                            <input type="email" id="customerEmail" placeholder="jan@example.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Uwagi do zamówienia</label>
+                            <textarea id="orderNotes" rows="3" placeholder="Dodatkowe informacje..."></textarea>
+                        </div>
+
+                        <button type="submit" class="button" style="width: 100%; margin-top: 20px;">Złóż zamówienie</button>
+                        <p style="font-size: 0.85rem; color: var(--color-text-secondary); margin-top: 15px; text-align: center;">
+                            Po złożeniu zamówienia skontaktujemy się telefonicznie w celu potwierdzenia
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div style="display: flex; align-items: center; gap: 30px; flex-wrap: wrap;">
+                <img src="assets/images/branding/logo.png" alt="Kwiaciarnia Lilia" style="height: 80px; width: auto;">
+                <div style="flex: 1; text-align: left;">
+                    <p style="margin-bottom: 5px;">Kwiaciarnia Lilia - Myszków • ul. Krasickiego 95F • Tel. +48 572 429 000</p>
+                    <p style="margin: 0;">
+                        <a href="polityka-prywatnosci.html" style="color: var(--color-text-secondary);">Polityka prywatności</a> •
+                        <a href="regulamin.html" style="color: var(--color-text-secondary);">Regulamin</a> •
+                        NIP 5732704306 • © 2025 Lilia
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/scripts.js"></script>
+    <script src="assets/js/products.js"></script>
+    <script>
+        let currentCategory = 'occasional';
+        let currentProduct = null;
+        let allProducts = [];
+        let currentPage = 1;
+        const productsPerPage = 9; // 3 rzędy x 3 kolumny
+
+        // Funkcja generująca obrazek produktu
+        function renderProductImage(product) {
+            return `
+                <div class="product-image">
+                    <img src="${product.image}" alt="${product.name}" onerror="this.src='assets/images/branding/logo.png'">
+                </div>
+            `;
+        }
+
+        // Inicjalizacja
+        document.addEventListener('DOMContentLoaded', function() {
+            // Załaduj produkty (z localStorage jeśli są, lub domyślne)
+            allProducts = getProducts();
+
+            // Sortuj produkty: najpierw po typie, potem po ID
+            const typeOrder = ['box-zywy', 'bukiet-zywy', 'bukiet-jadalny', 'wieczna-roza', 'wieniec', 'wiazanka-bukiet', 'wiazanka-floret'];
+            allProducts.sort((a, b) => {
+                // Najpierw po kategorii
+                if (a.category !== b.category) return a.category.localeCompare(b.category);
+                // Potem po typie
+                const typeA = typeOrder.indexOf(a.type);
+                const typeB = typeOrder.indexOf(b.type);
+                if (typeA !== typeB) return typeA - typeB;
+                // Na końcu po ID
+                return a.id - b.id;
+            });
+
+            // Sprawdź parametry URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('product');
+            const categoryParam = urlParams.get('category');
+            const deliveryParam = urlParams.get('delivery'); // Otwórz z dostawą
+
+            // Funkcja do przełączania kategorii w UI
+            function setCategory(category) {
+                currentCategory = category;
+                currentPage = 1;
+                document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+                document.querySelector(`.tab:${category === 'occasional' ? 'first-child' : 'last-child'}`).classList.add('active');
+                document.getElementById('filtersFuneral').style.display = category === 'funeral' ? 'block' : 'none';
+                document.getElementById('filtersOccasional').style.display = category === 'occasional' ? 'block' : 'none';
+                document.getElementById('occasionButtons').style.display = category === 'occasional' ? 'block' : 'none';
+                if (category === 'occasional') {
+                    document.querySelector('.occasion-btn').classList.add('active');
+                }
+                displayProducts(category, 1);
+            }
+
+            if (productId) {
+                const product = allProducts.find(p => p.id === parseInt(productId));
+                if (product) {
+                    setCategory(product.category);
+                    // Otwórz modal produktu po krótkim opóźnieniu
+                    // Jeśli delivery=1, otwórz z zaznaczoną dostawą
+                    if (deliveryParam === '1') {
+                        setTimeout(() => openProductWithDelivery(parseInt(productId)), 100);
+                    } else {
+                        setTimeout(() => openProduct(parseInt(productId)), 100);
+                    }
+                } else {
+                    setCategory(categoryParam || 'occasional');
+                }
+            } else if (categoryParam === 'funeral') {
+                setCategory('funeral');
+            } else {
+                // Domyślnie okolicznościowe
+                setCategory('occasional');
+            }
+
+            // Inicjalizuj kalendarz okazji
+            initOccasionsCalendar();
+        });
+
+        // Kalendarz okazji
+        function initOccasionsCalendar() {
+            const occasions = [
+                {
+                    name: 'Walentynki',
+                    date: '02-14',
+                    emoji: '💝',
+                    category: 'occasional',
+                    filters: { occasion: 'romantyczna', color: 'czerwien' },
+                    hint: 'Czerwone róże, romantyczne kompozycje'
+                },
+                {
+                    name: 'Dzień Kobiet',
+                    date: '03-08',
+                    emoji: '💐',
+                    category: 'occasional',
+                    filters: { color: ['kolorowe', 'pastelowe'] },
+                    hint: 'Kolorowe bukiety, tulipany'
+                },
+                {
+                    name: 'Dzień Matki',
+                    date: '05-26',
+                    emoji: '👩',
+                    category: 'occasional',
+                    filters: { occasion: 'uroczysta' },
+                    hint: 'Eleganckie kompozycje'
+                },
+                {
+                    name: 'Dzień Ojca',
+                    date: '06-23',
+                    emoji: '👨',
+                    category: 'occasional',
+                    filters: { type: ['bukiet-jadalny', 'wieczna-roza'] },
+                    hint: 'Bukiety jadalne, wieczne róże'
+                },
+                {
+                    name: 'Wszystkich Świętych',
+                    date: '11-01',
+                    emoji: '🕯️',
+                    category: 'funeral',
+                    filters: {},
+                    hint: 'Wieńce i wiązanki'
+                },
+                {
+                    name: 'Wigilia',
+                    date: '12-24',
+                    emoji: '🎄',
+                    category: 'occasional',
+                    filters: { color: ['czerwien', 'biel'] },
+                    hint: 'Świąteczne kompozycje'
+                },
+                {
+                    name: 'Dzień Babci',
+                    date: '01-21',
+                    emoji: '👵',
+                    category: 'occasional',
+                    filters: { occasion: 'uroczysta' },
+                    hint: 'Klasyczne bukiety'
+                },
+                {
+                    name: 'Dzień Dziadka',
+                    date: '01-22',
+                    emoji: '👴',
+                    category: 'occasional',
+                    filters: { type: ['bukiet-jadalny', 'wieczna-roza'] },
+                    hint: 'Bukiety jadalne, wieczne róże'
+                }
+            ];
+
+            const today = new Date();
+            const year = today.getFullYear();
+
+            // Oblicz dni do każdej okazji
+            const upcoming = occasions.map(occ => {
+                let occDate = new Date(`${year}-${occ.date}`);
+                if (occDate < today) {
+                    occDate = new Date(`${year + 1}-${occ.date}`);
+                }
+                const daysLeft = Math.ceil((occDate - today) / (1000 * 60 * 60 * 24));
+                return { ...occ, daysLeft, fullDate: occDate };
+            }).sort((a, b) => a.daysLeft - b.daysLeft).slice(0, 4);
+
+            const container = document.getElementById('occasionsContainer');
+            container.innerHTML = upcoming.map(occ => {
+                const urgency = occ.daysLeft <= 7 ? 'color: #e74c3c; font-weight: bold;' :
+                               occ.daysLeft <= 14 ? 'color: var(--color-accent);' : '';
+                const daysText = occ.daysLeft === 0 ? 'DZIŚ!' :
+                                occ.daysLeft === 1 ? 'jutro!' :
+                                `za ${occ.daysLeft} dni`;
+                return `
+                    <div style="padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="font-weight: 500;">${occ.emoji} ${occ.name}</span>
+                            <span style="font-size: 0.8rem; ${urgency}">${daysText}</span>
+                        </div>
+                        <div style="font-size: 0.75rem; color: var(--color-text-secondary); margin-top: 3px;">${occ.hint}</div>
+                        <button onclick="filterByOccasion('${occ.category}', ${JSON.stringify(occ.filters).replace(/"/g, "'")}, '${occ.name}')"
+                           style="font-size: 0.75rem; color: var(--color-accent); background: none; border: none; padding: 0; cursor: pointer; margin-top: 5px;">
+                           Zobacz propozycje →
+                        </button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Filtruj produkty według okazji (kalendarz w sidebarze)
+        function filterByOccasion(category, filters, occasionName) {
+            // Przełącz na odpowiednią kategorię
+            currentCategory = category;
+            currentPage = 1;
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelector(`.tab:${category === 'occasional' ? 'first-child' : 'last-child'}`).classList.add('active');
+            document.getElementById('filtersFuneral').style.display = category === 'funeral' ? 'block' : 'none';
+            document.getElementById('filtersOccasional').style.display = category === 'occasional' ? 'block' : 'none';
+            document.getElementById('occasionButtons').style.display = category === 'occasional' ? 'block' : 'none';
+
+            // Filtruj produkty
+            let products = allProducts.filter(p => p.category === category);
+
+            if (filters && Object.keys(filters).length > 0) {
+                products = products.filter(p => {
+                    // Filtr po typie produktu
+                    if (filters.type) {
+                        const types = Array.isArray(filters.type) ? filters.type : [filters.type];
+                        if (types.includes(p.type)) return true;
+                    }
+
+                    // Filtr po quizTags
+                    if (p.quizTags) {
+                        if (filters.occasion) {
+                            const occasions = Array.isArray(p.quizTags.occasion) ? p.quizTags.occasion : [p.quizTags.occasion];
+                            if (occasions.includes(filters.occasion)) return true;
+                        }
+                        if (filters.color) {
+                            const filterColors = Array.isArray(filters.color) ? filters.color : [filters.color];
+                            if (filterColors.includes(p.quizTags.color)) return true;
+                        }
+                    }
+
+                    return false;
+                });
+            }
+
+            // Wyświetl przefiltrowane produkty
+            const grid = document.getElementById('productGrid');
+
+            if (products.length === 0) {
+                grid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--color-text-secondary); padding: 60px 20px;">
+                    Brak produktów pasujących do "${occasionName}".<br>
+                    <a href="sklep.html?category=${category}" style="color: var(--color-accent);">Zobacz wszystkie produkty</a>
+                </p>`;
+                return;
+            }
+
+            grid.innerHTML = `
+                <div style="grid-column: 1/-1; background: var(--color-accent); color: #000; padding: 10px 15px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
+                    <span><strong>${occasionName}</strong> - ${products.length} propozycji</span>
+                    <button onclick="displayProducts('${category}')" style="background: none; border: none; cursor: pointer; font-size: 0.9rem;">✕ Usuń filtr</button>
+                </div>
+            ` + products.map((product) => {
+                const deliveryBtn = product.category === 'occasional'
+                    ? `<button class="button secondary" style="width: 100%; margin-top: 8px;" onclick="openProductWithDelivery(${product.id})">🚚 Wyślij z dostawą</button>`
+                    : '';
+                return `
+                <div class="product-card" data-id="${product.id}" data-type="${product.type}" data-price="${product.price}">
+                    ${renderProductImage(product)}
+                    <h4 style="margin-top: 15px;">${product.name}</h4>
+                    <p style="font-weight: bold; color: var(--color-accent); margin: 8px 0;">${product.sizeOptions ? 'od ' + Math.min(...product.sizeOptions.map(o => o.price)) : product.price} zł</p>
+                    <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin: 10px 0;">${product.description}</p>
+                    <button class="button" style="width: 100%; margin-top: 15px;" onclick="openProduct(${product.id})">Zamów</button>
+                    ${deliveryBtn}
+                </div>
+            `}).join('');
+        }
+
+        // Przełączanie kategorii
+        function switchCategory(category, clickedBtn) {
+            currentCategory = category;
+            currentPage = 1;
+
+            // Aktualizacja tabów
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            clickedBtn.classList.add('active');
+
+            // Przełączanie filtrów
+            document.getElementById('filtersFuneral').style.display = category === 'funeral' ? 'block' : 'none';
+            document.getElementById('filtersOccasional').style.display = category === 'occasional' ? 'block' : 'none';
+
+            // Pokaż/ukryj przyciski okazji
+            document.getElementById('occasionButtons').style.display = category === 'occasional' ? 'block' : 'none';
+
+            // Resetuj aktywny przycisk okazji
+            document.querySelectorAll('.occasion-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector('.occasion-btn').classList.add('active');
+
+            // Resetuj filtry
+            resetFilters();
+
+            // Wyświetl produkty (strona 1)
+            displayProducts(category, 1);
+        }
+
+        // Filtrowanie po tagu okazji (przyciski)
+        function filterByTag(tag) {
+            // Aktualizuj aktywny przycisk
+            document.querySelectorAll('.occasion-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const grid = document.getElementById('productGrid');
+            let products = allProducts.filter(p => p.category === 'occasional');
+
+            // Nazwy okazji dla wyświetlania
+            const tagNames = {
+                'all': 'Wszystkie',
+                'urodziny': 'Urodziny / Imieniny',
+                'romantyczna': 'Miłość / Walentynki',
+                'rocznica': 'Rocznica',
+                'podziekowanie': 'Podziękowanie',
+                'gratulacje': 'Gratulacje',
+                'przeprosiny': 'Przeprosiny',
+                'bezOkazji': 'Bez okazji'
+            };
+
+            if (tag !== 'all') {
+                products = products.filter(p => {
+                    if (!p.quizTags || !p.quizTags.occasion) return false;
+                    const occasions = Array.isArray(p.quizTags.occasion) ? p.quizTags.occasion : [p.quizTags.occasion];
+                    return occasions.includes(tag);
+                });
+            }
+
+            if (products.length === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px; color: var(--color-text-secondary);">
+                        <p style="font-size: 1.1rem; margin-bottom: 15px;">Brak produktów otagowanych jako "${tagNames[tag]}"</p>
+                        <p style="font-size: 0.9rem;">Produkty są w trakcie tagowania. Tymczasem:</p>
+                        <button onclick="filterByTag('all')" class="button" style="margin-top: 15px;">Zobacz wszystkie produkty</button>
+                    </div>
+                `;
+                return;
+            }
+
+            const header = tag !== 'all' ? `
+                <div style="grid-column: 1/-1; background: var(--color-accent); color: #000; padding: 10px 15px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
+                    <span><strong>${tagNames[tag]}</strong> - ${products.length} propozycji</span>
+                    <button onclick="filterByTag('all')" style="background: none; border: none; cursor: pointer; font-size: 0.9rem;">✕ Usuń filtr</button>
+                </div>
+            ` : '';
+
+            grid.innerHTML = header + products.map((product) => `
+                <div class="product-card" data-id="${product.id}" data-type="${product.type}" data-price="${product.price}">
+                    ${renderProductImage(product)}
+                    <h4 style="margin-top: 15px;">${product.name}</h4>
+                    <p style="font-weight: bold; color: var(--color-accent); margin: 8px 0;">${product.sizeOptions ? 'od ' + Math.min(...product.sizeOptions.map(o => o.price)) : product.price} zł</p>
+                    <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin: 10px 0;">${product.description}</p>
+                    <button class="button" style="width: 100%; margin-top: 15px;" onclick="openProduct(${product.id})">Zamów</button>
+                    <button class="button secondary" style="width: 100%; margin-top: 8px;" onclick="openProductWithDelivery(${product.id})">🚚 Wyślij z dostawą</button>
+                </div>
+            `).join('');
+        }
+
+        // Wyświetlanie produktów z paginacją
+        function displayProducts(category, page = 1) {
+            currentPage = page;
+            const grid = document.getElementById('productGrid');
+            const products = allProducts.filter(p => p.category === category);
+
+            if (products.length === 0) {
+                grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--color-text-secondary); padding: 60px 20px;">Produkty w tej kategorii będą wkrótce dostępne</p>';
+                return;
+            }
+
+            const totalPages = Math.ceil(products.length / productsPerPage);
+            const startIndex = (page - 1) * productsPerPage;
+            const paginatedProducts = products.slice(startIndex, startIndex + productsPerPage);
+
+            const productCards = paginatedProducts.map((product) => {
+                const priceDisplay = product.sizeOptions
+                    ? 'od ' + Math.min(...product.sizeOptions.map(o => o.price)) + ' zł'
+                    : product.price + ' zł';
+                const sizesInfo = product.sizeOptions
+                    ? `<div style="font-size: 0.85rem; color: var(--color-text-secondary); margin-top: 5px;">Rozmiary: ${product.sizeOptions.map(o => o.size + ' ' + o.price + ' zł').join(' / ')}</div>`
+                    : '';
+                const deliveryBtn = product.category === 'occasional'
+                    ? `<button class="button secondary" style="width: 100%; margin-top: 8px;" onclick="openProductWithDelivery(${product.id})">🚚 Wyślij z dostawą</button>`
+                    : '';
+                return `
+                <div class="product-card" data-id="${product.id}" data-type="${product.type}" data-price="${product.price}">
+                    ${renderProductImage(product)}
+                    <h4 style="margin-top: 15px;">${product.name}</h4>
+                    <p style="font-weight: bold; color: var(--color-accent); margin: 8px 0;">${priceDisplay}</p>
+                    <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin: 10px 0;">${product.description}</p>
+                    ${sizesInfo}
+                    <button class="button" style="width: 100%; margin-top: 15px;" onclick="openProduct(${product.id})">Zamów</button>
+                    ${deliveryBtn}
+                </div>
+            `}).join('');
+
+            // Paginacja
+            const pagination = totalPages > 1 ? `
+                <div style="grid-column: 1/-1; display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 40px; padding: 25px 0; border-top: 1px solid var(--color-border);">
+                    <button onclick="displayProducts('${category}', ${page - 1})" ${page === 1 ? 'disabled' : ''} style="padding: 12px 25px; background: ${page === 1 ? '#333' : '#4a7c59'}; color: ${page === 1 ? '#666' : '#fff'}; border: 2px solid ${page === 1 ? '#444' : '#4a7c59'}; cursor: ${page === 1 ? 'not-allowed' : 'pointer'}; font-weight: bold; font-size: 0.95rem;">← Poprzednia</button>
+                    <span style="padding: 12px 20px; font-size: 1rem; color: #fff;">Strona <strong>${page}</strong> z <strong>${totalPages}</strong></span>
+                    <button onclick="displayProducts('${category}', ${page + 1})" ${page === totalPages ? 'disabled' : ''} style="padding: 12px 25px; background: ${page === totalPages ? '#333' : '#4a7c59'}; color: ${page === totalPages ? '#666' : '#fff'}; border: 2px solid ${page === totalPages ? '#444' : '#4a7c59'}; cursor: ${page === totalPages ? 'not-allowed' : 'pointer'}; font-weight: bold; font-size: 0.95rem;">Następna →</button>
+                </div>
+            ` : '';
+
+            grid.innerHTML = productCards + pagination;
+        }
+
+        // Filtrowanie
+        function applyFilters() {
+            const types = Array.from(document.querySelectorAll('.filter-type:checked')).map(cb => cb.value);
+            const priceRange = currentCategory === 'funeral'
+                ? document.querySelector('.filter-price:checked')?.value
+                : document.querySelector('.filter-price-occ:checked')?.value;
+            const kwiatomatOnly = document.querySelector('.filter-kwiatomat:checked')?.checked;
+
+            let filtered = allProducts.filter(p => p.category === currentCategory);
+
+            if (types.length > 0) {
+                filtered = filtered.filter(p => types.includes(p.type));
+            }
+
+            if (priceRange) {
+                const [min, max] = priceRange.split('-').map(Number);
+                filtered = filtered.filter(p => p.price >= min && p.price <= max);
+            }
+
+            if (kwiatomatOnly) {
+                filtered = filtered.filter(p => p.kwiatomatAvailable);
+            }
+
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = filtered.map((product) => {
+                const priceDisplay = product.sizeOptions
+                    ? 'od ' + Math.min(...product.sizeOptions.map(o => o.price)) + ' zł'
+                    : product.price + ' zł';
+                const sizesInfo = product.sizeOptions
+                    ? `<div style="font-size: 0.85rem; color: var(--color-text-secondary); margin-top: 5px;">Rozmiary: ${product.sizeOptions.map(o => o.size + ' ' + o.price + ' zł').join(' / ')}</div>`
+                    : '';
+                const deliveryBtn = product.category === 'occasional'
+                    ? `<button class="button secondary" style="width: 100%; margin-top: 8px;" onclick="openProductWithDelivery(${product.id})">🚚 Wyślij z dostawą</button>`
+                    : '';
+                return `
+                <div class="product-card">
+                    ${renderProductImage(product)}
+                    <h4 style="margin-top: 15px;">${product.name}</h4>
+                    <p style="font-weight: bold; color: var(--color-accent); margin: 8px 0;">${priceDisplay}</p>
+                    <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin: 10px 0;">${product.description}</p>
+                    ${sizesInfo}
+                    <button class="button" style="width: 100%; margin-top: 15px;" onclick="openProduct(${product.id})">Zamów</button>
+                    ${deliveryBtn}
+                </div>
+            `}).join('');
+        }
+
+        function resetFilters() {
+            document.querySelectorAll('.filter-type, .filter-price, .filter-price-occ, .filter-kwiatomat').forEach(input => input.checked = false);
+            displayProducts(currentCategory);
+        }
+
+        // Otwórz modal produktu
+        function openProduct(productId) {
+            currentProduct = allProducts.find(p => p.id === productId);
+            if (!currentProduct) return;
+
+            document.getElementById('modalProductName').textContent = currentProduct.name;
+            document.getElementById('modalProductPrice').textContent = currentProduct.price + ' zł';
+            document.getElementById('modalProductDescription').textContent = currentProduct.description;
+            document.getElementById('modalProductImage').src = currentProduct.image;
+
+            // Pokaż/ukryj wybór rozmiaru
+            const sizeSelection = document.getElementById('sizeSelection');
+            const sizeOptionsContainer = document.getElementById('sizeOptionsContainer');
+            if (currentProduct.sizeOptions && currentProduct.sizeOptions.length > 0) {
+                sizeSelection.style.display = 'block';
+                // Generuj opcje rozmiarów dynamicznie
+                sizeOptionsContainer.innerHTML = currentProduct.sizeOptions.map((option, index) => `
+                    <label style="flex: 1; min-width: 120px; display: flex; align-items: center; gap: 10px; padding: 15px; border: 1px solid var(--color-border); cursor: pointer; background: rgba(255,255,255,0.02); transition: all 0.3s;">
+                        <input type="radio" name="size" value="${option.price}" onchange="updatePrice(${option.price})" style="width: auto;" ${index === 0 ? 'checked' : ''} required>
+                        <div>
+                            <div style="font-weight: 600;">${option.size}</div>
+                            <div style="font-size: 0.9rem; color: var(--color-text-secondary);">${option.price} zł</div>
+                        </div>
+                    </label>
+                `).join('');
+                // Ustaw cenę na pierwszą opcję
+                document.getElementById('modalProductPrice').textContent = currentProduct.sizeOptions[0].price + ' zł';
+            } else {
+                sizeSelection.style.display = 'none';
+                sizeOptionsContainer.innerHTML = '';
+            }
+
+            // Pokaż odpowiednie opcje
+            if (currentProduct.category === 'funeral') {
+                document.getElementById('funeralOptions').style.display = 'block';
+                document.getElementById('occasionalOptions').style.display = 'none';
+            } else {
+                document.getElementById('funeralOptions').style.display = 'none';
+                document.getElementById('occasionalOptions').style.display = 'block';
+            }
+
+            // Resetuj formularz
+            document.getElementById('orderForm').reset();
+            // Resetuj pola pogrzebowe
+            document.getElementById('funeralAttachField').style.display = 'none';
+            document.getElementById('funeralPickupField').style.display = 'none';
+            document.getElementById('funeralCeremonyField').style.display = 'none';
+            clearFuneralRequired(false);
+            // Resetuj pola okolicznościowe
+            document.getElementById('occasionalDateTimeField').style.display = 'none';
+            document.getElementById('deliveryFields').style.display = 'none';
+            clearDeliveryRequired(false);
+
+            document.getElementById('productModal').style.display = 'block';
+        }
+
+        function closeProduct() {
+            document.getElementById('productModal').style.display = 'none';
+            // Wyczyść parametr product z URL (żeby po odświeżeniu nie otwierał się ponownie)
+            if (window.history.replaceState) {
+                const url = new URL(window.location);
+                url.searchParams.delete('product');
+                window.history.replaceState({}, '', url);
+            }
+        }
+
+        // Otwórz modal z automatycznie zaznaczoną dostawą
+        function openProductWithDelivery(productId) {
+            openProduct(productId);
+            // Po krótkim opóźnieniu zaznacz opcję dostawy
+            setTimeout(() => {
+                const deliveryRadio = document.querySelector('input[name="deliveryOccasional"][value="delivery"]');
+                if (deliveryRadio && currentProduct && currentProduct.category === 'occasional') {
+                    deliveryRadio.checked = true;
+                    deliveryRadio.dispatchEvent(new Event('change', { bubbles: true }));
+                }
+            }, 50);
+        }
+
+        // Aktualizacja ceny przy zmianie rozmiaru
+        function updatePrice(newPrice) {
+            document.getElementById('modalProductPrice').textContent = newPrice + ' zł';
+        }
+
+        // Ustaw/wyczyść required dla pól pogrzebowych
+        function clearFuneralRequired(type) {
+            // Resetuj wszystkie pola pogrzebowe
+            const attachFields = ['deceasedName'];
+            const pickupFields = ['funeralPickupDate', 'funeralPickupTimeSlot'];
+            const ceremonyFields = ['funeralCeremonyAddress', 'funeralCeremonyDate', 'funeralCeremonyTime', 'funeralCeremonyPhone'];
+
+            // Wyłącz wszystkie
+            [...attachFields, ...pickupFields, ...ceremonyFields].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.required = false;
+            });
+
+            // Włącz odpowiednie
+            if (type === 'funeral') {
+                attachFields.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.required = true;
+                });
+            } else if (type === 'pickup') {
+                pickupFields.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.required = true;
+                });
+            } else if (type === 'ceremony') {
+                ceremonyFields.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.required = true;
+                });
+            }
+        }
+
+        // Nasłuchiwanie zmian opcji dostawy
+        document.addEventListener('change', function(e) {
+            // Obsługa wyboru odbioru dla produktów okolicznościowych
+            if (e.target.name === 'deliveryOccasional') {
+                const pickupField = document.getElementById('occasionalDateTimeField');
+                const deliveryFields = document.getElementById('deliveryFields');
+
+                if (e.target.value === 'kwiatomat') {
+                    // Kwiatomat 24/7 - nie wymaga terminu
+                    pickupField.style.display = 'none';
+                    deliveryFields.style.display = 'none';
+                    clearDeliveryRequired(false);
+                } else if (e.target.value === 'pickup-shop') {
+                    // Odbiór w kwiaciarni - pokaż wybór terminu
+                    pickupField.style.display = 'block';
+                    deliveryFields.style.display = 'none';
+                    clearDeliveryRequired(false);
+                    initPickupDateTime();
+                } else if (e.target.value === 'delivery') {
+                    // Dostawa - pokaż pola dostawy
+                    pickupField.style.display = 'none';
+                    deliveryFields.style.display = 'block';
+                    clearDeliveryRequired(true);
+                    initDeliveryDateTime();
+                }
+            }
+
+            // Obsługa wyboru odbioru dla produktów pogrzebowych
+            if (e.target.name === 'deliveryFuneral') {
+                const attachField = document.getElementById('funeralAttachField');
+                const pickupField = document.getElementById('funeralPickupField');
+                const ceremonyField = document.getElementById('funeralCeremonyField');
+
+                // Ukryj wszystkie
+                attachField.style.display = 'none';
+                pickupField.style.display = 'none';
+                ceremonyField.style.display = 'none';
+
+                if (e.target.value === 'funeral') {
+                    // Dołącz do pogrzebu (tylko imię zmarłego)
+                    attachField.style.display = 'block';
+                    clearFuneralRequired('funeral');
+                } else if (e.target.value === 'pickup-shop') {
+                    // Odbiór w kwiaciarni
+                    pickupField.style.display = 'block';
+                    clearFuneralRequired('pickup');
+                    initFuneralPickupDateTime();
+                } else if (e.target.value === 'ceremony') {
+                    // Dostawa na ceremonię
+                    ceremonyField.style.display = 'block';
+                    clearFuneralRequired('ceremony');
+                    initFuneralCeremonyDate();
+                }
+            }
+
+            // Aktualizuj godziny przy zmianie daty odbioru
+            if (e.target.id === 'occasionalDate') {
+                updatePickupTimeSlots();
+            }
+            // Aktualizuj godziny przy zmianie daty dostawy
+            if (e.target.id === 'deliveryDate') {
+                updateDeliveryTimeSlots();
+            }
+            // Aktualizuj godziny przy zmianie daty odbioru pogrzebowego
+            if (e.target.id === 'funeralPickupDate') {
+                updateFuneralPickupTimeSlots();
+            }
+        });
+
+        // Ustaw/wyczyść required dla pól dostawy
+        function clearDeliveryRequired(isRequired) {
+            const fields = ['deliveryDate', 'deliveryTimeSlot', 'deliveryAddress', 'deliveryPostalCode', 'recipientName', 'recipientPhone'];
+            fields.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.required = isRequired;
+            });
+        }
+
+        // ========== LOGIKA DOSTAWY ==========
+        function initDeliveryDateTime() {
+            const dateInput = document.getElementById('deliveryDate');
+            const preciseCheckbox = document.getElementById('preciseTimeOption');
+            const preciseWrapper = document.getElementById('preciseTimeWrapper');
+
+            if (!dateInput) return;
+
+            const now = new Date();
+            const today = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0');
+
+            dateInput.min = today;
+            dateInput.value = today;
+
+            // Reset precyzyjnej godziny
+            if (preciseCheckbox) {
+                preciseCheckbox.checked = false;
+                preciseCheckbox.disabled = false;
+            }
+            if (preciseWrapper) {
+                preciseWrapper.style.display = 'none';
+            }
+
+            updateDeliveryTimeSlots();
+        }
+
+        function updateDeliveryTimeSlots() {
+            const dateInput = document.getElementById('deliveryDate');
+            const timeSelect = document.getElementById('deliveryTimeSlot');
+            const infoEl = document.getElementById('deliveryDateInfo');
+            const selectedDate = dateInput.value;
+
+            if (!selectedDate) {
+                timeSelect.innerHTML = '<option value="">Najpierw wybierz datę</option>';
+                return;
+            }
+
+            const now = new Date();
+            const currentHour = now.getHours();
+            const today = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0');
+            const isToday = selectedDate === today;
+            const isSat = isSaturday(selectedDate);
+            const isSun = isSunday(selectedDate);
+
+            let options = '<option value="">Wybierz przedział *</option>';
+            timeSelect.disabled = false;
+
+            if (isSun) {
+                // Niedziela - brak dostaw, zapraszamy do kwiatomatu
+                options = '<option value="">Brak dostaw w niedzielę</option>';
+                timeSelect.disabled = true;
+                infoEl.innerHTML = '🌸 W niedziele dostawy nie są realizowane.<br><strong>Zapraszamy do Kwiatomatu 24/7!</strong> (CH BIG, ul. Jesionowa 4A)';
+                infoEl.style.background = 'rgba(74, 124, 89, 0.15)';
+                infoEl.style.color = '#6b9b7a';
+            } else if (isSat) {
+                // Sobota - dostawy 8:00-12:00
+                if (isToday && currentHour >= 10) {
+                    options = '<option value="">Za późno na dziś</option>';
+                    infoEl.innerHTML = '⚠️ W soboty dostawy do 12:00. Zamów na inny dzień lub <strong>skorzystaj z Kwiatomatu 24/7</strong>.';
+                    infoEl.style.background = 'rgba(255, 193, 7, 0.1)';
+                    infoEl.style.color = '#ffd54f';
+                } else {
+                    options += '<option value="8-12">8:00 - 12:00</option>';
+                    infoEl.innerHTML = '📅 Sobota - dostawy 8:00-12:00';
+                    infoEl.style.background = 'rgba(74, 124, 89, 0.1)';
+                    infoEl.style.color = '#6b9b7a';
+                }
+            } else {
+                // Poniedziałek-Piątek - dostawy 8:00-16:00
+                if (isToday && currentHour >= 14) {
+                    options = '<option value="">Za późno na dziś</option>';
+                    infoEl.innerHTML = '⚠️ Zamów do 14:00 na dostawę tego samego dnia.';
+                    infoEl.style.background = 'rgba(255, 193, 7, 0.1)';
+                    infoEl.style.color = '#ffd54f';
+                } else {
+                    if (!isToday || currentHour < 9) options += '<option value="8-11">8:00 - 11:00</option>';
+                    if (!isToday || currentHour < 12) options += '<option value="11-14">11:00 - 14:00</option>';
+                    if (!isToday || currentHour < 14) options += '<option value="14-16">14:00 - 16:00</option>';
+                    if (isToday) {
+                        infoEl.innerHTML = '✅ Dostawa dziś możliwa!';
+                    } else {
+                        infoEl.innerHTML = '🚚 Darmowa dostawa na terenie Myszkowa';
+                    }
+                    infoEl.style.background = 'rgba(74, 124, 89, 0.1)';
+                    infoEl.style.color = '#6b9b7a';
+                }
+            }
+
+            timeSelect.innerHTML = options;
+            updatePreciseTimeOptions();
+        }
+
+        // Przełączanie precyzyjnej godziny dostawy
+        function togglePreciseTime() {
+            const checkbox = document.getElementById('preciseTimeOption');
+            const wrapper = document.getElementById('preciseTimeWrapper');
+            const normalTimeSelect = document.getElementById('deliveryTimeSlot');
+            const preciseTimeSelect = document.getElementById('preciseTime');
+
+            if (!checkbox || !wrapper || !normalTimeSelect || !preciseTimeSelect) {
+                console.error('Brak elementów formularza dostawy');
+                return;
+            }
+
+            if (checkbox.checked) {
+                // Włącz precyzyjną godzinę
+                wrapper.style.display = 'block';
+                normalTimeSelect.disabled = true;
+                normalTimeSelect.style.opacity = '0.5';
+                normalTimeSelect.removeAttribute('required');
+                preciseTimeSelect.setAttribute('required', 'required');
+                updatePreciseTimeOptions();
+            } else {
+                // Wyłącz precyzyjną godzinę
+                wrapper.style.display = 'none';
+                normalTimeSelect.disabled = false;
+                normalTimeSelect.style.opacity = '1';
+                normalTimeSelect.setAttribute('required', 'required');
+                preciseTimeSelect.removeAttribute('required');
+                preciseTimeSelect.value = '';
+            }
+            updateDeliveryTotal();
+        }
+
+        // Aktualizuj opcje precyzyjnej godziny
+        function updatePreciseTimeOptions() {
+            const dateInput = document.getElementById('deliveryDate');
+            const preciseTimeSelect = document.getElementById('preciseTime');
+            const preciseCheckbox = document.getElementById('preciseTimeOption');
+
+            if (!dateInput || !preciseTimeSelect) return;
+
+            const selectedDate = dateInput.value;
+
+            if (!selectedDate) {
+                preciseTimeSelect.innerHTML = '<option value="">Najpierw wybierz datę</option>';
+                return;
+            }
+
+            const now = new Date();
+            const currentHour = now.getHours();
+            const today = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0');
+            const isToday = selectedDate === today;
+            const isSat = isSaturday(selectedDate);
+            const isSun = isSunday(selectedDate);
+
+            let options = '<option value="">Wybierz godzinę</option>';
+            let minHour, maxHour;
+
+            if (isSun) {
+                // Niedziela - brak dostaw
+                preciseTimeSelect.innerHTML = '<option value="">Brak dostaw w niedzielę</option>';
+                preciseTimeSelect.disabled = true;
+                if (preciseCheckbox) preciseCheckbox.disabled = true;
+                return;
+            } else if (isSat) {
+                // Sobota 8-12
+                minHour = 8;
+                maxHour = 12;
+            } else {
+                // Pn-Pt 8-16
+                minHour = 8;
+                maxHour = 16;
+            }
+
+            preciseTimeSelect.disabled = false;
+            if (preciseCheckbox) preciseCheckbox.disabled = false;
+
+            for (let h = minHour; h <= maxHour; h++) {
+                // Dla dzisiaj: pokaż tylko godziny +2h od teraz
+                if (isToday && h <= currentHour + 2) continue;
+
+                options += `<option value="${h}:00">${h}:00</option>`;
+                if (h < maxHour) {
+                    options += `<option value="${h}:30">${h}:30</option>`;
+                }
+            }
+
+            // Jeśli brak opcji (za późno na dziś lub niedziela)
+            if (options === '<option value="">Wybierz godzinę</option>') {
+                preciseTimeSelect.innerHTML = '<option value="">Za późno na precyzyjną godzinę dziś</option>';
+                preciseTimeSelect.disabled = true;
+                if (preciseCheckbox) {
+                    preciseCheckbox.checked = false;
+                    preciseCheckbox.disabled = true;
+                    // Reset UI ręcznie (bez togglePreciseTime żeby nie reaktywować timeSelect)
+                    const wrapper = document.getElementById('preciseTimeWrapper');
+                    if (wrapper) wrapper.style.display = 'none';
+                    updateDeliveryTotal();
+                }
+                return;
+            }
+
+            preciseTimeSelect.innerHTML = options;
+        }
+
+        // Aktualizuj podsumowanie kosztów dostawy
+        function updateDeliveryTotal() {
+            const preciseTime = document.getElementById('preciseTimeOption')?.checked || false;
+            const addonCard = document.getElementById('addonCard')?.checked || false;
+            const addonSms = document.getElementById('addonSms')?.checked || false;
+
+            // Precyzyjna godzina
+            const preciseRow = document.getElementById('preciseTimeCostRow');
+            if (preciseRow) {
+                preciseRow.style.display = preciseTime ? 'flex' : 'none';
+            }
+
+            // Dodatki
+            let addonsTotal = 0;
+            if (addonCard) addonsTotal += 15;
+            if (addonSms) addonsTotal += 5;
+
+            const addonsRow = document.getElementById('addonsCostRow');
+            const addonsValue = document.getElementById('addonsCostValue');
+            if (addonsRow && addonsValue) {
+                addonsRow.style.display = addonsTotal > 0 ? 'flex' : 'none';
+                addonsValue.textContent = '+' + addonsTotal + ' zł';
+            }
+        }
+
+        // ========== LOGIKA ODBIORU W KWIACIARNI ==========
+        // Godziny otwarcia: Pn-Pt 8-16, Sob 8-13, Nd nieczynne
+
+        function isSunday(dateStr) {
+            const [y,m,d] = dateStr.split('-').map(Number);
+            return new Date(y,m-1,d).getDay() === 0;
+        }
+
+        function isSaturday(dateStr) {
+            const [y,m,d] = dateStr.split('-').map(Number);
+            return new Date(y,m-1,d).getDay() === 6;
+        }
+
+        function initPickupDateTime() {
+            const dateInput = document.getElementById('occasionalDate');
+            const now = new Date();
+            const today = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0');
+
+            dateInput.min = today;
+            dateInput.value = today;
+            updatePickupTimeSlots();
+        }
+
+        function updatePickupTimeSlots() {
+            const dateInput = document.getElementById('occasionalDate');
+            const timeSelect = document.getElementById('occasionalTimeSlot');
+            const infoEl = document.getElementById('occasionalDateInfo');
+            const selectedDate = dateInput.value;
+
+            const now = new Date();
+            const currentHour = now.getHours();
+            const today = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0');
+            const isToday = selectedDate === today;
+            const isSat = isSaturday(selectedDate);
+            const isSun = isSunday(selectedDate);
+
+            let options = '<option value="">Wybierz godziny *</option>';
+
+            if (isSun) {
+                // Niedziela - kwiaciarnia nieczynna
+                options = '<option value="">Kwiaciarnia nieczynna</option>';
+                timeSelect.disabled = true;
+                infoEl.innerHTML = '🌸 W niedziele kwiaciarnia nieczynna. Wybierz <strong>Kwiatomat</strong> - działa 24/7!';
+                infoEl.style.background = 'rgba(74, 124, 89, 0.15)';
+                infoEl.style.color = '#ccc';
+            } else if (isSat) {
+                // Sobota 8-13
+                timeSelect.disabled = false;
+                if (isToday && currentHour >= 12) {
+                    options = '<option value="">Za późno na dziś</option>';
+                    infoEl.innerHTML = '⚠️ Kwiaciarnia zamyka się o 13:00. Wybierz inny dzień lub <strong>Kwiatomat</strong>.';
+                } else {
+                    options += '<option value="8-10">8:00 - 10:00</option>';
+                    options += '<option value="10-13">10:00 - 13:00</option>';
+                    infoEl.innerHTML = '🕘 <strong>Sobota:</strong> kwiaciarnia czynna 8:00-13:00';
+                }
+                infoEl.style.background = 'rgba(255, 193, 7, 0.1)';
+                infoEl.style.color = '#ffd54f';
+            } else {
+                // Poniedziałek-Piątek 8-16
+                timeSelect.disabled = false;
+                if (isToday) {
+                    // Pokaż tylko przyszłe przedziały
+                    if (currentHour < 11) {
+                        options += '<option value="11-14">11:00 - 14:00</option>';
+                        options += '<option value="14-16">14:00 - 16:00</option>';
+                    } else if (currentHour < 14) {
+                        options += '<option value="14-16">14:00 - 16:00</option>';
+                    } else if (currentHour < 15) {
+                        options += '<option value="15-16">15:00 - 16:00</option>';
+                    } else {
+                        options = '<option value="">Za późno na dziś</option>';
+                    }
+                    infoEl.innerHTML = '📍 Odbiór dziś w kwiaciarni';
+                } else {
+                    options += '<option value="8-11">8:00 - 11:00</option>';
+                    options += '<option value="11-14">11:00 - 14:00</option>';
+                    options += '<option value="14-16">14:00 - 16:00</option>';
+                    infoEl.innerHTML = '📅 Kwiaciarnia czynna Pn-Pt 8:00-16:00';
+                }
+                infoEl.style.background = 'rgba(255,255,255,0.05)';
+                infoEl.style.color = 'var(--color-text-secondary)';
+            }
+
+            timeSelect.innerHTML = options;
+        }
+
+        // ========== LOGIKA POGRZEBOWA ==========
+
+        // Odbiór w kwiaciarni - produkty pogrzebowe
+        function initFuneralPickupDateTime() {
+            const dateInput = document.getElementById('funeralPickupDate');
+            if (!dateInput) return;
+            const now = new Date();
+            const today = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0');
+
+            dateInput.min = today;
+            dateInput.value = today;
+            updateFuneralPickupTimeSlots();
+        }
+
+        function updateFuneralPickupTimeSlots() {
+            const dateInput = document.getElementById('funeralPickupDate');
+            const timeSelect = document.getElementById('funeralPickupTimeSlot');
+            const infoEl = document.getElementById('funeralPickupDateInfo');
+            if (!dateInput || !timeSelect) return;
+
+            const selectedDate = dateInput.value;
+            const now = new Date();
+            const currentHour = now.getHours();
+            const today = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0');
+            const isToday = selectedDate === today;
+            const isSat = isSaturday(selectedDate);
+            const isSun = isSunday(selectedDate);
+
+            let options = '<option value="">Wybierz godziny *</option>';
+
+            if (isSun) {
+                options = '<option value="">Kwiaciarnia nieczynna</option>';
+                timeSelect.disabled = true;
+                infoEl.innerHTML = '⚠️ W niedziele kwiaciarnia nieczynna. Wybierz inny dzień.';
+                infoEl.style.background = 'rgba(255, 193, 7, 0.1)';
+                infoEl.style.color = '#ffd54f';
+            } else if (isSat) {
+                timeSelect.disabled = false;
+                if (isToday && currentHour >= 12) {
+                    options = '<option value="">Za późno na dziś</option>';
+                    infoEl.innerHTML = '⚠️ Kwiaciarnia zamyka się o 13:00.';
+                } else {
+                    options += '<option value="8-10">8:00 - 10:00</option>';
+                    options += '<option value="10-13">10:00 - 13:00</option>';
+                    infoEl.innerHTML = '🕘 Sobota: kwiaciarnia czynna 8:00-13:00';
+                }
+                infoEl.style.background = 'rgba(255, 193, 7, 0.1)';
+                infoEl.style.color = '#ffd54f';
+            } else {
+                timeSelect.disabled = false;
+                if (isToday) {
+                    if (currentHour < 11) {
+                        options += '<option value="11-14">11:00 - 14:00</option>';
+                        options += '<option value="14-16">14:00 - 16:00</option>';
+                    } else if (currentHour < 14) {
+                        options += '<option value="14-16">14:00 - 16:00</option>';
+                    } else if (currentHour < 15) {
+                        options += '<option value="15-16">15:00 - 16:00</option>';
+                    } else {
+                        options = '<option value="">Za późno na dziś</option>';
+                    }
+                    infoEl.innerHTML = '📍 Odbiór dziś w kwiaciarni';
+                } else {
+                    options += '<option value="8-11">8:00 - 11:00</option>';
+                    options += '<option value="11-14">11:00 - 14:00</option>';
+                    options += '<option value="14-16">14:00 - 16:00</option>';
+                    infoEl.innerHTML = '📅 Kwiaciarnia czynna Pn-Pt 8:00-16:00';
+                }
+                infoEl.style.background = 'rgba(255,255,255,0.05)';
+                infoEl.style.color = 'var(--color-text-secondary)';
+            }
+
+            timeSelect.innerHTML = options;
+        }
+
+        // Dołącz do pogrzebu - data ceremonii
+        function initFuneralCeremonyDate() {
+            const dateInput = document.getElementById('funeralCeremonyDate');
+            if (!dateInput) return;
+            const now = new Date();
+            const today = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0');
+
+            dateInput.min = today;
+            dateInput.value = today;
+        }
+
+        // Obsługa zamówienia
+        function handleOrder(event) {
+            event.preventDefault();
+
+            const orderData = {
+                product: currentProduct.name,
+                productId: currentProduct.id,
+                price: document.getElementById('modalProductPrice').textContent,
+                quantity: document.getElementById('quantity').value,
+                customerName: document.getElementById('customerName').value,
+                customerPhone: document.getElementById('customerPhone').value,
+                customerEmail: document.getElementById('customerEmail').value,
+                orderNotes: document.getElementById('orderNotes').value
+            };
+
+            // Dodaj dane specyficzne dla kategorii
+            if (currentProduct.category === 'funeral') {
+                // Produkty pogrzebowe
+                orderData.ribbonLeft = document.getElementById('ribbonLeft').value;
+                orderData.ribbonRight = document.getElementById('ribbonRight').value;
+                orderData.pickupMethod = document.querySelector('input[name="deliveryFuneral"]:checked')?.value;
+
+                if (orderData.pickupMethod === 'funeral') {
+                    // Dołącz do pogrzebu (tylko imię zmarłego)
+                    orderData.deceasedName = document.getElementById('deceasedName')?.value || '';
+                } else if (orderData.pickupMethod === 'pickup-shop') {
+                    // Odbiór w kwiaciarni
+                    orderData.pickupDate = document.getElementById('funeralPickupDate')?.value || '';
+                    orderData.pickupTimeSlot = document.getElementById('funeralPickupTimeSlot')?.value || '';
+                } else if (orderData.pickupMethod === 'ceremony') {
+                    // Dostawa na ceremonię
+                    orderData.funeralPlace = document.getElementById('funeralPlace')?.value || '';
+                    orderData.ceremonyAddress = document.getElementById('funeralCeremonyAddress')?.value || '';
+                    orderData.ceremonyDate = document.getElementById('funeralCeremonyDate')?.value || '';
+                    orderData.ceremonyTime = document.getElementById('funeralCeremonyTime')?.value || '';
+                    orderData.ceremonyPhone = document.getElementById('funeralCeremonyPhone')?.value || '';
+                }
+            } else {
+                // Produkty okolicznościowe - odbiór lub dostawa
+                orderData.pickupMethod = document.querySelector('input[name="deliveryOccasional"]:checked')?.value;
+                if (orderData.pickupMethod === 'pickup-shop') {
+                    orderData.pickupDate = document.getElementById('occasionalDate')?.value || '';
+                    orderData.pickupTimeSlot = document.getElementById('occasionalTimeSlot')?.value || '';
+                } else if (orderData.pickupMethod === 'delivery') {
+                    // Dane dostawy
+                    orderData.deliveryDate = document.getElementById('deliveryDate')?.value || '';
+                    orderData.deliveryTimeSlot = document.getElementById('deliveryTimeSlot')?.value || '';
+                    orderData.preciseTime = document.getElementById('preciseTimeOption')?.checked || false;
+                    orderData.preciseTimeValue = document.getElementById('preciseTime')?.value || '';
+                    orderData.deliveryPlace = document.getElementById('deliveryPlace')?.value || '';
+                    orderData.deliveryAddress = document.getElementById('deliveryAddress')?.value || '';
+                    orderData.deliveryPostalCode = document.getElementById('deliveryPostalCode')?.value || '';
+                    orderData.deliveryCity = document.getElementById('deliveryCity')?.value || '';
+                    orderData.deliveryOption = document.getElementById('deliveryOption')?.value || '';
+                    orderData.recipientName = document.getElementById('recipientName')?.value || '';
+                    orderData.recipientPhone = document.getElementById('recipientPhone')?.value || '';
+                    orderData.greetingText = document.getElementById('greetingText')?.value || '';
+                    orderData.addonCard = document.getElementById('addonCard')?.checked || false;
+                    orderData.addonSms = document.getElementById('addonSms')?.checked || false;
+                    orderData.addonReminder = document.getElementById('addonReminder')?.checked || false;
+                }
+            }
+
+            // Dodaj rozmiar jeśli wybrano
+            if (currentProduct.sizeOptions) {
+                orderData.size = document.querySelector('input[name="size"]:checked')?.value;
+            }
+
+            // Przygotuj komunikat
+            let pickupInfo = '';
+            if (currentProduct.category === 'funeral') {
+                if (orderData.pickupMethod === 'funeral' && orderData.deceasedName) {
+                    // Dołącz do pogrzebu (tylko imię zmarłego)
+                    pickupInfo = `\n⚱️ DOŁĄCZ DO POGRZEBU\n👤 Śp. ${orderData.deceasedName}\n📞 Skontaktujemy się w sprawie szczegółów`;
+                } else if (orderData.pickupMethod === 'pickup-shop' && orderData.pickupDate) {
+                    // Odbiór w kwiaciarni
+                    const [y,m,d] = orderData.pickupDate.split('-').map(Number);
+                    const formattedDate = new Date(y,m-1,d).toLocaleDateString('pl-PL', { weekday: 'long', day: 'numeric', month: 'long' });
+                    const timeSlot = orderData.pickupTimeSlot.replace('-', ':00 - ') + ':00';
+                    pickupInfo = `\n📍 Odbiór: Kwiaciarnia\n📅 ${formattedDate}\n🕐 ${timeSlot}`;
+                } else if (orderData.pickupMethod === 'ceremony' && orderData.ceremonyDate) {
+                    // Dostawa na ceremonię
+                    const [y,m,d] = orderData.ceremonyDate.split('-').map(Number);
+                    const formattedDate = new Date(y,m-1,d).toLocaleDateString('pl-PL', { weekday: 'long', day: 'numeric', month: 'long' });
+                    const placeLabels = { kosciol: 'Kościół', kaplica: 'Kaplica cmentarna', 'dom-pogrzebowy': 'Dom pogrzebowy', cmentarz: 'Cmentarz' };
+                    pickupInfo = `\n🚚 DOSTAWA NA CEREMONIĘ\n📍 ${placeLabels[orderData.funeralPlace] || orderData.funeralPlace}: ${orderData.ceremonyAddress}\n📅 ${formattedDate}\n🕐 ${orderData.ceremonyTime}`;
+                }
+                // Szarfa
+                if (orderData.ribbonLeft || orderData.ribbonRight) {
+                    pickupInfo += `\n🎀 Szarfa: "${orderData.ribbonLeft}" / "${orderData.ribbonRight}"`;
+                }
+            } else if (orderData.pickupMethod === 'kwiatomat') {
+                pickupInfo = '\n📍 Odbiór: Kwiatomat 24/7 (CH BIG, ul. Jesionowa 4A)';
+            } else if (orderData.pickupMethod === 'delivery') {
+                // Dostawa pod adres
+                const [y,m,d] = orderData.deliveryDate.split('-').map(Number);
+                const formattedDate = new Date(y,m-1,d).toLocaleDateString('pl-PL', { weekday: 'long', day: 'numeric', month: 'long' });
+                let timeInfo = '';
+                if (orderData.preciseTime && orderData.preciseTimeValue) {
+                    timeInfo = orderData.preciseTimeValue + ' (precyzyjnie +9,90 zł)';
+                } else {
+                    timeInfo = orderData.deliveryTimeSlot.replace('-', ':00 - ') + ':00';
+                }
+                let addons = [];
+                if (orderData.addonCard) addons.push('kartka +15 zł');
+                if (orderData.addonSms) addons.push('SMS +5 zł');
+                if (orderData.preciseTime) addons.push('precyzyjna godzina +9,90 zł');
+                const addonsInfo = addons.length > 0 ? `\n🎁 Dodatki: ${addons.join(', ')}` : '';
+                const deliveryOptionLabels = { osobiscie: 'przekazać osobiście', zostawic: 'zostawić pod drzwiami', recepcja: 'zostawić w recepcji' };
+                const optionInfo = orderData.deliveryOption ? `\n📋 ${deliveryOptionLabels[orderData.deliveryOption] || orderData.deliveryOption}` : '';
+                pickupInfo = `\n🚚 DOSTAWA\n📍 ${orderData.deliveryAddress}, ${orderData.deliveryPostalCode} ${orderData.deliveryCity}\n👤 Odbiorca: ${orderData.recipientName}\n📅 ${formattedDate}\n🕐 ${timeInfo}${optionInfo}${addonsInfo}`;
+            } else if (orderData.pickupDate && orderData.pickupTimeSlot) {
+                const [y,m,d] = orderData.pickupDate.split('-').map(Number);
+                const formattedDate = new Date(y,m-1,d).toLocaleDateString('pl-PL', { weekday: 'long', day: 'numeric', month: 'long' });
+                const timeSlot = orderData.pickupTimeSlot.replace('-', ':00 - ') + ':00';
+                pickupInfo = `\n📍 Odbiór: Kwiaciarnia\n📅 ${formattedDate}\n🕐 ${timeSlot}`;
+            }
+
+            alert(`Dziękujemy za zamówienie!\n\n📦 Produkt: ${orderData.product}\n💰 Cena: ${orderData.price}\n🔢 Ilość: ${orderData.quantity}${pickupInfo}\n\nSkontaktujemy się z Tobą wkrótce pod numerem: ${orderData.customerPhone}`);
+
+            closeProduct();
+        }
+    </script>
+</body>
+</html>

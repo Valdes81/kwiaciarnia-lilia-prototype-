@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria - Kwiaciarnia Lilia</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Mobile styles for gallery */
+        @media (max-width: 768px) {
+            .tabs {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                padding-bottom: 10px;
+                justify-content: flex-start !important;
+            }
+            .tab {
+                white-space: nowrap;
+                padding: 10px 15px;
+                font-size: 0.85rem;
+            }
+            #imageModal #prevBtn,
+            #imageModal #nextBtn {
+                padding: 10px 15px !important;
+                font-size: 30px !important;
+            }
+            #imageModal #prevBtn {
+                left: 10px !important;
+            }
+            #imageModal #nextBtn {
+                right: 10px !important;
+            }
+            #imageModal span[onclick="closeModal()"] {
+                right: 15px !important;
+                top: 15px !important;
+                font-size: 30px !important;
+            }
+            .gallery-section h2 {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10px !important;
+            }
+            .tab {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+            #imageModal #prevBtn,
+            #imageModal #nextBtn {
+                padding: 8px 12px !important;
+                font-size: 24px !important;
+            }
+            #imageCounter {
+                font-size: 14px !important;
+                padding: 6px 12px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Banner sezonowy -->
+    <div class="seasonal-banner" id="seasonalBanner"></div>
+
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/branding/logo.png" alt="Kwiaciarnia Lilia">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Strona główna</a></li>
+                    <li><a href="sklep.html">Sklep</a></li>
+                    <li><a href="wyslij-kwiaty.html">Wyślij kwiaty</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="abonament.html">Abonament</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                    <li><a href="poradnik.html">Poradnik</a></li>
+                    <li><a href="kwiatomat.html">Kwiatomat</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                    <li><a href="admin.html" style="color: #8B4513; font-weight: bold;">Admin</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <h1 class="text-center mb-3">Galeria naszych prac</h1>
+
+            <!-- Filtry główne -->
+            <div class="tabs" style="justify-content: center;">
+                <button class="tab active" onclick="filterGallery('all', this)">Wszystkie</button>
+                <button class="tab" onclick="filterGallery('pogrzebowe', this)">Pogrzebowe</button>
+                <button class="tab" onclick="filterGallery('okolicznosciowe', this)">Okolicznościowe</button>
+                <button class="tab" onclick="filterGallery('cmentarne', this)">Cmentarne</button>
+            </div>
+
+            <!-- SEKCJA OKOLICZNOŚCIOWE - Wieczne róże -->
+            <div class="gallery-section" data-section-category="okolicznosciowe" style="margin-top: 60px;">
+                <h2 class="text-center mb-3">Wieczne róże</h2>
+                <p class="text-center" style="color: var(--color-text-secondary); margin-bottom: var(--spacing-60);">
+                    Eleganckie wieczne róże w pudełkach - trwałe i piękne prezenty na każdą okazję
+                </p>
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/wieczne-roze/Wieczna róża 1_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/wieczne-roze/Wieczna róża 1_wynik.webp" alt="Wieczna róża 1" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/wieczne-roze/Wieczna róża 2_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/wieczne-roze/Wieczna róża 2_wynik.webp" alt="Wieczna róża 2" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/wieczne-roze/Wieczna róża 3_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/wieczne-roze/Wieczna róża 3_wynik.webp" alt="Wieczna róża 3" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/wieczne-roze/Wieczna róża 4_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/wieczne-roze/Wieczna róża 4_wynik.webp" alt="Wieczna róża 4" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/wieczne-roze/Wieczna róża 5_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/wieczne-roze/Wieczna róża 5_wynik.webp" alt="Wieczna róża 5" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/wieczne-roze/Wieczna róża 6_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/wieczne-roze/Wieczna róża 6_wynik.webp" alt="Wieczna róża 6" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/wieczne-roze/Wieczna róża 7_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/wieczne-roze/Wieczna róża 7_wynik.webp" alt="Wieczna róża 7" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEKCJA OKOLICZNOŚCIOWE - Boxy żywe -->
+            <div class="gallery-section" data-section-category="okolicznosciowe" style="margin-top: 60px;">
+                <h2 class="text-center mb-3">Flower boxy</h2>
+                <p class="text-center" style="color: var(--color-text-secondary); margin-bottom: var(--spacing-60);">
+                    Eleganckie boxy z żywymi kwiatami - idealne na prezent
+                </p>
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/boxy-zywe/Box nr.1_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/boxy-zywe/Box nr.1_wynik.webp" alt="Flower box 1" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/boxy-zywe/Box nr.2_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/boxy-zywe/Box nr.2_wynik.webp" alt="Flower box 2" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/boxy-zywe/Box nr.3_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/boxy-zywe/Box nr.3_wynik.webp" alt="Flower box 3" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/boxy-zywe/Box nr.4_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/boxy-zywe/Box nr.4_wynik.webp" alt="Flower box 4" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/boxy-zywe/Box nr.5_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/boxy-zywe/Box nr.5_wynik.webp" alt="Flower box 5" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/boxy-zywe/Box nr.6_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/boxy-zywe/Box nr.6_wynik.webp" alt="Flower box 6" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/boxy-zywe/Box nr.7_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/boxy-zywe/Box nr.7_wynik.webp" alt="Flower box 7" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/boxy-zywe/Box nr.8_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/boxy-zywe/Box nr.8_wynik.webp" alt="Flower box 8" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/boxy-zywe/Box nr.9_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/boxy-zywe/Box nr.9_wynik.webp" alt="Flower box 9" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/boxy-zywe/Box nr.10_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/boxy-zywe/Box nr.10_wynik.webp" alt="Flower box 10" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/boxy-zywe/Box nr.11_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/boxy-zywe/Box nr.11_wynik.webp" alt="Flower box 11" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/boxy-zywe/Box nr.12_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/boxy-zywe/Box nr.12_wynik.webp" alt="Flower box 12" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/boxy-zywe/Box nr.13_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/boxy-zywe/Box nr.13_wynik.webp" alt="Flower box 13" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/boxy-zywe/Box nr.14_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/boxy-zywe/Box nr.14_wynik.webp" alt="Flower box 14" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/boxy-zywe/Box nr.15_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/boxy-zywe/Box nr.15_wynik.webp" alt="Flower box 15" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/boxy-zywe/Box nr.16_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/boxy-zywe/Box nr.16_wynik.webp" alt="Flower box 16" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/boxy-zywe/Box nr.17_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/boxy-zywe/Box nr.17_wynik.webp" alt="Flower box 17" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/boxy-zywe/Box nr.18_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/boxy-zywe/Box nr.18_wynik.webp" alt="Flower box 18" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/boxy-zywe/Box nr.19_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/boxy-zywe/Box nr.19_wynik.webp" alt="Flower box 19" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/boxy-zywe/Box nr.20_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/boxy-zywe/Box nr.20_wynik.webp" alt="Flower box 20" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/boxy-zywe/Box nr.21_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/boxy-zywe/Box nr.21_wynik.webp" alt="Flower box 21" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/boxy-zywe/Box nr.22_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/boxy-zywe/Box nr.22_wynik.webp" alt="Flower box 22" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/boxy-zywe/Box nr.23_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/boxy-zywe/Box nr.23_wynik.webp" alt="Flower box 23" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/boxy-zywe/Box nr.24_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/boxy-zywe/Box nr.24_wynik.webp" alt="Flower box 24" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/boxy-zywe/Box nr.25_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/boxy-zywe/Box nr.25_wynik.webp" alt="Flower box 25" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEKCJA OKOLICZNOŚCIOWE - Bukiety żywe -->
+            <div class="gallery-section" data-section-category="okolicznosciowe" style="margin-top: 60px;">
+                <h2 class="text-center mb-3">Bukiety żywe</h2>
+                <p class="text-center" style="color: var(--color-text-secondary); margin-bottom: var(--spacing-60);">
+                    Piękne bukiety z żywych kwiatów na każdą okazję
+                </p>
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/bukiety-zywe/Bukiet nr.1_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/bukiety-zywe/Bukiet nr.1_wynik.webp" alt="Bukiet żywy 1" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/bukiety-zywe/Bukiet nr.2_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/bukiety-zywe/Bukiet nr.2_wynik.webp" alt="Bukiet żywy 2" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/bukiety-zywe/Bukiet nr.3_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/bukiety-zywe/Bukiet nr.3_wynik.webp" alt="Bukiet żywy 3" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/bukiety-zywe/Bukiet nr.4_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/bukiety-zywe/Bukiet nr.4_wynik.webp" alt="Bukiet żywy 4" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/bukiety-zywe/Bukiet nr.5_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/bukiety-zywe/Bukiet nr.5_wynik.webp" alt="Bukiet żywy 5" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/bukiety-zywe/Bukiet nr.6_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/bukiety-zywe/Bukiet nr.6_wynik.webp" alt="Bukiet żywy 6" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/bukiety-zywe/Bukiet nr.7_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/bukiety-zywe/Bukiet nr.7_wynik.webp" alt="Bukiet żywy 7" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/bukiety-zywe/Bukiet nr.8_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/bukiety-zywe/Bukiet nr.8_wynik.webp" alt="Bukiet żywy 8" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="okolicznosciowe" onclick="openModal('assets/images/gallery/occasional/bukiety-zywe/Bukiet nr.9_wynik.webp')">
+                        <img src="assets/images/gallery/occasional/bukiety-zywe/Bukiet nr.9_wynik.webp" alt="Bukiet żywy 9" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEKCJA POGRZEBOWE - Wieńce -->
+            <div class="gallery-section" data-section-category="pogrzebowe" style="margin-top: 60px;">
+                <h2 class="text-center mb-3">Wieńce pogrzebowe</h2>
+                <p class="text-center" style="color: var(--color-text-secondary); margin-bottom: var(--spacing-60);">
+                    Eleganckie kompozycje pogrzebowe w różnych rozmiarach i stylach (300-700 zł)
+                </p>
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/products/funeral/wience/Nr.1_wynik.webp')">
+                        <img src="assets/images/products/funeral/wience/Nr.1_wynik.webp" alt="Wieniec pogrzebowy 1" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/products/funeral/wience/Nr.2_wynik.webp')">
+                        <img src="assets/images/products/funeral/wience/Nr.2_wynik.webp" alt="Wieniec pogrzebowy 2" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/products/funeral/wience/Nr.3_wynik.webp')">
+                        <img src="assets/images/products/funeral/wience/Nr.3_wynik.webp" alt="Wieniec pogrzebowy 3" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/products/funeral/wience/Nr.4_wynik.webp')">
+                        <img src="assets/images/products/funeral/wience/Nr.4_wynik.webp" alt="Wieniec pogrzebowy 4" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/products/funeral/wience/Nr.5_wynik.webp')">
+                        <img src="assets/images/products/funeral/wience/Nr.5_wynik.webp" alt="Wieniec pogrzebowy 5" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/products/funeral/wience/Nr.6_wynik.webp')">
+                        <img src="assets/images/products/funeral/wience/Nr.6_wynik.webp" alt="Wieniec pogrzebowy 6" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/products/funeral/wience/Nr.7_wynik.webp')">
+                        <img src="assets/images/products/funeral/wience/Nr.7_wynik.webp" alt="Wieniec pogrzebowy 7" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/products/funeral/wience/Nr.8_wynik.webp')">
+                        <img src="assets/images/products/funeral/wience/Nr.8_wynik.webp" alt="Wieniec pogrzebowy 8" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/products/funeral/wience/Nr.9_wynik.webp')">
+                        <img src="assets/images/products/funeral/wience/Nr.9_wynik.webp" alt="Wieniec pogrzebowy 9" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/products/funeral/wience/Nr.10_wynik.webp')">
+                        <img src="assets/images/products/funeral/wience/Nr.10_wynik.webp" alt="Wieniec pogrzebowy 10" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/products/funeral/wience/Nr.11_wynik.webp')">
+                        <img src="assets/images/products/funeral/wience/Nr.11_wynik.webp" alt="Wieniec pogrzebowy 11" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/products/funeral/wience/Nr.12_wynik.webp')">
+                        <img src="assets/images/products/funeral/wience/Nr.12_wynik.webp" alt="Wieniec pogrzebowy 12" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/products/funeral/wience/Nr.13_wynik.webp')">
+                        <img src="assets/images/products/funeral/wience/Nr.13_wynik.webp" alt="Wieniec pogrzebowy 13" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/products/funeral/wience/Nr.14_wynik.webp')">
+                        <img src="assets/images/products/funeral/wience/Nr.14_wynik.webp" alt="Wieniec pogrzebowy 14" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/products/funeral/wience/Nr.15_wynik.webp')">
+                        <img src="assets/images/products/funeral/wience/Nr.15_wynik.webp" alt="Wieniec pogrzebowy 15" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/products/funeral/wience/Nr.16_wynik.webp')">
+                        <img src="assets/images/products/funeral/wience/Nr.16_wynik.webp" alt="Wieniec pogrzebowy 16" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/products/funeral/wience/Nr.17_wynik.webp')">
+                        <img src="assets/images/products/funeral/wience/Nr.17_wynik.webp" alt="Wieniec pogrzebowy 17" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/products/funeral/wience/Nr.18_wynik.webp')">
+                        <img src="assets/images/products/funeral/wience/Nr.18_wynik.webp" alt="Wieniec pogrzebowy 18" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/products/funeral/wience/Nr.19_wynik.webp')">
+                        <img src="assets/images/products/funeral/wience/Nr.19_wynik.webp" alt="Wieniec pogrzebowy 19" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/products/funeral/wience/Nr.20_wynik.webp')">
+                        <img src="assets/images/products/funeral/wience/Nr.20_wynik.webp" alt="Wieniec pogrzebowy 20" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/products/funeral/wience/Nr.21_wynik.webp')">
+                        <img src="assets/images/products/funeral/wience/Nr.21_wynik.webp" alt="Wieniec pogrzebowy 21" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/products/funeral/wience/Nr.22_wynik.webp')">
+                        <img src="assets/images/products/funeral/wience/Nr.22_wynik.webp" alt="Wieniec pogrzebowy 22" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/products/funeral/wience/Nr.23_wynik.webp')">
+                        <img src="assets/images/products/funeral/wience/Nr.23_wynik.webp" alt="Wieniec pogrzebowy 23" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/products/funeral/wience/Nr.24_wynik.webp')">
+                        <img src="assets/images/products/funeral/wience/Nr.24_wynik.webp" alt="Wieniec pogrzebowy 24" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/products/funeral/wience/Nr.25_wynik.webp')">
+                        <img src="assets/images/products/funeral/wience/Nr.25_wynik.webp" alt="Wieniec pogrzebowy 25" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/products/funeral/wience/Nr.26_wynik.webp')">
+                        <img src="assets/images/products/funeral/wience/Nr.26_wynik.webp" alt="Wieniec pogrzebowy 26" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/products/funeral/wience/Nr.27_wynik.webp')">
+                        <img src="assets/images/products/funeral/wience/Nr.27_wynik.webp" alt="Wieniec pogrzebowy 27" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/products/funeral/wience/Nr.28_wynik.webp')">
+                        <img src="assets/images/products/funeral/wience/Nr.28_wynik.webp" alt="Wieniec pogrzebowy 28" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/products/funeral/wience/Nr.29_wynik.webp')">
+                        <img src="assets/images/products/funeral/wience/Nr.29_wynik.webp" alt="Wieniec pogrzebowy 29" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/products/funeral/wience/Nr.30_wynik.webp')">
+                        <img src="assets/images/products/funeral/wience/Nr.30_wynik.webp" alt="Wieniec pogrzebowy 30" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/products/funeral/wience/Nr.31_wynik.webp')">
+                        <img src="assets/images/products/funeral/wience/Nr.31_wynik.webp" alt="Wieniec pogrzebowy 31" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/products/funeral/wience/Nr.32_wynik.webp')">
+                        <img src="assets/images/products/funeral/wience/Nr.32_wynik.webp" alt="Wieniec pogrzebowy 32" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/products/funeral/wience/Nr.33_wynik.webp')">
+                        <img src="assets/images/products/funeral/wience/Nr.33_wynik.webp" alt="Wieniec pogrzebowy 33" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/products/funeral/wience/Nr.34_wynik.webp')">
+                        <img src="assets/images/products/funeral/wience/Nr.34_wynik.webp" alt="Wieniec pogrzebowy 34" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEKCJA POGRZEBOWE - Wiązanki -->
+            <div class="gallery-section" data-section-category="pogrzebowe" style="margin-top: 60px;">
+                <h2 class="text-center mb-3">Wiązanki pogrzebowe</h2>
+                <p class="text-center" style="color: var(--color-text-secondary); margin-bottom: var(--spacing-60);">
+                    Wiązanki pogrzebowe do ręki i na florecie (70-160 zł)
+                </p>
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/gallery/funeral/wiazanki/wiazanka-gal-01.jpg')">
+                        <img src="assets/images/gallery/funeral/wiazanki/wiazanka-gal-01.jpg" alt="Wiązanka pogrzebowa 1" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/gallery/funeral/wiazanki/wiazanka-gal-02.jpg')">
+                        <img src="assets/images/gallery/funeral/wiazanki/wiazanka-gal-02.jpg" alt="Wiązanka pogrzebowa 2" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/gallery/funeral/wiazanki/wiazanka-gal-03.jpg')">
+                        <img src="assets/images/gallery/funeral/wiazanki/wiazanka-gal-03.jpg" alt="Wiązanka pogrzebowa 3" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/gallery/funeral/wiazanki/wiazanka-gal-04.jpg')">
+                        <img src="assets/images/gallery/funeral/wiazanki/wiazanka-gal-04.jpg" alt="Wiązanka pogrzebowa 4" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/gallery/funeral/wiazanki/wiazanka-gal-05.jpg')">
+                        <img src="assets/images/gallery/funeral/wiazanki/wiazanka-gal-05.jpg" alt="Wiązanka pogrzebowa 5" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/gallery/funeral/wiazanki/wiazanka-gal-06.jpg')">
+                        <img src="assets/images/gallery/funeral/wiazanki/wiazanka-gal-06.jpg" alt="Wiązanka pogrzebowa 6" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/gallery/funeral/wiazanki/wiazanka-gal-07.jpg')">
+                        <img src="assets/images/gallery/funeral/wiazanki/wiazanka-gal-07.jpg" alt="Wiązanka pogrzebowa 7" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/gallery/funeral/wiazanki/wiazanka-gal-08.jpg')">
+                        <img src="assets/images/gallery/funeral/wiazanki/wiazanka-gal-08.jpg" alt="Wiązanka pogrzebowa 8" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/gallery/funeral/wiazanki/wiazanka-gal-09.jpg')">
+                        <img src="assets/images/gallery/funeral/wiazanki/wiazanka-gal-09.jpg" alt="Wiązanka pogrzebowa 9" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/gallery/funeral/wiazanki/wiazanka-gal-10.jpg')">
+                        <img src="assets/images/gallery/funeral/wiazanki/wiazanka-gal-10.jpg" alt="Wiązanka pogrzebowa 10" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/gallery/funeral/wiazanki/wiazanka-gal-11.jpg')">
+                        <img src="assets/images/gallery/funeral/wiazanki/wiazanka-gal-11.jpg" alt="Wiązanka pogrzebowa 11" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="pogrzebowe" onclick="openModal('assets/images/gallery/funeral/wiazanki/wiazanka-gal-12.jpg')">
+                        <img src="assets/images/gallery/funeral/wiazanki/wiazanka-gal-12.jpg" alt="Wiązanka pogrzebowa 12" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEKCJA CMENTARNE - Kompozycje żywe -->
+            <div class="gallery-section" data-section-category="cmentarne" style="margin-top: 60px;">
+                <h2 class="text-center mb-3">Kompozycje żywe na cmentarz</h2>
+                <p class="text-center" style="color: var(--color-text-secondary); margin-bottom: var(--spacing-60);">
+                    Świeże kompozycje kwiatowe na groby - stroiki, wiązanki i bukiety
+                </p>
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="cmentarne" onclick="openModal('')">
+                        <div class="placeholder" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">[Zdjęcie 1]</div>
+                    </div>
+                    <div class="gallery-item" data-category="cmentarne" onclick="openModal('')">
+                        <div class="placeholder" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">[Zdjęcie 2]</div>
+                    </div>
+                    <div class="gallery-item" data-category="cmentarne" onclick="openModal('')">
+                        <div class="placeholder" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">[Zdjęcie 3]</div>
+                    </div>
+                    <div class="gallery-item" data-category="cmentarne" onclick="openModal('')">
+                        <div class="placeholder" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">[Zdjęcie 4]</div>
+                    </div>
+                    <div class="gallery-item" data-category="cmentarne" onclick="openModal('')">
+                        <div class="placeholder" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">[Zdjęcie 5]</div>
+                    </div>
+                    <div class="gallery-item" data-category="cmentarne" onclick="openModal('')">
+                        <div class="placeholder" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">[Zdjęcie 6]</div>
+                    </div>
+                    <div class="gallery-item" data-category="cmentarne" onclick="openModal('')">
+                        <div class="placeholder" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">[Zdjęcie 7]</div>
+                    </div>
+                    <div class="gallery-item" data-category="cmentarne" onclick="openModal('')">
+                        <div class="placeholder" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">[Zdjęcie 8]</div>
+                    </div>
+                    <div class="gallery-item" data-category="cmentarne" onclick="openModal('')">
+                        <div class="placeholder" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">[Zdjęcie 9]</div>
+                    </div>
+                    <div class="gallery-item" data-category="cmentarne" onclick="openModal('')">
+                        <div class="placeholder" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">[Zdjęcie 10]</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEKCJA CMENTARNE - Kompozycje sztuczne -->
+            <div class="gallery-section" data-section-category="cmentarne" style="margin-top: 60px;">
+                <h2 class="text-center mb-3">Kompozycje sztuczne na cmentarz</h2>
+                <p class="text-center" style="color: var(--color-text-secondary); margin-bottom: var(--spacing-60);">
+                    Trwałe kompozycje ze sztucznych kwiatów - idealne na każdą porę roku
+                </p>
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="cmentarne" onclick="openModal('assets/images/gallery/cemetery/sztuczne/Zestaw nr 1_wynik.webp')">
+                        <img src="assets/images/gallery/cemetery/sztuczne/Zestaw nr 1_wynik.webp" alt="Zestaw sztuczny 1" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="cmentarne" onclick="openModal('assets/images/gallery/cemetery/sztuczne/Zestaw nr 2_wynik.webp')">
+                        <img src="assets/images/gallery/cemetery/sztuczne/Zestaw nr 2_wynik.webp" alt="Zestaw sztuczny 2" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="cmentarne" onclick="openModal('assets/images/gallery/cemetery/sztuczne/Zestaw nr 3_wynik.webp')">
+                        <img src="assets/images/gallery/cemetery/sztuczne/Zestaw nr 3_wynik.webp" alt="Zestaw sztuczny 3" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="cmentarne" onclick="openModal('assets/images/gallery/cemetery/sztuczne/Zestaw nr 4_wynik.webp')">
+                        <img src="assets/images/gallery/cemetery/sztuczne/Zestaw nr 4_wynik.webp" alt="Zestaw sztuczny 4" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="cmentarne" onclick="openModal('assets/images/gallery/cemetery/sztuczne/Zestaw nr 5_wynik.webp')">
+                        <img src="assets/images/gallery/cemetery/sztuczne/Zestaw nr 5_wynik.webp" alt="Zestaw sztuczny 5" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="cmentarne" onclick="openModal('assets/images/gallery/cemetery/sztuczne/Zestaw nr 6_wynik.webp')">
+                        <img src="assets/images/gallery/cemetery/sztuczne/Zestaw nr 6_wynik.webp" alt="Zestaw sztuczny 6" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="cmentarne" onclick="openModal('assets/images/gallery/cemetery/sztuczne/Zestaw nr 7_wynik.webp')">
+                        <img src="assets/images/gallery/cemetery/sztuczne/Zestaw nr 7_wynik.webp" alt="Zestaw sztuczny 7" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="cmentarne" onclick="openModal('assets/images/gallery/cemetery/sztuczne/Zestaw nr 8_wynik.webp')">
+                        <img src="assets/images/gallery/cemetery/sztuczne/Zestaw nr 8_wynik.webp" alt="Zestaw sztuczny 8" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="cmentarne" onclick="openModal('assets/images/gallery/cemetery/sztuczne/Zestaw nr 9_wynik.webp')">
+                        <img src="assets/images/gallery/cemetery/sztuczne/Zestaw nr 9_wynik.webp" alt="Zestaw sztuczny 9" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="gallery-item" data-category="cmentarne" onclick="openModal('assets/images/gallery/cemetery/sztuczne/Zestaw nr 10_wynik.webp')">
+                        <img src="assets/images/gallery/cemetery/sztuczne/Zestaw nr 10_wynik.webp" alt="Zestaw sztuczny 10" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal do powiększania zdjęć -->
+    <div id="imageModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000;">
+        <span onclick="closeModal()" style="position: absolute; right: 40px; top: 40px; font-size: 40px; color: white; cursor: pointer; z-index: 1001;">&times;</span>
+
+        <!-- Strzałka poprzedni -->
+        <button id="prevBtn" onclick="navigateImage(-1)" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.2); border: none; color: white; font-size: 50px; cursor: pointer; padding: 20px 25px; border-radius: 50%; z-index: 1001; transition: background 0.3s;">&#8249;</button>
+
+        <!-- Strzałka następny -->
+        <button id="nextBtn" onclick="navigateImage(1)" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.2); border: none; color: white; font-size: 50px; cursor: pointer; padding: 20px 25px; border-radius: 50%; z-index: 1001; transition: background 0.3s;">&#8250;</button>
+
+        <div style="display: flex; justify-content: center; align-items: center; height: 100%; padding: 40px;">
+            <img id="modalImage" src="" alt="Powiększone zdjęcie" style="max-width: 90%; max-height: 90%; object-fit: contain;">
+        </div>
+
+        <!-- Licznik zdjęć -->
+        <div id="imageCounter" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: white; font-size: 16px; background: rgba(0,0,0,0.5); padding: 8px 16px; border-radius: 20px;"></div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div style="display: flex; align-items: center; gap: 30px; flex-wrap: wrap;">
+                <img src="assets/images/branding/logo.png" alt="Kwiaciarnia Lilia" style="height: 80px; width: auto;">
+                <div style="flex: 1; text-align: left;">
+                    <p style="margin-bottom: 5px;">Kwiaciarnia Lilia - Myszków • ul. Krasickiego 95F • Tel. +48 572 429 000</p>
+                    <p style="margin: 0;">
+                        <a href="polityka-prywatnosci.html" style="color: var(--color-text-secondary);">Polityka prywatności</a> •
+                        <a href="regulamin.html" style="color: var(--color-text-secondary);">Regulamin</a> •
+                        NIP 5732704306 • © 2025 Lilia
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/scripts.js"></script>
+    <script>
+        // Tablica widocznych zdjęć i aktualny indeks
+        let visibleImages = [];
+        let currentImageIndex = 0;
+
+        function updateVisibleImages() {
+            visibleImages = [];
+            const sections = document.querySelectorAll('.gallery-section');
+            sections.forEach(section => {
+                if (section.style.display !== 'none') {
+                    const items = section.querySelectorAll('.gallery-item');
+                    items.forEach(item => {
+                        const img = item.querySelector('img');
+                        if (img) {
+                            visibleImages.push(img.src);
+                        }
+                    });
+                }
+            });
+        }
+
+        function filterGallery(category, clickedBtn) {
+            // Zmiana aktywnego przycisku
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            clickedBtn.classList.add('active');
+
+            // Filtrowanie sekcji galerii
+            const sections = document.querySelectorAll('.gallery-section');
+            sections.forEach(section => {
+                if (category === 'all' || section.dataset.sectionCategory === category) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+
+            // Aktualizuj tablicę widocznych zdjęć
+            updateVisibleImages();
+        }
+
+        function openModal(imagePath) {
+            // Aktualizuj tablicę widocznych zdjęć
+            updateVisibleImages();
+
+            // Znajdź indeks klikniętego zdjęcia
+            currentImageIndex = visibleImages.findIndex(src => src.includes(imagePath.split('/').pop()));
+            if (currentImageIndex === -1) currentImageIndex = 0;
+
+            // Wyświetl modal
+            document.getElementById('modalImage').src = imagePath;
+            document.getElementById('imageModal').style.display = 'block';
+            updateCounter();
+            updateNavButtons();
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        function navigateImage(direction) {
+            currentImageIndex += direction;
+
+            // Zawijanie - jak dojdziesz do końca, wracasz na początek
+            if (currentImageIndex >= visibleImages.length) {
+                currentImageIndex = 0;
+            } else if (currentImageIndex < 0) {
+                currentImageIndex = visibleImages.length - 1;
+            }
+
+            document.getElementById('modalImage').src = visibleImages[currentImageIndex];
+            updateCounter();
+            updateNavButtons();
+        }
+
+        function updateCounter() {
+            document.getElementById('imageCounter').textContent =
+                (currentImageIndex + 1) + ' / ' + visibleImages.length;
+        }
+
+        function updateNavButtons() {
+            // Opcjonalnie: ukryj strzałki jeśli jest tylko jedno zdjęcie
+            const show = visibleImages.length > 1;
+            document.getElementById('prevBtn').style.display = show ? 'block' : 'none';
+            document.getElementById('nextBtn').style.display = show ? 'block' : 'none';
+        }
+
+        // Zamykanie modalu po kliknięciu w tło
+        document.getElementById('imageModal').onclick = function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        }
+
+        // Nawigacja klawiaturą
+        document.addEventListener('keydown', function(e) {
+            const modal = document.getElementById('imageModal');
+            if (modal.style.display === 'block') {
+                if (e.key === 'ArrowRight') {
+                    navigateImage(1);
+                } else if (e.key === 'ArrowLeft') {
+                    navigateImage(-1);
+                } else if (e.key === 'Escape') {
+                    closeModal();
+                }
+            }
+        });
+
+        // Hover efekt na przyciskach
+        document.getElementById('prevBtn').onmouseenter = function() {
+            this.style.background = 'rgba(255,255,255,0.4)';
+        };
+        document.getElementById('prevBtn').onmouseleave = function() {
+            this.style.background = 'rgba(255,255,255,0.2)';
+        };
+        document.getElementById('nextBtn').onmouseenter = function() {
+            this.style.background = 'rgba(255,255,255,0.4)';
+        };
+        document.getElementById('nextBtn').onmouseleave = function() {
+            this.style.background = 'rgba(255,255,255,0.2)';
+        };
+
+        // Inicjalizacja tablicy zdjęć przy ładowaniu strony
+        document.addEventListener('DOMContentLoaded', updateVisibleImages);
+    </script>
+</body>
+</html>

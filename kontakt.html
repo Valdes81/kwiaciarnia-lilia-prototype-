@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt - Kwiaciarnia Lilia</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Banner sezonowy -->
+    <div class="seasonal-banner" id="seasonalBanner"></div>
+
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/branding/logo.png" alt="Kwiaciarnia Lilia">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Strona główna</a></li>
+                    <li><a href="sklep.html">Sklep</a></li>
+                    <li><a href="wyslij-kwiaty.html">Wyślij kwiaty</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="abonament.html">Abonament</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                    <li><a href="poradnik.html">Poradnik</a></li>
+                    <li><a href="kwiatomat.html">Kwiatomat</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                    <li><a href="admin.html" style="color: #8B4513; font-weight: bold;">Admin</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <h1 class="text-center mb-3">Kontakt</h1>
+
+            <div class="grid-2">
+                <!-- Lewa kolumna - mapa -->
+                <div>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d343.52825308377237!2d19.327452592344876!3d50.56674577395983!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471725e01a511565%3A0xded70c9ccd94160!2sKwiaciarnia%20Lilia!5e1!3m2!1spl!2spl!4v1769441944246!5m2!1spl!2spl"
+                        width="100%"
+                        height="350"
+                        style="border:0; border-radius: 4px;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                    <div class="info-box mt-3">
+                        <h3>Dane kontaktowe</h3>
+                        <p><strong>Adres:</strong> ul. Krasickiego 95F, 42-300 Myszków</p>
+                        <p><strong>Telefon:</strong> +48 572 429 000</p>
+                        <p><strong>Email:</strong> liliakwiatymyszkow@gmail.com</p>
+                        <p><strong>NIP:</strong> 5732704306</p>
+                    </div>
+                </div>
+
+                <!-- Prawa kolumna - formularz -->
+                <div>
+                    <h2>Napisz do nas</h2>
+                    <form>
+                        <div class="form-group">
+                            <label>Imię i nazwisko *</label>
+                            <input type="text" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input type="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Telefon</label>
+                            <input type="tel">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Temat *</label>
+                            <select required>
+                                <option value="">Wybierz temat...</option>
+                                <option>Zapytanie o produkt</option>
+                                <option>Zamówienie indywidualne</option>
+                                <option>Reklamacja</option>
+                                <option>Współpraca</option>
+                                <option>Inne</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Wiadomość *</label>
+                            <textarea rows="5" required placeholder="Treść wiadomości..."></textarea>
+                        </div>
+
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="rodo" required>
+                            <label for="rodo">Wyrażam zgodę na przetwarzanie moich danych osobowych zgodnie z Polityką Prywatności w celu obsługi zapytania *</label>
+                        </div>
+
+                        <button type="submit" class="button" style="width: 100%; margin-top: 20px;">Wyślij wiadomość</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Sekcja z dodatkowymi informacjami -->
+            <div class="grid-3 mt-3">
+                <div class="card">
+                    <h3>Godziny otwarcia</h3>
+                    <p><strong>Poniedziałek - Piątek:</strong><br>8:00 - 16:00</p>
+                    <p><strong>Sobota:</strong><br>8:00 - 13:00</p>
+                    <p><strong>Niedziela i święta:</strong><br>Zapraszamy do <a href="kwiatomat.html">Kwiatomatu</a> 24/7</p>
+                </div>
+
+                <div class="card">
+                    <h3>Dostawa</h3>
+                    <p>Dostarczamy kwiaty na terenie Myszkowa</p>
+                    <p><strong>Koszt dostawy:</strong><br>
+                    Myszków - <strong>GRATIS</strong></p>
+                    <p class="mt-3"><strong>Tego samego dnia:</strong><br>Zamówienia do godziny 12:00</p>
+                </div>
+
+                <div class="card">
+                    <h3>Płatności</h3>
+                    <p>Akceptujemy:</p>
+                    <ul style="text-align: left; padding-left: 20px;">
+                        <li>Gotówka</li>
+                        <li>Karta płatnicza</li>
+                        <li>BLIK</li>
+                        <li>Przelew bankowy</li>
+                        <li>Płatność online</li>
+                    </ul>
+                    <p class="mt-3">Wystawiamy faktury VAT</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Masz pytanie? Skontaktuj się z nami</h2>
+            <p style="font-size: 36px; font-weight: bold; margin: 20px 0;">+48 572 429 000</p>
+            <p>Jesteśmy do dyspozycji w godzinach otwarcia kwiaciarni</p>
+            <p>Poza godzinami otwarcia skorzystaj ze sklepu online</p>
+            <a href="sklep.html" class="button" style="margin-top: 20px;">Przejdź do sklepu online</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div style="display: flex; align-items: center; gap: 30px; flex-wrap: wrap;">
+                <img src="assets/images/branding/logo.png" alt="Kwiaciarnia Lilia" style="height: 80px; width: auto;">
+                <div style="flex: 1; text-align: left;">
+                    <p style="margin-bottom: 5px;">Kwiaciarnia Lilia - Myszków • ul. Krasickiego 95F • Tel. +48 572 429 000</p>
+                    <p style="margin: 0;">
+                        <a href="polityka-prywatnosci.html" style="color: var(--color-text-secondary);">Polityka prywatności</a> •
+                        <a href="regulamin.html" style="color: var(--color-text-secondary);">Regulamin</a> •
+                        NIP 5732704306 • © 2025 Lilia
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/scripts.js"></script>
+</body>
+</html>

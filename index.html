@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kwiaciarnia Lilia - Strona główna</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Banner sezonowy -->
+    <div class="seasonal-banner" id="seasonalBanner">
+        💐 Walentynki już 14 lutego! Zamów bukiet z wyprzedzeniem i zyskaj darmową dostawę
+        <a href="sklep.html?category=occasional">Zamów teraz →</a>
+        <button class="close-banner" onclick="closeBanner()">×</button>
+    </div>
+
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/branding/logo.png" alt="Kwiaciarnia Lilia">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Strona główna</a></li>
+                    <li><a href="sklep.html">Sklep</a></li>
+                    <li><a href="wyslij-kwiaty.html">Wyślij kwiaty</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="abonament.html">Abonament</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                    <li><a href="poradnik.html">Poradnik</a></li>
+                    <li><a href="kwiatomat.html">Kwiatomat</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                    <li><a href="admin.html" style="color: #8B4513; font-weight: bold;">Admin</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Kwiaty na każdą okazję</h1>
+            <p>Najpiękniejsze kompozycje kwiatowe w Myszkowie</p>
+            <div class="button-group">
+                <a href="sklep.html?category=occasional" class="button">Zamów online</a>
+                <a href="quiz.html" class="button secondary">Znajdź idealny bukiet</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="text-center mb-3">O nas</h2>
+            <div class="grid-2">
+                <div>
+                    <img src="assets/images/interior.webp" alt="Wnętrze Kwiaciarni Lilia" style="width: 100%; height: auto; ">
+                </div>
+                <div>
+                    <h3>Kwiaciarnia Lilia - z pasji do kwiatów i piękna pożegnań</h3>
+                    <p>Pomysł stworzenia Kwiaciarni Lilia zrodził się w 2020 roku, jako naturalne dopełnienie działalności Domu Pogrzebowego Lilia w Myszkowie. Od początku naszym celem było połączenie estetyki, emocji i profesjonalizmu - tak, aby kwiaty towarzyszyły ludziom w najważniejszych chwilach życia, zarówno radosnych, jak i pełnych zadumy.</p>
+                    <p>Z czasem nasza kwiaciarnia rozwinęła się w pełnoprawne studio florystyczne, które tworzy:<br>
+                    • wiązanki i wieńce pogrzebowe,<br>
+                    • bukiety okolicznościowe,<br>
+                    • abonamenty kwiatowe dla firm, instytucji i parafii.</p>
+                    <p>Każda kompozycja powstaje z dbałością o symbolikę, estetykę i trwałość. Wierzymy, że kwiaty potrafią wyrazić więcej niż słowa — dlatego każde zlecenie traktujemy indywidualnie.</p>
+                    <p>Zapraszamy do naszej kwiaciarni przy ul. Krasickiego 95F w Myszkowie lub do złożenia zamówienia online - z dostawą prosto pod wskazany adres.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekcja Parallax -->
+    <section class="parallax-section" style="background-image: url('assets/images/hero-bg.webp');">
+        <div class="parallax-content">
+            <h2>Tworzymy z miłości do kwiatów</h2>
+            <p>Od 2020 roku ozdabiamy najważniejsze chwile w życiu naszych klientów</p>
+        </div>
+    </section>
+
+    <!-- Sekcja wyróżników -->
+    <section class="section">
+        <div class="container">
+            <h2 class="text-center mb-3">Dlaczego my?</h2>
+            <div class="grid-2" style="gap: 30px; align-items: stretch;">
+                <!-- Chłodnia na kwiaty -->
+                <div class="card" style="padding: 0; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column;">
+                    <div style="height: 200px; overflow: hidden; flex-shrink: 0;">
+                        <img src="assets/images/chlodnia.webp" alt="Chłodnia na kwiaty" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div style="padding: 25px; flex: 1; display: flex; flex-direction: column;">
+                        <h3 style="margin-bottom: 12px; font-size: 1.3em;">Profesjonalna chłodnia kwiatowa</h3>
+                        <p style="margin-bottom: 15px; opacity: 0.85; font-size: 0.95em;">Posiadamy nowoczesną chłodnię, która zapewnia optymalne warunki przechowywania kwiatów.</p>
+                        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.9em; flex: 1;">
+                            <li style="padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">✓ Stała temperatura 4-8°C</li>
+                            <li style="padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">✓ Kontrolowana wilgotność</li>
+                            <li style="padding: 6px 0;">✓ Zawsze świeże kwiaty</li>
+                        </ul>
+                        <a href="sklep.html" class="button" style="margin-top: 20px; display: inline-block;">Zobacz świeże kwiaty</a>
+                    </div>
+                </div>
+
+                <!-- e-Vito - darmowa dostawa -->
+                <div class="card" style="padding: 0; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column;">
+                    <div style="height: 200px; overflow: hidden; flex-shrink: 0;">
+                        <img src="assets/images/evito.webp" alt="Mercedes e-Vito - auto dostawcze" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div style="padding: 25px; flex: 1; display: flex; flex-direction: column;">
+                        <h3 style="margin-bottom: 12px; font-size: 1.3em;">Darmowa dostawa w Myszkowie!</h3>
+                        <p style="margin-bottom: 15px; opacity: 0.85; font-size: 0.95em;">Posiadamy własny samochód dostawczy <strong>Mercedes e-Vito</strong>, dzięki czemu oferujemy bezpłatną dostawę kwiatów w obrębie Myszkowa.</p>
+                        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.9em; flex: 1;">
+                            <li style="padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">✓ Dostawa GRATIS w Myszkowie</li>
+                            <li style="padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">✓ Tego samego dnia - zamów do 12:00</li>
+                            <li style="padding: 6px 0;">✓ Ekologiczny transport elektryczny</li>
+                        </ul>
+                        <a href="wyslij-kwiaty.html" class="button" style="margin-top: 20px; display: inline-block;">Zamów z darmową dostawą</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="text-center mb-3">Nasza oferta</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <img src="assets/images/icons/icon-funeral.png" alt="Wiązanki pogrzebowe" style="width: 150px; height: 150px; object-fit: contain; margin: 0 auto 20px;">
+                    <h3>Wiązanki pogrzebowe</h3>
+                    <p>Godne i eleganckie kompozycje na ostatnie pożegnanie. Indywidualne projekty z możliwością dodania szarfy.</p>
+                    <a href="sklep.html?category=funeral" class="button mt-3">Zobacz więcej</a>
+                </div>
+                <div class="card">
+                    <img src="assets/images/icons/icon-bouquet.png" alt="Bukiety okolicznościowe" style="width: 150px; height: 150px; object-fit: contain; margin: 0 auto 20px;">
+                    <h3>Bukiety okolicznościowe</h3>
+                    <p>Kwiaty na urodziny, imieniny, rocznice i inne wyjątkowe okazje. Bogaty wybór kompozycji.</p>
+                    <a href="sklep.html?category=occasional" class="button mt-3">Zobacz więcej</a>
+                </div>
+                <div class="card">
+                    <img src="assets/images/icons/icon-subscription.png" alt="Abonament kwiatowy" style="width: 150px; height: 150px; object-fit: contain; margin: 0 auto 20px;">
+                    <h3>Abonament kwiatowy</h3>
+                    <p>Regularne dostawy świeżych kwiatów dla firm, biur i parafii. Elastyczne pakiety.</p>
+                    <a href="abonament.html" class="button mt-3">Zobacz więcej</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekcja Parallax -->
+    <section class="parallax-section" style="background-image: url('assets/images/hero-bg.webp');">
+        <div class="parallax-content">
+            <h2>Kwiaty z pasją i sercem</h2>
+            <p>Każda kompozycja to unikalne dzieło naszych florystek</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="text-center mb-3">Najchętniej wybierane</h2>
+            <p class="text-center" style="color: var(--color-text-secondary); margin-bottom: 40px;">Odkryj nasze bestsellery - kwiaty, które cieszą się największą popularnością</p>
+
+            <!-- Siatka produktów 4x2 -->
+            <div class="grid-4" style="gap: 25px;">
+                <!-- Produkt 48: Flower Box 1 -->
+                <a href="sklep.html?product=48" class="product-card-link" style="text-decoration: none; color: inherit;">
+                    <div class="product-card" style="background: var(--color-bg-dark); overflow: hidden;">
+                        <div class="product-image">
+                            <img src="assets/images/gallery/occasional/boxy-zywe/Box nr.1_wynik.webp" alt="Flower Box 1">
+                        </div>
+                        <div style="padding: 15px;">
+                            <h4 style="margin: 0 0 8px 0; font-size: 1em;">Flower Box 1</h4>
+                            <p style="margin: 0; font-weight: bold; color: var(--color-accent);">250 zł</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Produkt 52: Flower Box 5 (serce) -->
+                <a href="sklep.html?product=52" class="product-card-link" style="text-decoration: none; color: inherit;">
+                    <div class="product-card" style="background: var(--color-bg-dark); overflow: hidden;">
+                        <div class="product-image">
+                            <img src="assets/images/gallery/occasional/boxy-zywe/Box nr.5_wynik.webp" alt="Flower Box serce">
+                        </div>
+                        <div style="padding: 15px;">
+                            <h4 style="margin: 0 0 8px 0; font-size: 1em;">Flower Box serce</h4>
+                            <p style="margin: 0; font-weight: bold; color: var(--color-accent);">120 zł</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Produkt 73: Bukiet żywy 1 -->
+                <a href="sklep.html?product=73" class="product-card-link" style="text-decoration: none; color: inherit;">
+                    <div class="product-card" style="background: var(--color-bg-dark); overflow: hidden;">
+                        <div class="product-image">
+                            <img src="assets/images/gallery/occasional/bukiety-zywe/Bukiet nr.1_wynik.webp" alt="Bukiet żywy">
+                        </div>
+                        <div style="padding: 15px;">
+                            <h4 style="margin: 0 0 8px 0; font-size: 1em;">Bukiet żywy</h4>
+                            <p style="margin: 0; font-weight: bold; color: var(--color-accent);">170 zł</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Produkt 84: Wieczna róża 3 -->
+                <a href="sklep.html?product=84" class="product-card-link" style="text-decoration: none; color: inherit;">
+                    <div class="product-card" style="background: var(--color-bg-dark); overflow: hidden;">
+                        <div class="product-image">
+                            <img src="assets/images/gallery/occasional/wieczne-roze/Wieczna róża 3_wynik.webp" alt="Wieczna róża">
+                        </div>
+                        <div style="padding: 15px;">
+                            <h4 style="margin: 0 0 8px 0; font-size: 1em;">Wieczna róża</h4>
+                            <p style="margin: 0; font-weight: bold; color: var(--color-accent);">80 zł</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Produkt 66: Flower Box 19 (but) -->
+                <a href="sklep.html?product=66" class="product-card-link" style="text-decoration: none; color: inherit;">
+                    <div class="product-card" style="background: var(--color-bg-dark); overflow: hidden;">
+                        <div class="product-image">
+                            <img src="assets/images/gallery/occasional/boxy-zywe/Box nr.19_wynik.webp" alt="Flower But">
+                        </div>
+                        <div style="padding: 15px;">
+                            <h4 style="margin: 0 0 8px 0; font-size: 1em;">Flower But</h4>
+                            <p style="margin: 0; font-weight: bold; color: var(--color-accent);">140 zł</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Produkt 75: Bukiet żywy 3 (z gipsówką) -->
+                <a href="sklep.html?product=75" class="product-card-link" style="text-decoration: none; color: inherit;">
+                    <div class="product-card" style="background: var(--color-bg-dark); overflow: hidden;">
+                        <div class="product-image">
+                            <img src="assets/images/gallery/occasional/bukiety-zywe/Bukiet nr.3_wynik.webp" alt="Bukiet z gipsówką">
+                        </div>
+                        <div style="padding: 15px;">
+                            <h4 style="margin: 0 0 8px 0; font-size: 1em;">Bukiet z gipsówką</h4>
+                            <p style="margin: 0; font-weight: bold; color: var(--color-accent);">100 zł</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Produkt 57: Flower Box 10 (mini) -->
+                <a href="sklep.html?product=57" class="product-card-link" style="text-decoration: none; color: inherit;">
+                    <div class="product-card" style="background: var(--color-bg-dark); overflow: hidden;">
+                        <div class="product-image">
+                            <img src="assets/images/gallery/occasional/boxy-zywe/Box nr.10_wynik.webp" alt="Flower Box mini">
+                        </div>
+                        <div style="padding: 15px;">
+                            <h4 style="margin: 0 0 8px 0; font-size: 1em;">Flower Box mini</h4>
+                            <p style="margin: 0; font-weight: bold; color: var(--color-accent);">90 zł</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Produkt 87: Wieczna róża 6 (duo) -->
+                <a href="sklep.html?product=87" class="product-card-link" style="text-decoration: none; color: inherit;">
+                    <div class="product-card" style="background: var(--color-bg-dark); overflow: hidden;">
+                        <div class="product-image">
+                            <img src="assets/images/gallery/occasional/wieczne-roze/Wieczna róża 6_wynik.webp" alt="Wieczna róża duo">
+                        </div>
+                        <div style="padding: 15px;">
+                            <h4 style="margin: 0 0 8px 0; font-size: 1em;">Wieczna róża duo</h4>
+                            <p style="margin: 0; font-weight: bold; color: var(--color-accent);">130 zł</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="text-center mt-3">
+                <a href="sklep.html?category=occasional" class="button">Zobacz wszystkie produkty</a>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .product-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .product-card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Mobile styles for index page */
+        @media (max-width: 768px) {
+            .grid-4 {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 15px !important;
+            }
+            .grid-3 {
+                grid-template-columns: 1fr !important;
+            }
+            .grid-2 {
+                grid-template-columns: 1fr !important;
+            }
+            .product-card > div:first-child {
+                height: 180px !important;
+            }
+            .card > div:first-child {
+                height: 180px !important;
+            }
+            .parallax-section {
+                min-height: 200px !important;
+            }
+            .parallax-content h2 {
+                font-size: 1.5rem !important;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .button-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .button-group .button {
+                width: 100%;
+            }
+            .testimonial {
+                padding: 20px;
+            }
+            .info-box {
+                padding: 20px !important;
+            }
+            footer .container > div {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px !important;
+            }
+            footer .container > div > div {
+                text-align: center !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .grid-4 {
+                grid-template-columns: 1fr !important;
+            }
+            .product-card > div:first-child {
+                height: 220px !important;
+            }
+            .card > div:first-child {
+                height: 160px !important;
+            }
+            .hero {
+                padding: 60px 0;
+            }
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            .section {
+                padding: 40px 0;
+            }
+            .cta-section {
+                padding: 40px 20px;
+            }
+            .mobile-call-btn {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Zamów kwiaty online lub do kwiatomatu</h2>
+            <p>Wygodnie i szybko - dostarczamy na terenie Myszkowa</p>
+            <div class="button-group">
+                <a href="sklep.html?category=occasional" class="button">Zamów bukiet</a>
+                <a href="quiz.html" class="button secondary">Wypróbuj quiz</a>
+                <a href="kwiatomat.html" class="button secondary">Zamów do kwiatomatu</a>
+            </div>
+
+            <div class="info-box mt-3" style="max-width: 800px; margin: 30px auto; text-align: left;">
+                <h3>Zamów kwiaty bezpośrednio do pogrzebu</h3>
+                <p>Jeśli chcesz uczcić pamięć bliskiej osoby, możesz zamówić kwiaty bezpośrednio z naszego systemu nekrologów na stronie Lilia Myszków. Wybierz pogrzeb, kliknij 'Zamów kwiaty', a system przekieruje Cię do naszej kwiaciarni z gotowym zamówieniem.</p>
+                <div class="text-center mt-3">
+                    <a href="https://liliamyszkow.com/nekrologi" class="button" target="_blank">Przejdź do nekrologów</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="text-center mb-3">Opinie naszych klientów</h2>
+            <div class="grid-3">
+                <div class="testimonial">
+                    <p>"Piękne kwiaty, profesjonalna obsługa. Wiązanka pogrzebowa była wykonana z wielką dbałością o szczegóły."</p>
+                    <div class="testimonial-author">- Anna K.</div>
+                </div>
+                <div class="testimonial">
+                    <p>"Zawsze świeże kwiaty i kreatywne kompozycje. Korzystam z abonamentu dla mojej firmy i jestem bardzo zadowolony."</p>
+                    <div class="testimonial-author">- Marek W.</div>
+                </div>
+                <div class="testimonial">
+                    <p>"Wspaniałe dekoracje na nasz ślub! Wszystko zgodne z naszymi oczekiwaniami. Serdecznie polecam!"</p>
+                    <div class="testimonial-author">- Katarzyna i Piotr</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="text-center mb-3">Kontakt</h2>
+            <div class="grid-2">
+                <div>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d343.52825308377237!2d19.327452592344876!3d50.56674577395983!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471725e01a511565%3A0xded70c9ccd94160!2sKwiaciarnia%20Lilia!5e1!3m2!1spl!2spl!4v1769441944246!5m2!1spl!2spl"
+                        width="100%"
+                        height="450"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                <div>
+                    <h3>Odwiedź nas</h3>
+                    <p><strong>Adres:</strong> ul. Krasickiego 95F, 42-300 Myszków</p>
+                    <p><strong>Telefon:</strong> +48 572 429 000</p>
+                    <p><strong>Email:</strong> liliakwiatymyszkow@gmail.com</p>
+
+                    <h3 class="mt-3">Godziny otwarcia</h3>
+                    <p>Poniedziałek - Piątek: 8:00 - 16:00</p>
+                    <p>Sobota: 8:00 - 13:00</p>
+                    <p>Niedziela i święta: <a href="kwiatomat.html">Kwiatomat 24/7</a></p>
+
+                    <div class="info-box mt-3">
+                        <strong>Dostępny całodobowy Kwiatomat!</strong>
+                        <p>Odbierz zamówienie o dowolnej porze</p>
+                        <a href="kwiatomat.html" class="button">Dowiedz się więcej</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div style="display: flex; align-items: center; gap: 30px; flex-wrap: wrap;">
+                <img src="assets/images/branding/logo.png" alt="Kwiaciarnia Lilia" style="height: 80px; width: auto;">
+                <div style="flex: 1; text-align: left;">
+                    <p style="margin-bottom: 5px;">Kwiaciarnia Lilia - Myszków • ul. Krasickiego 95F • Tel. +48 572 429 000</p>
+                    <p style="margin: 0;">
+                        <a href="polityka-prywatnosci.html" style="color: var(--color-text-secondary);">Polityka prywatności</a> •
+                        <a href="regulamin.html" style="color: var(--color-text-secondary);">Regulamin</a> •
+                        NIP 5732704306 • © 2025 Lilia
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Przycisk powrotu do góry -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+
+    <!-- Przycisk Zadzwoń (mobile) -->
+    <a href="tel:+48572429000" class="mobile-call-btn">
+        <span>📞</span> Zadzwoń teraz: +48 572 429 000
+    </a>
+
+    <script src="assets/js/scripts.js"></script>
+    <script>
+        // ========== PRZYCISK POWROTU DO GÓRY ==========
+        const backToTopBtn = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 500) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

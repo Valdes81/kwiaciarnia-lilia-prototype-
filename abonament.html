@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abonament - Kwiaciarnia Lilia</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Mobile styles for abonament page */
+        @media (max-width: 768px) {
+            .grid-3 .card {
+                transform: none !important;
+            }
+            .grid-3 {
+                gap: 20px !important;
+            }
+            #regulaminModal > div {
+                margin: 20px 10px !important;
+                padding: 20px !important;
+                max-width: calc(100% - 20px) !important;
+            }
+            #regulaminModal h2 {
+                font-size: 1.3rem;
+            }
+            #regulaminModal h3 {
+                font-size: 1rem;
+            }
+            #regulaminModal button[onclick="closeRegulamin()"] {
+                right: 10px !important;
+                top: 10px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .price {
+                font-size: 28px !important;
+            }
+            .card h2 {
+                font-size: 1.2rem;
+            }
+            #regulaminModal > div {
+                margin: 10px 5px !important;
+                padding: 15px !important;
+            }
+            #regulaminModal ul {
+                padding-left: 15px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Banner sezonowy -->
+    <div class="seasonal-banner" id="seasonalBanner"></div>
+
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/branding/logo.png" alt="Kwiaciarnia Lilia">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Strona główna</a></li>
+                    <li><a href="sklep.html">Sklep</a></li>
+                    <li><a href="wyslij-kwiaty.html">Wyślij kwiaty</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="abonament.html">Abonament</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                    <li><a href="poradnik.html">Poradnik</a></li>
+                    <li><a href="kwiatomat.html">Kwiatomat</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                    <li><a href="admin.html" style="color: #8B4513; font-weight: bold;">Admin</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/images/abonament-bg.webp'); background-size: cover; background-position: center;">
+        <div class="container">
+            <h1>Kwiaty na abonament</h1>
+            <p>Świeże kwiaty dostarczane regularnie dla firm, biur i parafii</p>
+            <div class="button-group">
+                <a href="#cennik" class="button">Zobacz cennik</a>
+                <a href="#formularz" class="button secondary">Zapytaj o szczegóły</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="cennik">
+        <div class="container">
+            <h2 class="text-center mb-3">Wybierz swój plan</h2>
+            <p class="text-center" style="color: var(--color-text-secondary); margin-bottom: 40px;">Dostawa raz w tygodniu (4 bukiety miesięcznie) • Świeże kwiaty sezonowe • Faktura VAT</p>
+
+            <!-- Plany cenowe -->
+            <div class="grid-3" style="gap: 30px;">
+                <div class="card" style="border: 2px solid transparent; position: relative;">
+                    <h2 style="margin-bottom: 10px;">Podstawowy</h2>
+                    <p style="color: var(--color-text-secondary); margin-bottom: 20px;">Idealne na początek</p>
+                    <div style="font-size: 18px; margin-bottom: 5px;">60 zł / bukiet</div>
+                    <div class="price" style="font-size: 36px; margin: 15px 0;">240 zł<span style="font-size: 16px; font-weight: normal;">/miesiąc</span></div>
+                    <ul style="text-align: left; padding-left: 20px; margin: 25px 0; line-height: 2;">
+                        <li>4 dostawy w miesiącu</li>
+                        <li>Świeże kwiaty sezonowe</li>
+                        <li>Standardowa kompozycja</li>
+                        <li>Wymiana wazonów</li>
+                    </ul>
+                    <button class="button secondary mt-3" style="width: 100%;" onclick="scrollToForm()">Wybierz plan</button>
+                </div>
+
+                <div class="card" style="border: 2px solid var(--color-accent); position: relative; transform: scale(1.05);">
+                    <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--color-accent); color: white; padding: 5px 20px; border-radius: 20px; font-size: 12px; font-weight: bold;">POPULARNY</div>
+                    <h2 style="margin-bottom: 10px;">Średni</h2>
+                    <p style="color: var(--color-text-secondary); margin-bottom: 20px;">Najczęściej wybierany</p>
+                    <div style="font-size: 18px; margin-bottom: 5px;">80 zł / bukiet</div>
+                    <div class="price" style="font-size: 36px; margin: 15px 0;">320 zł<span style="font-size: 16px; font-weight: normal;">/miesiąc</span></div>
+                    <ul style="text-align: left; padding-left: 20px; margin: 25px 0; line-height: 2;">
+                        <li>4 dostawy w miesiącu</li>
+                        <li>Większa kompozycja</li>
+                        <li>Priorytetowa obsługa</li>
+                        <li>Dedykowany opiekun</li>
+                    </ul>
+                    <button class="button mt-3" style="width: 100%;" onclick="scrollToForm()">Wybierz plan</button>
+                </div>
+
+                <div class="card" style="border: 2px solid transparent; position: relative;">
+                    <h2 style="margin-bottom: 10px;">Premium</h2>
+                    <p style="color: var(--color-text-secondary); margin-bottom: 20px;">Maksimum elegancji</p>
+                    <div style="font-size: 18px; margin-bottom: 5px;">100 zł / bukiet</div>
+                    <div class="price" style="font-size: 36px; margin: 15px 0;">400 zł<span style="font-size: 16px; font-weight: normal;">/miesiąc</span></div>
+                    <ul style="text-align: left; padding-left: 20px; margin: 25px 0; line-height: 2;">
+                        <li>4 dostawy w miesiącu</li>
+                        <li>Ekskluzywne kompozycje</li>
+                        <li>Kwiaty premium</li>
+                        <li>Pełna personalizacja</li>
+                    </ul>
+                    <button class="button secondary mt-3" style="width: 100%;" onclick="scrollToForm()">Wybierz plan</button>
+                </div>
+            </div>
+
+            <!-- Rabaty okresowe -->
+            <div style="margin-top: 60px; background: var(--color-bg-dark); padding: 40px; border-radius: 10px;">
+                <h3 class="text-center mb-3">Rabaty przy dłuższym zobowiązaniu</h3>
+                <div class="grid-2" style="gap: 40px; max-width: 800px; margin: 0 auto;">
+                    <div style="text-align: center; padding: 25px; background: var(--color-bg-darker); border-radius: 8px;">
+                        <div style="font-size: 14px; color: var(--color-accent); font-weight: bold; margin-bottom: 10px;">KWARTALNY</div>
+                        <div style="font-size: 32px; font-weight: bold; margin-bottom: 15px;">-5%</div>
+                        <div style="font-size: 14px; line-height: 2; color: var(--color-text-secondary);">
+                            Podstawowy: <strong style="color: white;">684 zł</strong><br>
+                            Średni: <strong style="color: white;">912 zł</strong><br>
+                            Premium: <strong style="color: white;">1140 zł</strong>
+                        </div>
+                    </div>
+                    <div style="text-align: center; padding: 25px; background: var(--color-bg-darker); border-radius: 8px; border: 1px solid var(--color-accent);">
+                        <div style="font-size: 14px; color: var(--color-accent); font-weight: bold; margin-bottom: 10px;">ROCZNY</div>
+                        <div style="font-size: 32px; font-weight: bold; margin-bottom: 15px;">-10%</div>
+                        <div style="font-size: 14px; line-height: 2; color: var(--color-text-secondary);">
+                            Podstawowy: <strong style="color: white;">2 592 zł</strong><br>
+                            Średni: <strong style="color: white;">3 456 zł</strong><br>
+                            Premium: <strong style="color: white;">4 320 zł</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="text-center mb-3">Korzyści z abonamentu</h2>
+            <div class="grid-2">
+                <div>
+                    <h3>Dla firm i biur</h3>
+                    <ul style="line-height: 2;">
+                        <li>✓ Poprawa wizerunku firmy</li>
+                        <li>✓ Pozytywny wpływ na atmosferę w biurze</li>
+                        <li>✓ Regularne dostawy bez konieczności zamawiania</li>
+                        <li>✓ Oszczędność czasu i pieniędzy</li>
+                        <li>✓ Możliwość odliczenia VAT</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Dla parafii i instytucji</h3>
+                    <ul style="line-height: 2;">
+                        <li>✓ Dekoracje ołtarza i kościoła</li>
+                        <li>✓ Kwiaty na uroczystości religijne</li>
+                        <li>✓ Elastyczne terminy dostaw</li>
+                        <li>✓ Specjalne warunki cenowe</li>
+                        <li>✓ Profesjonalna obsługa</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="formularz">
+        <div class="container">
+            <h2 class="text-center mb-3">Zapytaj o abonament</h2>
+            <div style="max-width: 600px; margin: 0 auto;">
+                <form>
+                    <div class="form-group">
+                        <label>Imię i nazwisko / Nazwa firmy *</label>
+                        <input type="text" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Telefon *</label>
+                        <input type="tel" required placeholder="+48 123 456 789">
+                        <small style="color: #666; font-size: 12px; display: block; margin-top: 5px;">
+                            📱 Na ten numer wyślemy SMS z informacjami o statusie zamówienia i realizacji abonamentu
+                        </small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>NIP (dla firm)</label>
+                        <input type="text">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Plan abonamentu *</label>
+                        <select required>
+                            <option value="">Wybierz...</option>
+                            <option>Podstawowy (240 zł/mc)</option>
+                            <option>Średni (320 zł/mc)</option>
+                            <option>Premium (400 zł/mc)</option>
+                            <option>Indywidualny</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Okres rozliczeniowy</label>
+                        <select>
+                            <option>Miesięczny</option>
+                            <option>Kwartalny (-5%)</option>
+                            <option>Roczny (-10%)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Adres dostawy *</label>
+                        <input type="text" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Preferowana częstotliwość dostaw</label>
+                        <select>
+                            <option>Raz w tygodniu</option>
+                            <option>Dwa razy w tygodniu</option>
+                            <option>Co dwa tygodnie</option>
+                            <option>Raz w miesiącu</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Dodatkowe informacje / Specjalne wymagania</label>
+                        <textarea rows="4" placeholder="Np. preferowane kolory, rodzaje kwiatów, wielkość kompozycji..."></textarea>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="zgoda" required>
+                        <label for="zgoda">Wyrażam zgodę na przetwarzanie moich danych osobowych w celu obsługi zapytania *</label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="regulamin" required>
+                        <label for="regulamin">Akceptuję <a href="#" onclick="openRegulamin(); return false;" style="color: var(--color-accent); text-decoration: underline;">Regulamin Abonamentu Kwiatowego</a> *</label>
+                    </div>
+
+                    <button type="submit" class="button" style="width: 100%; margin-top: 20px;">Wyślij zapytanie</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Masz pytania?</h2>
+            <p>Zadzwoń do nas i omów szczegóły abonamentu</p>
+            <p style="font-size: 24px; font-weight: bold; margin: 20px 0;">+48 572 429 000</p>
+            <p>Jesteśmy dostępni Pn-Pt 8:00-16:00, Sob 8:00-13:00</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div style="display: flex; align-items: center; gap: 30px; flex-wrap: wrap;">
+                <img src="assets/images/branding/logo.png" alt="Kwiaciarnia Lilia" style="height: 80px; width: auto;">
+                <div style="flex: 1; text-align: left;">
+                    <p style="margin-bottom: 5px;">Kwiaciarnia Lilia - Myszków • ul. Krasickiego 95F • Tel. +48 572 429 000</p>
+                    <p style="margin: 0;">
+                        <a href="polityka-prywatnosci.html" style="color: var(--color-text-secondary);">Polityka prywatności</a> •
+                        <a href="regulamin.html" style="color: var(--color-text-secondary);">Regulamin</a> •
+                        NIP 5732704306 • © 2025 Lilia
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Regulaminu -->
+    <div id="regulaminModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; overflow-y: auto;">
+        <div style="max-width: 800px; margin: 40px auto; padding: 40px; background: var(--color-bg-dark); border-radius: 10px; position: relative;">
+            <button onclick="closeRegulamin()" style="position: absolute; right: 20px; top: 20px; background: none; border: none; color: white; font-size: 30px; cursor: pointer;">&times;</button>
+
+            <h2 style="text-align: center; margin-bottom: 30px;">Regulamin Abonamentu Kwiatowego</h2>
+            <p style="text-align: center; color: var(--color-text-secondary); margin-bottom: 30px;">Kwiaciarnia Lilia - Myszków</p>
+
+            <div style="line-height: 1.8;">
+                <h3>1. Informacje ogólne</h3>
+                <ul style="margin-bottom: 20px; padding-left: 20px;">
+                    <li>Abonament kwiatowy oferowany przez Kwiaciarnię Lilia polega na regularnej dostawie bukietów kwiatowych raz w tygodniu.</li>
+                    <li>Abonament przeznaczony jest dla klientów indywidualnych oraz firm.</li>
+                    <li>Bukiety wykonywane są przez florystów Kwiaciarni Lilia z aktualnie dostępnych kwiatów sezonowych.</li>
+                </ul>
+
+                <h3>2. Czas trwania abonamentu</h3>
+                <ul style="margin-bottom: 20px; padding-left: 20px;">
+                    <li>Minimalny okres abonamentu wynosi 4 tygodnie (1 miesiąc) i obejmuje 4 dostawy bukietów.</li>
+                    <li>Dostępne warianty czasowe abonamentu:
+                        <ul style="padding-left: 20px; margin-top: 5px;">
+                            <li>miesięczny (4 tygodnie),</li>
+                            <li>kwartalny (3 miesiące),</li>
+                            <li>roczny (12 miesięcy).</li>
+                        </ul>
+                    </li>
+                    <li>Abonament rozpoczyna się po opłaceniu z góry pełnej kwoty.</li>
+                </ul>
+
+                <h3>3. Częstotliwość i termin dostaw</h3>
+                <ul style="margin-bottom: 20px; padding-left: 20px;">
+                    <li>Bukiety dostarczane są raz w tygodniu, w stałym dniu tygodnia, ustalonym przy zawarciu abonamentu.</li>
+                    <li>Zmiana dnia dostawy możliwa jest wyłącznie po uzgodnieniu z Kwiaciarnią Lilia i z minimum 7-dniowym wyprzedzeniem.</li>
+                    <li>Dostawy realizowane są na terenie Myszkowa.</li>
+                </ul>
+
+                <h3>4. Charakter bukietów</h3>
+                <ul style="margin-bottom: 20px; padding-left: 20px;">
+                    <li>Bukiety w ramach abonamentu są bukietami sezonowymi florysty.</li>
+                    <li>Klient nie ma możliwości wyboru konkretnych gatunków kwiatów, kolorów ani składu bukietu.</li>
+                    <li>Kwiaciarnia Lilia dokłada starań, aby bukiety były: świeże, estetyczne, różnorodne wizualnie.</li>
+                    <li>Zdjęcia bukietów prezentowane na stronie internetowej i w materiałach promocyjnych mają charakter poglądowy.</li>
+                </ul>
+
+                <h3>5. Zakres abonamentu</h3>
+                <ul style="margin-bottom: 20px; padding-left: 20px;">
+                    <li>Abonament obejmuje wyłącznie bukiety kwiatowe w wybranym wariancie cenowym.</li>
+                    <li>Abonament nie obejmuje: wazonów, dekoracji dodatkowych, indywidualnych zamówień specjalnych, personalizowanych kompozycji na życzenie klienta (chyba że ustalono inaczej).</li>
+                </ul>
+
+                <h3>6. Nieobecność klienta / brak odbioru</h3>
+                <ul style="margin-bottom: 20px; padding-left: 20px;">
+                    <li>W przypadku braku możliwości odbioru bukietu w ustalonym terminie, klient zobowiązany jest do poinformowania Kwiaciarni Lilia z minimum 48-godzinnym wyprzedzeniem.</li>
+                    <li>W przypadku braku takiej informacji, bukiet uznaje się za zrealizowany, bez prawa do zwrotu lub przeniesienia dostawy.</li>
+                </ul>
+
+                <h3>7. Pauza w abonamencie</h3>
+                <ul style="margin-bottom: 20px; padding-left: 20px;">
+                    <li>Abonament kwartalny i roczny umożliwia jednorazową pauzę (np. urlop), po wcześniejszym zgłoszeniu z minimum 7-dniowym wyprzedzeniem.</li>
+                    <li>Abonament miesięczny nie podlega pauzie.</li>
+                </ul>
+
+                <h3>8. Rezygnacja i zwroty</h3>
+                <ul style="margin-bottom: 20px; padding-left: 20px;">
+                    <li>Opłata za abonament jest bezzwrotna.</li>
+                    <li>Rezygnacja z abonamentu w trakcie jego trwania nie uprawnia do zwrotu środków, ani do realizacji niewykorzystanych dostaw w innym terminie.</li>
+                </ul>
+
+                <h3>9. Płatności</h3>
+                <ul style="margin-bottom: 20px; padding-left: 20px;">
+                    <li>Abonament opłacany jest z góry, przed rozpoczęciem realizacji pierwszej dostawy.</li>
+                    <li>Brak płatności oznacza brak realizacji abonamentu.</li>
+                </ul>
+
+                <h3>10. Reklamacje</h3>
+                <ul style="margin-bottom: 20px; padding-left: 20px;">
+                    <li>Reklamacje dotyczące jakości bukietu należy zgłosić w dniu dostawy, nie później niż w ciągu 24 godzin.</li>
+                    <li>Reklamacje zgłoszone po tym terminie nie będą rozpatrywane.</li>
+                </ul>
+
+                <h3>11. Sytuacje wyjątkowe</h3>
+                <ul style="margin-bottom: 20px; padding-left: 20px;">
+                    <li>W sytuacjach niezależnych od Kwiaciarni Lilia (np. brak dostaw kwiatów, warunki atmosferyczne, awarie), zastrzegamy sobie prawo do: zmiany składu bukietu, zmiany terminu dostawy.</li>
+                </ul>
+
+                <h3>12. Postanowienia końcowe</h3>
+                <ul style="margin-bottom: 20px; padding-left: 20px;">
+                    <li>Skorzystanie z abonamentu oznacza akceptację niniejszego regulaminu.</li>
+                    <li>Kwiaciarnia Lilia zastrzega sobie prawo do wprowadzania zmian w regulaminie, które nie wpływają na już opłacone abonamenty.</li>
+                </ul>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="button" onclick="closeRegulamin()">Zamknij</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/scripts.js"></script>
+    <script>
+        function scrollToForm() {
+            document.getElementById('formularz').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function openRegulamin() {
+            document.getElementById('regulaminModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeRegulamin() {
+            document.getElementById('regulaminModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Zamknij modal po kliknięciu w tło
+        document.getElementById('regulaminModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeRegulamin();
+            }
+        });
+
+        // Zamknij modal klawiszem ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && document.getElementById('regulaminModal').style.display === 'block') {
+                closeRegulamin();
+            }
+        });
+    </script>
+</body>
+</html>

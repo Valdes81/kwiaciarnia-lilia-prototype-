@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poradnik - Kwiaciarnia Lilia</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .blog-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .blog-header h1 {
+            margin-bottom: 10px;
+        }
+        .blog-header .subtitle {
+            color: var(--color-text-secondary);
+            margin-bottom: 20px;
+        }
+        .blog-stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .blog-stat {
+            text-align: center;
+        }
+        .blog-stat .number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--color-accent);
+        }
+        .blog-stat .label {
+            font-size: 0.85rem;
+            color: var(--color-text-secondary);
+        }
+        .sidebar-category {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: var(--color-text-secondary);
+            transition: color 0.2s;
+        }
+        .sidebar-category:hover {
+            color: var(--color-accent);
+        }
+        .sidebar-category .count {
+            background: var(--color-bg-dark);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+        }
+        .popular-post {
+            display: block;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: var(--color-text-secondary);
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        .popular-post:hover {
+            color: var(--color-accent);
+        }
+    </style>
+</head>
+<body>
+    <!-- Banner sezonowy -->
+    <div class="seasonal-banner" id="seasonalBanner"></div>
+
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/branding/logo.png" alt="Kwiaciarnia Lilia">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Strona główna</a></li>
+                    <li><a href="sklep.html">Sklep</a></li>
+                    <li><a href="wyslij-kwiaty.html">Wyślij kwiaty</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="abonament.html">Abonament</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                    <li><a href="poradnik.html">Poradnik</a></li>
+                    <li><a href="kwiatomat.html">Kwiatomat</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                    <li><a href="admin.html" style="color: #8B4513; font-weight: bold;">Admin</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <div class="blog-header">
+                <h1>Poradnik kwiatowy</h1>
+                <p class="subtitle">Porady, inspiracje i ciekawostki ze świata kwiatów od florystów Kwiaciarni Lilia</p>
+                <div class="blog-stats">
+                    <div class="blog-stat">
+                        <div class="number">5</div>
+                        <div class="label">artykułów</div>
+                    </div>
+                    <div class="blog-stat">
+                        <div class="number">4</div>
+                        <div class="label">kategorie</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-2" style="grid-template-columns: 1fr 300px; gap: 30px;">
+                <main>
+                    <!-- Artykuł 1 - Kwiaty zimowe -->
+                    <article class="blog-post" style="border: 2px solid var(--color-accent);">
+                        <div class="blog-post-image">
+                            <div class="placeholder placeholder-small" style="background: linear-gradient(135deg, #1a2530 0%, #2a3540 100%);">
+                                <span style="font-size: 3rem;">❄️</span>
+                            </div>
+                        </div>
+                        <div class="blog-post-content">
+                            <span style="font-size: 0.8rem; color: var(--color-accent); text-transform: uppercase;">Kwiaty sezonowe</span>
+                            <h3>Sezonowe kwiaty - co wybrać zimą?</h3>
+                            <p>Zima to nie ograniczenie - to elegancka odsłona florystyki. Sprawdź, które kwiaty najlepiej znoszą mróz, jak je pielęgnować i jakie kompozycje są teraz modne.</p>
+                            <a href="poradnik-kwiaty-zimowe.html" class="button">Czytaj artykuł</a>
+                        </div>
+                    </article>
+
+                    <!-- Artykuł 2 - Symbolika kolorów -->
+                    <article class="blog-post" style="border: 2px solid var(--color-accent);">
+                        <div class="blog-post-image">
+                            <div class="placeholder placeholder-small" style="background: linear-gradient(135deg, #4a2a3a 0%, #3a2030 100%);">
+                                <span style="font-size: 3rem;">🎨</span>
+                            </div>
+                        </div>
+                        <div class="blog-post-content">
+                            <span style="font-size: 0.8rem; color: var(--color-accent); text-transform: uppercase;">Symbolika kwiatów</span>
+                            <h3>Symbolika kolorów kwiatów - co oznaczają?</h3>
+                            <p>Czerwony to miłość, biały to czystość, żółty to radość. Poznaj znaczenie wszystkich kolorów i naucz się dobierać bukiety do okazji.</p>
+                            <a href="poradnik-symbolika-kolorow.html" class="button">Czytaj artykuł</a>
+                        </div>
+                    </article>
+
+                    <!-- Artykuł 3 - Trwałość kwiatów -->
+                    <article class="blog-post" style="border: 2px solid var(--color-accent);">
+                        <div class="blog-post-image">
+                            <div class="placeholder placeholder-small" style="background: linear-gradient(135deg, #1a3025 0%, #2a4035 100%);">
+                                <span style="font-size: 3rem;">💧</span>
+                            </div>
+                        </div>
+                        <div class="blog-post-content">
+                            <span style="font-size: 0.8rem; color: var(--color-accent); text-transform: uppercase;">Pielęgnacja</span>
+                            <h3>Jak przedłużyć trwałość ciętych kwiatów?</h3>
+                            <p>7 sprawdzonych porad florystów: przycinanie łodyg, wybór wody, czysty wazon i więcej. Przedłuż życie bukietu nawet o kilka dni!</p>
+                            <a href="poradnik-trwalosc-kwiatow.html" class="button">Czytaj artykuł</a>
+                        </div>
+                    </article>
+
+                    <!-- Artykuł 4 - Kwiaty pogrzebowe -->
+                    <article class="blog-post" style="border: 2px solid var(--color-accent);">
+                        <div class="blog-post-image">
+                            <div class="placeholder placeholder-small" style="background: linear-gradient(135deg, #2a2025 0%, #3a3035 100%);">
+                                <span style="font-size: 3rem;">🕯️</span>
+                            </div>
+                        </div>
+                        <div class="blog-post-content">
+                            <span style="font-size: 0.8rem; color: var(--color-accent); text-transform: uppercase;">Florystyka pogrzebowa</span>
+                            <h3>Znaczenie kwiatów w polskich obrzędach pogrzebowych</h3>
+                            <p>Kompletny przewodnik po florystyce pogrzebowej: symbolika kwiatów, różnice między wieńcem a wiązanką, tradycje w Myszkowie oraz cennik kompozycji.</p>
+                            <a href="poradnik-kwiaty-pogrzebowe.html" class="button">Czytaj artykuł</a>
+                        </div>
+                    </article>
+
+                    <!-- Artykuł 5 - Rośliny biurowe -->
+                    <article class="blog-post" style="border: 2px solid var(--color-accent);">
+                        <div class="blog-post-image">
+                            <div class="placeholder placeholder-small" style="background: linear-gradient(135deg, #1a3520 0%, #2a4530 100%);">
+                                <span style="font-size: 3rem;">🪴</span>
+                            </div>
+                        </div>
+                        <div class="blog-post-content">
+                            <span style="font-size: 0.8rem; color: var(--color-accent); text-transform: uppercase;">Rośliny doniczkowe</span>
+                            <h3>Rośliny doniczkowe idealne do biura</h3>
+                            <p>6 sprawdzonych gatunków odpornych na sztuczne światło i klimatyzację: sansewieria, zamiokulkas, dracena i więcej.</p>
+                            <a href="poradnik-rosliny-biurowe.html" class="button">Czytaj artykuł</a>
+                        </div>
+                    </article>
+                </main>
+
+                <aside class="sidebar">
+                    <h3>Kategorie</h3>
+                    <a href="#" class="sidebar-category">
+                        <span>Symbolika kwiatów</span>
+                        <span class="count">1</span>
+                    </a>
+                    <a href="#" class="sidebar-category">
+                        <span>Pielęgnacja</span>
+                        <span class="count">1</span>
+                    </a>
+                    <a href="#" class="sidebar-category">
+                        <span>Florystyka pogrzebowa</span>
+                        <span class="count">1</span>
+                    </a>
+                    <a href="#" class="sidebar-category">
+                        <span>Kwiaty sezonowe</span>
+                        <span class="count">1</span>
+                    </a>
+                    <a href="#" class="sidebar-category">
+                        <span>Rośliny doniczkowe</span>
+                        <span class="count">1</span>
+                    </a>
+
+                    <h3 class="mt-3">Popularne artykuły</h3>
+                    <a href="poradnik-kwiaty-pogrzebowe.html" class="popular-post">🕯️ Kwiaty w obrzędach pogrzebowych</a>
+                    <a href="poradnik-trwalosc-kwiatow.html" class="popular-post">💧 Jak przedłużyć trwałość kwiatów</a>
+                    <a href="poradnik-symbolika-kolorow.html" class="popular-post">🎨 Symbolika kolorów kwiatów</a>
+                    <a href="poradnik-kwiaty-zimowe.html" class="popular-post">❄️ Kwiaty zimowe</a>
+                    <a href="poradnik-rosliny-biurowe.html" class="popular-post">🪴 Rośliny do biura</a>
+
+                    <div class="info-box mt-3">
+                        <h4>Potrzebujesz porady?</h4>
+                        <p>Skontaktuj się z nami - chętnie doradzimy w wyborze kwiatów!</p>
+                        <a href="kontakt.html" class="button" style="width: 100%;">Kontakt</a>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div style="display: flex; align-items: center; gap: 30px; flex-wrap: wrap;">
+                <img src="assets/images/branding/logo.png" alt="Kwiaciarnia Lilia" style="height: 80px; width: auto;">
+                <div style="flex: 1; text-align: left;">
+                    <p style="margin-bottom: 5px;">Kwiaciarnia Lilia - Myszków • ul. Krasickiego 95F • Tel. +48 572 429 000</p>
+                    <p style="margin: 0;">
+                        <a href="polityka-prywatnosci.html" style="color: var(--color-text-secondary);">Polityka prywatności</a> •
+                        <a href="regulamin.html" style="color: var(--color-text-secondary);">Regulamin</a> •
+                        NIP 5732704306 • © 2025 Lilia
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wyślij kwiaty - Poczta Kwiatowa Lilia Myszków</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        @media (max-width: 768px) {
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+        @media (max-width: 480px) {
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .benefit-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+        }
+        .benefit-item .icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        .benefit-item h4 {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        .benefit-item p {
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+            line-height: 1.5;
+        }
+        .how-it-works {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin: 50px 0;
+        }
+        @media (max-width: 768px) {
+            .how-it-works {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+        .step {
+            text-align: center;
+            position: relative;
+        }
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--color-accent);
+            color: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+        .step h4 {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        .step p {
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+        }
+        .delivery-area {
+            background: rgba(74, 124, 89, 0.1);
+            border: 1px solid rgba(74, 124, 89, 0.3);
+            border-radius: 8px;
+            padding: 30px;
+            margin: 40px 0;
+        }
+        .delivery-area h3 {
+            margin-bottom: 15px;
+        }
+        .delivery-area ul {
+            list-style: none;
+            padding: 0;
+        }
+        .delivery-area li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .delivery-area li:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Banner sezonowy -->
+    <div class="seasonal-banner" id="seasonalBanner"></div>
+
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/branding/logo.png" alt="Kwiaciarnia Lilia">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Strona główna</a></li>
+                    <li><a href="sklep.html">Sklep</a></li>
+                    <li><a href="wyslij-kwiaty.html">Wyślij kwiaty</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="abonament.html">Abonament</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                    <li><a href="poradnik.html">Poradnik</a></li>
+                    <li><a href="kwiatomat.html">Kwiatomat</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                    <li><a href="admin.html" style="color: #8B4513; font-weight: bold;">Admin</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/images/wyslij-bg.webp'); background-size: cover; background-position: center;">
+        <div class="container">
+            <h1>Wyślij kwiaty z dostawą</h1>
+            <p>Lokalna poczta kwiatowa w Myszkowie - bez pośredników, prosto od florysty</p>
+            <div class="button-group" style="margin-top: 30px;">
+                <a href="sklep.html?category=occasional" class="button" style="font-size: 1.1rem; padding: 18px 40px;">Wybierz bukiet w sklepie</a>
+                <a href="quiz.html" class="button secondary">Pomóż mi wybrać</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Korzyści -->
+    <section class="section">
+        <div class="container">
+            <h2 class="text-center">Dlaczego warto zamówić u nas?</h2>
+
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="icon">🚚</div>
+                    <h4>Darmowa dostawa</h4>
+                    <p>Na terenie Myszkowa dostawa GRATIS. Okolice - wycena indywidualna.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="icon">🕐</div>
+                    <h4>Tego samego dnia</h4>
+                    <p>Zamów do 12:00 i kwiaty dotrą jeszcze dziś!</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="icon">💰</div>
+                    <h4>Bez pośredników</h4>
+                    <p>Zamawiasz prosto od florysty. Bez prowizji dla poczty kwiatowej.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="icon">🌸</div>
+                    <h4>Świeże kwiaty</h4>
+                    <p>Kompozycje tworzymy na bieżąco z kwiatów z naszej chłodni.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Jak to działa -->
+    <section class="section" style="background: var(--color-bg-dark);">
+        <div class="container">
+            <h2 class="text-center">Jak zamówić kwiaty z dostawą?</h2>
+
+            <div class="how-it-works">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Wybierz bukiet</h4>
+                    <p>Przejdź do sklepu i wybierz kompozycję. Możesz skorzystać z quizu, który pomoże Ci wybrać idealny bukiet.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Wybierz dostawę</h4>
+                    <p>W formularzu zamówienia wybierz opcję "Dostawa pod wskazany adres" i podaj dane odbiorcy.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Gotowe!</h4>
+                    <p>Skontaktujemy się telefonicznie, potwierdzimy szczegóły i dostarczymy kwiaty w wybranym terminie.</p>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="sklep.html?category=occasional" class="button" style="font-size: 1.1rem; padding: 18px 40px;">Przejdź do sklepu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Obszar dostawy -->
+    <section class="section">
+        <div class="container">
+            <div class="grid-2" style="gap: 50px; align-items: center;">
+                <div>
+                    <h2>Obszar dostawy</h2>
+                    <p style="color: var(--color-text-secondary); margin-bottom: 20px;">
+                        Dostarczamy kwiaty na terenie Myszkowa.<br>
+                        Dostawa jest <strong>GRATIS</strong>!
+                    </p>
+
+                    <div class="delivery-area">
+                        <h3>Dostawa w Myszkowie:</h3>
+                        <ul>
+                            <li><strong>Cały Myszków</strong> - dostawa GRATIS</li>
+                            <li>Zamówienia do 12:00 - dostawa tego samego dnia</li>
+                            <li>Dostawa o ustalonej godzinie</li>
+                        </ul>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 6rem; margin-bottom: 20px;">🚚</div>
+                    <p style="font-size: 1.3rem; font-weight: bold; margin-bottom: 10px;">Dostawa tego samego dnia</p>
+                    <p style="color: var(--color-text-secondary);">Zamów do 12:00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Masz pytania? Zadzwoń!</h2>
+            <p>Pomożemy wybrać idealną kompozycję i ustalimy szczegóły dostawy</p>
+            <p style="font-size: 2rem; font-weight: bold; margin: 25px 0;">
+                <a href="tel:+48572429000" style="color: inherit;">+48 572 429 000</a>
+            </p>
+            <p style="opacity: 0.8;">Pn-Pt: 8:00-16:00 • Sob: 8:00-13:00 • Nd/święta: <a href="kwiatomat.html" style="color: inherit;">Kwiatomat 24/7</a></p>
+            <div style="margin-top: 30px;">
+                <a href="sklep.html?category=occasional" class="button" style="font-size: 1.1rem; padding: 18px 40px;">Zamów kwiaty teraz</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div style="display: flex; align-items: center; gap: 30px; flex-wrap: wrap;">
+                <img src="assets/images/branding/logo.png" alt="Kwiaciarnia Lilia" style="height: 80px; width: auto;">
+                <div style="flex: 1; text-align: left;">
+                    <p style="margin-bottom: 5px;">Kwiaciarnia Lilia - Myszków • ul. Krasickiego 95F • Tel. +48 572 429 000</p>
+                    <p style="margin: 0;">
+                        <a href="polityka-prywatnosci.html" style="color: var(--color-text-secondary);">Polityka prywatności</a> •
+                        <a href="regulamin.html" style="color: var(--color-text-secondary);">Regulamin</a> •
+                        NIP 5732704306 • © 2025 Lilia
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/scripts.js"></script>
+</body>
+</html>

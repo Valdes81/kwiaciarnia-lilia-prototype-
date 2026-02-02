@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rośliny doniczkowe idealne do biura - Kwiaciarnia Lilia</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .article-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .article-header {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .article-header h1 {
+            font-size: 2.2rem;
+            line-height: 1.3;
+            margin-bottom: 15px;
+        }
+        .article-header .subtitle {
+            color: var(--color-text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        .article-meta {
+            display: flex;
+            gap: 20px;
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+        }
+        .article-content {
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        .article-content p {
+            margin-bottom: 20px;
+            color: var(--color-text-secondary);
+        }
+        .article-content h2 {
+            font-size: 1.5rem;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--color-accent);
+        }
+        .article-content ul, .article-content ol {
+            margin-bottom: 20px;
+            padding-left: 25px;
+        }
+        .article-content li {
+            margin-bottom: 10px;
+            color: var(--color-text-secondary);
+        }
+        .article-content strong {
+            color: var(--color-text-primary);
+        }
+
+        .benefits-list {
+            background: var(--color-bg-dark);
+            padding: 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .benefits-list ul {
+            margin: 0;
+            list-style: none;
+            padding: 0;
+        }
+        .benefits-list li {
+            padding: 12px 0;
+            padding-left: 35px;
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .benefits-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #90ee90;
+            font-weight: bold;
+        }
+        .benefits-list li:last-child {
+            border-bottom: none;
+        }
+
+        .plant-card {
+            background: var(--color-bg-dark);
+            border-radius: 12px;
+            margin: 30px 0;
+            overflow: hidden;
+        }
+        .plant-card-header {
+            background: linear-gradient(135deg, #1a3520 0%, #2a4530 100%);
+            padding: 20px 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .plant-card-header .emoji {
+            font-size: 2.5rem;
+        }
+        .plant-card-header h3 {
+            margin: 0;
+            font-size: 1.3rem;
+        }
+        .plant-card-header .latin {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+            font-style: italic;
+        }
+        .plant-card-body {
+            padding: 25px;
+        }
+        .plant-card-body p {
+            margin-bottom: 15px;
+        }
+        .plant-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .plant-feature {
+            background: rgba(144, 238, 144, 0.1);
+            border: 1px solid rgba(144, 238, 144, 0.3);
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #90ee90;
+        }
+        .plant-recommendation {
+            background: rgba(201, 160, 80, 0.1);
+            border-left: 3px solid var(--color-accent);
+            padding: 12px 15px;
+            margin-top: 15px;
+            font-style: italic;
+            color: var(--color-text-secondary);
+        }
+
+        .questions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 25px 0;
+        }
+        @media (max-width: 600px) {
+            .questions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .question-card {
+            background: var(--color-bg-dark);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .question-card .icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .question-card p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .services-box {
+            background: linear-gradient(135deg, #2a3520 0%, #3a4530 100%);
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+        .services-box h3 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #90ee90;
+        }
+        .services-box ul {
+            margin: 0;
+            list-style: none;
+            padding: 0;
+        }
+        .services-box li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+        .services-box li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #2a2520 0%, #3a3530 100%);
+            padding: 40px;
+            text-align: center;
+            margin: 50px 0;
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+        }
+        .cta-box h3 {
+            color: var(--color-text-primary);
+            margin-bottom: 15px;
+        }
+        .cta-box p {
+            margin-bottom: 25px;
+        }
+        .article-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid var(--color-border);
+        }
+    </style>
+</head>
+<body>
+    <!-- Banner sezonowy -->
+    <div class="seasonal-banner" id="seasonalBanner"></div>
+
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/branding/logo.png" alt="Kwiaciarnia Lilia">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Strona główna</a></li>
+                    <li><a href="sklep.html">Sklep</a></li>
+                    <li><a href="wyslij-kwiaty.html">Wyślij kwiaty</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="abonament.html">Abonament</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                    <li><a href="poradnik.html">Poradnik</a></li>
+                    <li><a href="kwiatomat.html">Kwiatomat</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                    <li><a href="admin.html" style="color: #8B4513; font-weight: bold;">Admin</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <div class="article-container">
+                <article class="article-content">
+                    <header class="article-header">
+                        <a href="poradnik.html" style="color: var(--color-text-secondary); font-size: 0.9rem;">&larr; Powrót do poradnika</a>
+                        <h1>Rośliny doniczkowe idealne do biura</h1>
+                        <p class="subtitle">Sprawdzone gatunki odporne na sztuczne światło i klimatyzację</p>
+                        <div class="article-meta">
+                            <span>Kwiaciarnia Lilia</span>
+                            <span>•</span>
+                            <span>Rośliny doniczkowe</span>
+                        </div>
+                    </header>
+
+                    <p><strong>Biuro to specyficzne środowisko dla roślin.</strong> Ograniczony dostęp do światła dziennego, klimatyzacja, suche powietrze i nieregularna pielęgnacja sprawiają, że nie każda roślina sobie tam poradzi. Dobra wiadomość? Istnieje wiele gatunków, które doskonale odnajdują się w warunkach biurowych, a przy tym poprawiają estetykę wnętrza i komfort pracy.</p>
+
+                    <p>Poniżej przedstawiamy najlepsze rośliny doniczkowe do biura, polecane przez florystów.</p>
+
+                    <h2>Dlaczego warto mieć rośliny w biurze?</h2>
+
+                    <p>Rośliny biurowe to nie tylko dekoracja. Ich obecność:</p>
+
+                    <div class="benefits-list">
+                        <ul>
+                            <li>poprawia samopoczucie i koncentrację</li>
+                            <li>łagodzi „biurową surowość" wnętrz</li>
+                            <li>podnosi estetykę recepcji, gabinetów i open space'ów</li>
+                            <li>wprowadza wrażenie porządku i profesjonalizmu</li>
+                        </ul>
+                    </div>
+
+                    <p>Dobrze dobrane rośliny nie wymagają codziennej opieki, a mimo to długo zachowują atrakcyjny wygląd.</p>
+
+                    <h2>Najlepsze rośliny doniczkowe do biura</h2>
+
+                    <div class="plant-card">
+                        <div class="plant-card-header">
+                            <span class="emoji">🌿</span>
+                            <div>
+                                <h3>Sansewieria</h3>
+                                <span class="latin">(wężownica)</span>
+                            </div>
+                        </div>
+                        <div class="plant-card-body">
+                            <p>Jedna z najbardziej wytrzymałych roślin doniczkowych.</p>
+                            <div class="plant-features">
+                                <span class="plant-feature">znosi słabe oświetlenie</span>
+                                <span class="plant-feature">odporna na klimatyzację</span>
+                                <span class="plant-feature">minimalne podlewanie</span>
+                            </div>
+                            <div class="plant-recommendation">Idealna do biur, gdzie pielęgnacja bywa nieregularna.</div>
+                        </div>
+                    </div>
+
+                    <div class="plant-card">
+                        <div class="plant-card-header">
+                            <span class="emoji">🌱</span>
+                            <div>
+                                <h3>Zamiokulkas</h3>
+                                <span class="latin">(zamioculcas)</span>
+                            </div>
+                        </div>
+                        <div class="plant-card-body">
+                            <p>Roślina „nie do zdarcia", bardzo popularna w przestrzeniach komercyjnych.</p>
+                            <div class="plant-features">
+                                <span class="plant-feature">rośnie przy świetle sztucznym</span>
+                                <span class="plant-feature">magazynuje wodę w kłączach</span>
+                                <span class="plant-feature">elegancki wygląd</span>
+                            </div>
+                            <div class="plant-recommendation">Świetny wybór do recepcji i gabinetów.</div>
+                        </div>
+                    </div>
+
+                    <div class="plant-card">
+                        <div class="plant-card-header">
+                            <span class="emoji">🌴</span>
+                            <div>
+                                <h3>Dracena</h3>
+                                <span class="latin">(dracaena)</span>
+                            </div>
+                        </div>
+                        <div class="plant-card-body">
+                            <p>Klasyczna roślina biurowa o smukłej formie.</p>
+                            <div class="plant-features">
+                                <span class="plant-feature">znosi klimatyzację</span>
+                                <span class="plant-feature">nowoczesny wygląd</span>
+                                <span class="plant-feature">wiele odmian i wysokości</span>
+                            </div>
+                            <div class="plant-recommendation">Sprawdza się jako roślina podłogowa.</div>
+                        </div>
+                    </div>
+
+                    <div class="plant-card">
+                        <div class="plant-card-header">
+                            <span class="emoji">🌿</span>
+                            <div>
+                                <h3>Epipremnum</h3>
+                                <span class="latin">(scindapsus / pothos)</span>
+                            </div>
+                        </div>
+                        <div class="plant-card-body">
+                            <p>Idealne do półek, szafek i wiszących donic.</p>
+                            <div class="plant-features">
+                                <span class="plant-feature">toleruje słabsze światło</span>
+                                <span class="plant-feature">szybko się regeneruje</span>
+                                <span class="plant-feature">zielona miękkość wnętrza</span>
+                            </div>
+                            <div class="plant-recommendation">Doskonałe do biur typu open space.</div>
+                        </div>
+                    </div>
+
+                    <div class="plant-card">
+                        <div class="plant-card-header">
+                            <span class="emoji">🌱</span>
+                            <div>
+                                <h3>Aglaonema</h3>
+                                <span class="latin">(aglaonema)</span>
+                            </div>
+                        </div>
+                        <div class="plant-card-body">
+                            <p>Roślina o dekoracyjnych liściach, coraz częściej wybierana do biur.</p>
+                            <div class="plant-features">
+                                <span class="plant-feature">sztuczne oświetlenie OK</span>
+                                <span class="plant-feature">lubi stabilne warunki</span>
+                                <span class="plant-feature">rzadkie podlewanie</span>
+                            </div>
+                            <div class="plant-recommendation">Świetna alternatywa dla klasycznych zielonych roślin.</div>
+                        </div>
+                    </div>
+
+                    <div class="plant-card">
+                        <div class="plant-card-header">
+                            <span class="emoji">🌿</span>
+                            <div>
+                                <h3>Fikus</h3>
+                                <span class="latin">(ficus - odmiany odporne)</span>
+                            </div>
+                        </div>
+                        <div class="plant-card-body">
+                            <p>Fikusy, szczególnie odmiany o grubych liściach, dobrze odnajdują się w biurach.</p>
+                            <div class="plant-features">
+                                <span class="plant-feature">jasne, rozproszone światło</span>
+                                <span class="plant-feature">elegancja i prestiż</span>
+                                <span class="plant-feature">duże donice</span>
+                            </div>
+                            <div class="plant-recommendation">Polecane do sal konferencyjnych i gabinetów.</div>
+                        </div>
+                    </div>
+
+                    <h2>Jak dobrać rośliny do biura - praktyczne wskazówki</h2>
+
+                    <p>Przed zakupem warto odpowiedzieć sobie na kilka pytań:</p>
+
+                    <div class="questions-grid">
+                        <div class="question-card">
+                            <div class="icon">☀️</div>
+                            <p>Ile światła dziennego ma pomieszczenie?</p>
+                        </div>
+                        <div class="question-card">
+                            <div class="icon">❄️</div>
+                            <p>Czy działa klimatyzacja?</p>
+                        </div>
+                        <div class="question-card">
+                            <div class="icon">💧</div>
+                            <p>Jak często ktoś będzie podlewał rośliny?</p>
+                        </div>
+                        <div class="question-card">
+                            <div class="icon">🎨</div>
+                            <p>Dekoracja czy większa aranżacja?</p>
+                        </div>
+                    </div>
+
+                    <p><strong>Im trudniejsze warunki - tym prostsza i bardziej odporna roślina powinna zostać wybrana.</strong></p>
+
+                    <h2>Rośliny biurowe w Myszkowie - lokalne doradztwo ma znaczenie</h2>
+
+                    <p>W <strong>Kwiaciarni Lilia</strong> pomagamy dobrać rośliny doniczkowe idealnie dopasowane do warunków biurowych - od pojedynczych donic po większe aranżacje dla firm, gabinetów i instytucji.</p>
+
+                    <div class="services-box">
+                        <h3>Doradzamy nie tylko co wybrać, ale również:</h3>
+                        <ul>
+                            <li>jak ustawić rośliny w przestrzeni</li>
+                            <li>jak je pielęgnować przy minimalnym nakładzie czasu</li>
+                            <li>które gatunki sprawdzą się długoterminowo</li>
+                        </ul>
+                    </div>
+
+                    <p><strong>Dobrze dobrane rośliny w biurze to inwestycja w estetykę i komfort pracy.</strong> Jeśli szukasz roślin doniczkowych do biura w Myszkowie, zapraszamy do Kwiaciarni Lilia - pomożemy stworzyć zieloną, funkcjonalną przestrzeń.</p>
+
+                    <div class="cta-box">
+                        <h3>Szukasz roślin do biura lub firmy?</h3>
+                        <p>Skontaktuj się z nami - przygotujemy propozycję dopasowaną do Twojej przestrzeni i budżetu.</p>
+                        <a href="kontakt.html" class="button">Skontaktuj się</a>
+                        <a href="tel:+48572429000" class="button secondary" style="margin-left: 10px;">Zadzwoń: 572 429 000</a>
+                    </div>
+
+                    <div class="article-nav">
+                        <a href="poradnik.html">&larr; Powrót do poradnika</a>
+                        <a href="poradnik-trwalosc-kwiatow.html">Trwałość kwiatów &rarr;</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div style="display: flex; align-items: center; gap: 30px; flex-wrap: wrap;">
+                <img src="assets/images/branding/logo.png" alt="Kwiaciarnia Lilia" style="height: 80px; width: auto;">
+                <div style="flex: 1; text-align: left;">
+                    <p style="margin-bottom: 5px;">Kwiaciarnia Lilia - Myszków • ul. Krasickiego 95F • Tel. +48 572 429 000</p>
+                    <p style="margin: 0;">
+                        <a href="polityka-prywatnosci.html" style="color: var(--color-text-secondary);">Polityka prywatności</a> •
+                        <a href="regulamin.html" style="color: var(--color-text-secondary);">Regulamin</a> •
+                        NIP 5732704306 • © 2025 Lilia
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jak przedłużyć trwałość ciętych kwiatów? - Kwiaciarnia Lilia</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .article-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .article-header {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .article-header h1 {
+            font-size: 2.2rem;
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+        .article-meta {
+            display: flex;
+            gap: 20px;
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+        }
+        .article-content {
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        .article-content p {
+            margin-bottom: 20px;
+            color: var(--color-text-secondary);
+        }
+        .article-content h2 {
+            font-size: 1.5rem;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--color-accent);
+        }
+        .article-content h3 {
+            font-size: 1.15rem;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: var(--color-accent);
+        }
+        .article-content ul, .article-content ol {
+            margin-bottom: 20px;
+            padding-left: 25px;
+        }
+        .article-content li {
+            margin-bottom: 10px;
+            color: var(--color-text-secondary);
+        }
+        .article-content strong {
+            color: var(--color-text-primary);
+        }
+
+        .tip-section {
+            background: var(--color-bg-dark);
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 12px;
+            border-left: 5px solid var(--color-accent);
+        }
+        .tip-section h2 {
+            margin-top: 0;
+            border: none;
+            padding-bottom: 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .tip-section h2 .number {
+            background: var(--color-accent);
+            color: #1a1512;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+        .tip-section h3 {
+            margin-top: 20px;
+        }
+
+        .do-dont {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        @media (max-width: 600px) {
+            .do-dont {
+                grid-template-columns: 1fr;
+            }
+        }
+        .do-box, .dont-box {
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .do-box {
+            background: rgba(34, 139, 34, 0.15);
+            border: 1px solid rgba(34, 139, 34, 0.3);
+        }
+        .dont-box {
+            background: rgba(178, 34, 34, 0.15);
+            border: 1px solid rgba(178, 34, 34, 0.3);
+        }
+        .do-box h4 {
+            color: #90ee90;
+            margin-bottom: 15px;
+        }
+        .dont-box h4 {
+            color: #f08080;
+            margin-bottom: 15px;
+        }
+        .do-box ul, .dont-box ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .highlight-tip {
+            background: rgba(201, 160, 80, 0.15);
+            border: 1px solid var(--color-accent);
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+        .highlight-tip .icon {
+            font-size: 1.5rem;
+        }
+        .highlight-tip p {
+            margin: 0;
+        }
+
+        .flower-types {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        @media (max-width: 600px) {
+            .flower-types {
+                grid-template-columns: 1fr;
+            }
+        }
+        .flower-type-card {
+            background: var(--color-bg-dark);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .flower-type-card h4 {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .flower-type-card p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .steps-list {
+            list-style: none;
+            padding: 0;
+        }
+        .steps-list li {
+            padding: 15px 0 15px 50px;
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .steps-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 15px;
+            width: 30px;
+            height: 30px;
+            background: var(--color-accent);
+            color: #1a1512;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .myth-buster {
+            background: linear-gradient(135deg, #2a2530 0%, #3a3040 100%);
+            padding: 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .myth-buster h3 {
+            margin-top: 0;
+            color: #dda0dd;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #2a2520 0%, #3a3530 100%);
+            padding: 40px;
+            text-align: center;
+            margin: 50px 0;
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+        }
+        .cta-box h3 {
+            color: var(--color-text-primary);
+            margin-bottom: 15px;
+        }
+        .cta-box p {
+            margin-bottom: 25px;
+        }
+        .article-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid var(--color-border);
+        }
+    </style>
+</head>
+<body>
+    <!-- Banner sezonowy -->
+    <div class="seasonal-banner" id="seasonalBanner"></div>
+
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/branding/logo.png" alt="Kwiaciarnia Lilia">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Strona główna</a></li>
+                    <li><a href="sklep.html">Sklep</a></li>
+                    <li><a href="wyslij-kwiaty.html">Wyślij kwiaty</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="abonament.html">Abonament</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                    <li><a href="poradnik.html">Poradnik</a></li>
+                    <li><a href="kwiatomat.html">Kwiatomat</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                    <li><a href="admin.html" style="color: #8B4513; font-weight: bold;">Admin</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <div class="article-container">
+                <article class="article-content">
+                    <header class="article-header">
+                        <a href="poradnik.html" style="color: var(--color-text-secondary); font-size: 0.9rem;">&larr; Powrót do poradnika</a>
+                        <h1>Jak przedłużyć trwałość ciętych kwiatów?</h1>
+                        <div class="article-meta">
+                            <span>Kwiaciarnia Lilia</span>
+                            <span>•</span>
+                            <span>Porady florystów</span>
+                        </div>
+                    </header>
+
+                    <p><strong>Świeży bukiet potrafi całkowicie odmienić wnętrze i nastrój.</strong> Niestety, bez odpowiedniej pielęgnacji nawet najpiękniejsze kwiaty szybko tracą świeżość. Dobra wiadomość jest taka, że kilka prostych, domowych zasad może znacząco wydłużyć ich trwałość - nawet o kilka dni.</p>
+
+                    <p>Poniżej znajdziesz praktyczny poradnik, oparty na codziennej pracy florystów.</p>
+
+                    <div class="tip-section">
+                        <h2><span class="number">1</span> Przycinanie łodyg - kluczowy pierwszy krok</h2>
+                        <p>To najczęściej pomijany, a jednocześnie najważniejszy element pielęgnacji kwiatów.</p>
+
+                        <h3>Jak przycinać łodygi prawidłowo?</h3>
+                        <ul class="steps-list">
+                            <li>Zawsze pod kątem (ok. 45°)</li>
+                            <li>Ostrym nożem lub sekatorem (nie nożyczkami)</li>
+                            <li>Najlepiej pod bieżącą wodą lub zaraz po wyjęciu z niej</li>
+                        </ul>
+
+                        <p><strong>Dlaczego to działa?</strong> Świeże cięcie ułatwia pobieranie wody i zapobiega zapowietrzeniu łodygi.</p>
+
+                        <div class="highlight-tip">
+                            <span class="icon">👉</span>
+                            <p><strong>Wskazówka:</strong> łodygi warto przycinać ponownie co 2-3 dni.</p>
+                        </div>
+                    </div>
+
+                    <div class="tip-section">
+                        <h2><span class="number">2</span> Jaka woda do wazonu jest najlepsza?</h2>
+                        <p>Wbrew pozorom nie każda woda służy kwiatom tak samo.</p>
+
+                        <div class="do-dont">
+                            <div class="do-box">
+                                <h4>✓ Najlepszy wybór</h4>
+                                <ul>
+                                    <li>woda letnia lub lekko chłodna</li>
+                                    <li>odstana (np. po kilku godzinach)</li>
+                                    <li>regularnie wymieniana - najlepiej codziennie lub co dwa dni</li>
+                                </ul>
+                            </div>
+                            <div class="dont-box">
+                                <h4>✗ Unikaj</h4>
+                                <ul>
+                                    <li>bardzo zimnej wody</li>
+                                    <li>wody z dużą ilością kamienia</li>
+                                    <li>dolewania wody bez jej wymiany</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="highlight-tip">
+                            <span class="icon">💧</span>
+                            <p>Jeśli do bukietu dołączona jest <strong>odżywka florystyczna</strong> - koniecznie jej użyj. To niewielki dodatek, który realnie wydłuża życie kwiatów.</p>
+                        </div>
+                    </div>
+
+                    <div class="tip-section">
+                        <h2><span class="number">3</span> Czysty wazon = dłuższa świeżość</h2>
+                        <p>Brzmi banalnie, ale to częsty błąd. Wazon powinien być:</p>
+                        <ul>
+                            <li>dokładnie umyty (bez osadu i bakterii)</li>
+                            <li>płukany przy każdej zmianie wody</li>
+                        </ul>
+                        <p><strong>Bakterie rozwijające się w brudnym wazonie blokują pobieranie wody przez łodygi</strong>, co prowadzi do szybkiego więdnięcia.</p>
+                    </div>
+
+                    <div class="tip-section">
+                        <h2><span class="number">4</span> Usuń liście zanurzone w wodzie</h2>
+                        <p>Liście znajdujące się pod linią wody:</p>
+                        <ul>
+                            <li>gniją</li>
+                            <li>zanieczyszczają wodę</li>
+                            <li>przyspieszają rozwój bakterii</li>
+                        </ul>
+                        <p><strong>Przed wstawieniem bukietu do wazonu usuń wszystkie liście</strong>, które mogłyby znaleźć się w wodzie. Kwiaty „odwdzięczą się" znacznie dłuższą świeżością.</p>
+                    </div>
+
+                    <div class="tip-section">
+                        <h2><span class="number">5</span> Gdzie ustawić wazon z kwiatami?</h2>
+                        <p>Miejsce ma ogromne znaczenie.</p>
+
+                        <h3>Najlepsze warunki:</h3>
+                        <ul>
+                            <li>☀️ jasne, ale bez bezpośredniego słońca</li>
+                            <li>🌡️ z dala od kaloryferów i kominków</li>
+                            <li>💨 bez przeciągów</li>
+                            <li>🍎 z dala od owoców (wydzielają etylen przyspieszający starzenie)</li>
+                        </ul>
+
+                        <p>Kwiaty nie lubią skrajnych temperatur - <strong>stabilne warunki to ich sprzymierzeniec</strong>.</p>
+                    </div>
+
+                    <div class="tip-section">
+                        <h2><span class="number">6</span> Czy domowe sposoby naprawdę działają?</h2>
+
+                        <div class="myth-buster">
+                            <h3>🧪 „Babcine triki" pod lupą</h3>
+                            <p>Wiele osób stosuje domowe sposoby:</p>
+                            <ul>
+                                <li>cukier</li>
+                                <li>aspiryna</li>
+                                <li>kilka kropel octu</li>
+                            </ul>
+                            <p style="margin-top: 15px;"><strong>Prawda?</strong> Mogą pomóc, ale tylko doraźnie. Najbezpieczniejszym i najbardziej skutecznym rozwiązaniem pozostają <strong>profesjonalne odżywki florystyczne</strong> oraz regularna pielęgnacja.</p>
+                        </div>
+                    </div>
+
+                    <div class="tip-section">
+                        <h2><span class="number">7</span> Różne kwiaty - różne potrzeby</h2>
+                        <p>Nie wszystkie kwiaty zachowują się tak samo:</p>
+
+                        <div class="flower-types">
+                            <div class="flower-type-card">
+                                <h4>🌹 Róże</h4>
+                                <p>Wymagają częstego przycinania i czystej wody</p>
+                            </div>
+                            <div class="flower-type-card">
+                                <h4>🌼 Goździki i chryzantemy</h4>
+                                <p>Bardzo trwałe, idealne „na długo"</p>
+                            </div>
+                            <div class="flower-type-card">
+                                <h4>🌷 Tulipany</h4>
+                                <p>Lubią chłód i mniejszą ilość wody</p>
+                            </div>
+                            <div class="flower-type-card">
+                                <h4>🌸 Eustomy i alstremerie</h4>
+                                <p>Wdzięczne, ale wrażliwe na bakterie</p>
+                            </div>
+                        </div>
+
+                        <p>Dlatego warto pytać florystę o konkretne zalecenia dla danego bukietu.</p>
+                    </div>
+
+                    <h2>Jak dbamy o trwałość kwiatów w Myszkowie?</h2>
+
+                    <p>W <strong>Kwiaciarni Lilia</strong> przykładamy dużą wagę do jakości i świeżości kwiatów. Każdy bukiet przygotowywany jest z myślą o tym, aby jak najdłużej cieszył oko po opuszczeniu kwiaciarni. Chętnie podpowiadamy klientom, jak pielęgnować konkretne kompozycje w domu.</p>
+
+                    <p><strong>Kilka prostych nawyków naprawdę robi różnicę.</strong> Jeśli chcesz, by Twój bukiet wyglądał pięknie nie dzień czy dwa, ale znacznie dłużej - wystarczy odrobina uwagi i właściwe wskazówki.</p>
+
+                    <div class="cta-box">
+                        <h3>Zamów świeże kwiaty z profesjonalną odżywką</h3>
+                        <p>Każdy nasz bukiet przygotowujemy z dbałością o detale. Dołączamy instrukcję pielęgnacji i odżywkę przedłużającą świeżość.</p>
+                        <a href="sklep.html?category=occasional" class="button">Zobacz bukiety</a>
+                        <a href="wyslij-kwiaty.html" class="button secondary" style="margin-left: 10px;">Wyślij z dostawą</a>
+                    </div>
+
+                    <div class="article-nav">
+                        <a href="poradnik.html">&larr; Powrót do poradnika</a>
+                        <a href="poradnik-symbolika-kolorow.html">Symbolika kolorów &rarr;</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div style="display: flex; align-items: center; gap: 30px; flex-wrap: wrap;">
+                <img src="assets/images/branding/logo.png" alt="Kwiaciarnia Lilia" style="height: 80px; width: auto;">
+                <div style="flex: 1; text-align: left;">
+                    <p style="margin-bottom: 5px;">Kwiaciarnia Lilia - Myszków • ul. Krasickiego 95F • Tel. +48 572 429 000</p>
+                    <p style="margin: 0;">
+                        <a href="polityka-prywatnosci.html" style="color: var(--color-text-secondary);">Polityka prywatności</a> •
+                        <a href="regulamin.html" style="color: var(--color-text-secondary);">Regulamin</a> •
+                        NIP 5732704306 • © 2025 Lilia
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/scripts.js"></script>
+</body>
+</html>
